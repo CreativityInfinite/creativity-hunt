@@ -4,16 +4,32 @@ import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { useSession } from 'next-auth/react';
+import { useEffect } from 'react';
+import { useParams } from 'next/navigation';
 
-export default function ProfilePage({ params }: { params: { locale: string } }) {
-  const { locale } = params;
+export default function ProfilePage() {
+  const { locale } = useParams() as { locale: string };
+  const { data: session } = useSession();
+  const user = session?.user;
+  const displayName = user?.name || 'Username';
+  const displayEmail = user?.email || 'you@example.com';
+  const displayImage = (user as any)?.picture || (user as any)?.image || '/avatars/default.png';
+
+  useEffect(() => {
+    if (user) {
+      try {
+        localStorage.setItem('debug_user', JSON.stringify(user));
+      } catch {}
+    }
+  }, [user]);
 
   return (
     <div className="min-h-[calc(100vh-56px)] w-full flex items-center justify-center px-4 py-12">
       <Card className="w-full max-w-2xl border-border/60 backdrop-blur-sm">
         <CardHeader className="flex flex-row items-center gap-3">
           <Avatar className="h-12 w-12">
-            <AvatarImage src="/avatars/default.png" alt="User" />
+            <AvatarImage src={displayImage} alt="User" />
             <AvatarFallback>U</AvatarFallback>
           </Avatar>
           <div>
@@ -25,12 +41,25 @@ export default function ProfilePage({ params }: { params: { locale: string } }) 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <div className="text-sm text-muted-foreground">Name</div>
-              <div className="text-sm font-medium">Username</div>
+              <div className="text-sm font-medium">{displayName}</div>
             </div>
             <div>
               <div className="text-sm text-muted-foreground">Email</div>
-              <div className="text-sm font-medium">you@example.com</div>
+              <div className="text-sm font-medium">{displayEmail}</div>
             </div>
+            <div>
+              <div className="text-sm text-muted-foreground">Provider</div>
+              <div className="text-sm font-medium">{(session as any)?.provider || 'google'}</div>
+            </div>
+            <div>
+              <div className="text-sm text-muted-foreground">Locale</div>
+              <div className="text-sm font-medium">{locale}</div>
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <div className="text-sm text-muted-foreground">Debug session</div>
+            <pre className="rounded-md border border-border/60 bg-muted/30 p-3 text-xs overflow-auto max-h-80">{JSON.stringify(session, null, 2)}</pre>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">

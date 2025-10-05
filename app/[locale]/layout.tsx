@@ -3,6 +3,7 @@ import '../globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { Inter } from 'next/font/google';
 import { cn } from '@/lib/utils';
+import ClientSessionProvider from '@/components/ClientSessionProvider';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -20,9 +21,11 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={cn('min-h-screen bg-background font-sans antialiased', inter.variable)}>
-        <ThemeProvider>
-          <main>{children}</main>
-        </ThemeProvider>
+        <ClientSessionProvider>
+          <ThemeProvider>
+            <main>{children}</main>
+          </ThemeProvider>
+        </ClientSessionProvider>
       </body>
     </html>
   );

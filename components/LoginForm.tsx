@@ -1,3 +1,5 @@
+'use client';
+
 import AppleSvg from '@/src/assets/icons/apple.svg';
 import GoogleSvg from '@/src/assets/icons/google.svg';
 
@@ -8,15 +10,27 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { getMessages } from '@/src/i18n/index';
+import { signIn } from 'next-auth/react';
 
 export function LoginForm({ className, locale, ...props }: React.ComponentPropsWithoutRef<'div'> & { locale: string }) {
   const messages = getMessages(locale);
   const t = messages.auth?.signin;
   const brand = messages.brand || defaultLogo.title;
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // 本地调试：暂时不做用户名密码登录逻辑
+  };
+
+  const handleGoogleSignIn = () => {
+    // 使用 NextAuth 触发 Google 登录，登录成功后跳转到当前语言的 profile 页面（可按需修改）
+    const targetLocale = locale || 'en';
+    signIn('google', { callbackUrl: `/${targetLocale}/profile` });
+  };
+
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="flex flex-col gap-6">
           <div className="flex flex-col items-center gap-2">
             <h1 className="text-xl font-bold">{t?.title?.replace('{brand}', brand) || `Welcome to ${brand}`}</h1>
@@ -36,21 +50,24 @@ export function LoginForm({ className, locale, ...props }: React.ComponentPropsW
               {t?.login || 'Login'}
             </Button>
           </div>
-          <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
-            <span className="relative z-10 bg-background px-2 text-muted-foreground">{t?.or || 'Or'}</span>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <Button variant="outline" className="w-full">
-              <AppleSvg className="size-4" />
-              {t?.apple || 'Continue with Apple'}
-            </Button>
-            <Button variant="outline" className="w-full">
-              <GoogleSvg className="size-4" />
-              {t?.google || 'Continue with Google'}
-            </Button>
-          </div>
         </div>
       </form>
+
+      <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
+        <span className="relative z-10 bg-background px-2 text-muted-foreground">{t?.or || 'Or'}</span>
+      </div>
+
+      <div className="grid gap-4 sm:grid-cols-2">
+        <Button variant="outline" className="w-full">
+          <AppleSvg className="size-4" />
+          {t?.apple || 'Continue with Apple'}
+        </Button>
+        <Button variant="outline" className="w-full" onClick={handleGoogleSignIn}>
+          <GoogleSvg className="size-4" />
+          {t?.google || 'Continue with Google'}
+        </Button>
+      </div>
+
       <div className="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary  ">
         {t?.terms || 'By clicking continue, you agree to our'} <a href="#">{t?.tos || 'Terms of Service'}</a> {t?.and || 'and'} <a href="#">{t?.privacy || 'Privacy Policy'}</a>.
       </div>
