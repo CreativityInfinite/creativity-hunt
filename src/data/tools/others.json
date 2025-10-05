@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Hugging Face Spaces",
+    "description": "展示与运行社区模型/应用的托管平台。",
+    "link": "https://huggingface.co/spaces",
+    "category": "其他创新 AI",
+    "rating": 4.5,
+    "tags": ["models", "demos", "community"]
+  },
+  { "name": "Perplexity AI", "description": "带引用的即时问答与检索式生成。", "link": "https://www.perplexity.ai", "category": "其他创新 AI", "rating": 4.4, "tags": ["search", "qa", "citations"] },
+  { "name": "Replicate", "description": "面向开源模型的推理 API 与托管。", "link": "https://replicate.com", "category": "其他创新 AI", "rating": 4.3, "tags": ["api", "inference", "models"] },
+  { "name": "Vercel v0", "description": "从描述到 UI 的生成式工具，快速生成前端组件。", "link": "https://v0.dev", "category": "其他创新 AI", "rating": 4.4, "tags": ["ui", "codegen", "vercel"] }
+]

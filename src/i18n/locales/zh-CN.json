@@ -1,0 +1,28 @@
+{
+  "brand": "Creativity Hunt",
+  "hero": {
+    "title": "发现最优秀的 AI 工具",
+    "subtitle": "探索精选的人工智能工具，提升你的工作效率和创造力"
+  },
+  "search": {
+    "placeholder": "描述你的需求，如\"生成产品海报的 AI\""
+  },
+  "cta": {
+    "try": "试用",
+    "search": "搜索",
+    "explore": "开始探索",
+    "submit": "提交工具",
+    "trends": "查看趋势"
+  },
+  "labels": {
+    "hotTags": "热门标签:",
+    "hotTagsList": ["图像生成", "文本写作", "聊天工具", "代码助手", "语音视频", "数据洞察", "自动化"]
+  },
+  "headings": {
+    "hotTools": "热门 AI 工具"
+  },
+  "ui": {
+    "scrollHint": "向下滚动探索工具"
+  },
+  "footer": "© YEAR Creativity Hunt · 保留所有权利"
+}

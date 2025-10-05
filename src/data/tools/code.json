@@ -1,0 +1,42 @@
+[
+  {
+    "name": "GitHub Copilot",
+    "description": "上下文代码建议与补全，加速开发与测试。",
+    "link": "https://github.com/copilot",
+    "category": "代码与开发",
+    "rating": 4.6,
+    "tags": ["code", "completion", "productivity"]
+  },
+  {
+    "name": "Cursor",
+    "description": "面向开发者的 AI 编辑器，提供智能补全与对话式改写。",
+    "link": "https://cursor.sh",
+    "category": "代码与开发",
+    "rating": 4.4,
+    "tags": ["editor", "code", "assistant"]
+  },
+  {
+    "name": "Replit Ghostwriter",
+    "description": "在线 IDE 内的 AI 编程助手，便捷云端协作与运行。",
+    "link": "https://replit.com/ai",
+    "category": "代码与开发",
+    "rating": 4.2,
+    "tags": ["ide", "cloud", "assistant"]
+  },
+  {
+    "name": "Tabnine",
+    "description": "多语言代码补全，专注本地/私有模型与团队策略。",
+    "link": "https://www.tabnine.com",
+    "category": "代码与开发",
+    "rating": 4.1,
+    "tags": ["completion", "privacy", "team"]
+  },
+  {
+    "name": "Amazon CodeWhisperer",
+    "description": "与 AWS 生态深度集成的智能代码建议。",
+    "link": "https://aws.amazon.com/codewhisperer",
+    "category": "代码与开发",
+    "rating": 4.0,
+    "tags": ["aws", "code", "assistant"]
+  }
+]

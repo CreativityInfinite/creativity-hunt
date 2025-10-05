@@ -1,0 +1,28 @@
+[
+  { "name": "ElevenLabs", "description": "高自然度语音克隆与多语言文本转语音。", "link": "https://elevenlabs.io", "category": "音频与视频", "rating": 4.6, "tags": ["tts", "voice", "audio"] },
+  { "name": "Descript", "description": "基于文字编辑音频/视频，支持配音与去噪。", "link": "https://www.descript.com", "category": "音频与视频", "rating": 4.4, "tags": ["audio", "video", "editing"] },
+  {
+    "name": "Synthesia",
+    "description": "虚拟数字人视频生成，适合教学与营销内容。",
+    "link": "https://www.synthesia.io",
+    "category": "音频与视频",
+    "rating": 4.3,
+    "tags": ["avatar", "video", "generation"]
+  },
+  {
+    "name": "Adobe Podcast",
+    "description": "一键增强语音清晰度与音质的音频工具。",
+    "link": "https://podcast.adobe.com",
+    "category": "音频与视频",
+    "rating": 4.2,
+    "tags": ["audio", "enhance", "adobe"]
+  },
+  {
+    "name": "Runway Gen-2",
+    "description": "文本到视频与图像到视频的生成式模型。",
+    "link": "https://runwayml.com",
+    "category": "音频与视频",
+    "rating": 4.3,
+    "tags": ["video", "generation", "text-to-video"]
+  }
+]

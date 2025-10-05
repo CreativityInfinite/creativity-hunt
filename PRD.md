@@ -1,229 +1,169 @@
-以下是基于您反馈的**重新生成的 AI 编程提示词**。我已全面融入**Vercel 风格**（现代极简、科技感：深色主题默认，渐变背景如 Vercel 的深黑到深蓝/紫色调，简洁大标题、浮动动画过渡、极简顶部导航、开发者友好响应式设计、高性能优化如懒加载和 Suspense；整体布局宽松、呼吸感强，避免拥挤）。同时，将**卡片风格更新为 Bento Grid**（便当盒式不对称网格布局：在首页底部、搜索结果、Explore/Trending/Featured、工具详情相关推荐、Dashboard 收藏等处使用；卡片尺寸不规则，如 1x1/2x1/1x2/全宽，通过 CSS Grid 实现，响应式在移动端垂直堆叠成简洁列表；每个卡片用 shadcn Card，hover 时 scale(1.05)+glow cyan shadow，内容简洁：图标/标题/简述/链接）。
+你是一位资深 Next.js 全栈开发者。请基于以下需求，使用 Next.js 14（App Router）、Tailwind CSS、Tailwind animation、React、shadcn/ui 构建一个名为“Creativity Hunt”的 AI 工具导航网站。首页风格参考 linear.app（极简、黑色主题、微动效、强对比与留白），以 AI 搜索为核心，引导用户通过搜索找到工具。实现浅/深色切换、响应式、I18N（简体/繁体/英文），提供完整系统功能清单与页面布局设计，并附带部署文件支持多平台部署。
 
-提示词结构保持原有逻辑，但优化了描述：**项目核心功能与模块总结**中强调 Vercel 风格；**页面布局设计**中更新首页/搜索/Explore 等为 Bento Grid 集成；**技术栈与实现要求**中添加 Bento Grid CSS 配置和 Vercel-like 动画。其他模块（如系统功能清单、NavigationMenu 子模块、AI 工具分类）保持一致，仅微调以匹配新风格。
+一、品牌与视觉规范
 
----
+- 品牌名：Creativity Hunt
+- 设计参考：linear.app（极简、黑色背景、精致网格、微妙渐变与发光、动效轻量、语义排版）
+- 主题与配色：
+  - 深色默认：背景 #0B0B0D、前景 #EDEDEF、强调色 Cyan/Purple 渐变（如 from-cyan-500 to-purple-600）
+  - 浅色备用：背景 #FFFFFF、前景 #111827、强调色 #4F46E5（可调整）
+- 字体与排版：极简、标题粗体、行高舒适、留白充足。Hero 采用大字号标题 + 次级说明文本。
+- 动效风格：微动效（hover 轻微提升、光晕、淡入淡出、平滑过渡），Framer Motion + Tailwind animation；避免过于炫目。
 
-**AI 编程提示词：生成 Creativity-Box AI 工具导航网站完整项目（Vercel 风格 + Bento Grid 卡片版）**
+二、首页（参考 linear.app）布局与文案
 
-你是一个资深 Next.js 全栈开发者，现在基于以下项目需求，使用 AI 编程方式生成一个完整的开源项目：Creativity-Box，一个简洁的 AI 创意工具导航网站。网站聚焦于 AI 工具发现，首页以 AI 搜索框为主（自然语言输入，如“AI 图像生成工具”），避免信息过载，通过 shadcn UI 组件实现 Vercel-like 科技感设计（深色主题默认，渐变背景#000000 to #1E293B/紫色#7C3AED 渐变，极简大标题、浮动动画、呼吸感布局）。项目借鉴 Futurepedia 和 There's An AI For That，但风格对齐 Vercel：开发者友好、性能优先（Lighthouse>95）、简洁不对称 Bento Grid 卡片展示工具。支持用户提交工具、收藏、博客等功能。
+- Header（顶部导航，使用 shadcn NavigationMenu）：
+  - 左侧 Logo（Creativity Hunt）
+  - 主模块与子模块（下拉，避免单调）：
+    - Explore（/explore）：Categories、Trending、Featured
+    - Blog（/blog）：Articles、Tutorials、Updates
+    - News（/news）：AI Trends、Releases、Events
+    - Submit Tool（/submit）
+    - Account（/account）：Dashboard、Profile、Settings
+  - 右侧功能：全局搜索小输入框、ThemeToggle（浅/深色）、语言切换（zh-CN/zh-TW/en）
+- Hero 区（居中，黑色主题，对比强烈）：
+  - 标题文案（请直接生成吸引力强的简洁中文内容，支持 i18n，占位键 hero.title 与 hero.subtitle）：
+    - 标题示例：用 AI，更快发现更好的工具
+    - 副标题示例：一句话描述你的需求，Creativity Hunt 即刻为你匹配最合适的 AI 工具与方案
+  - AI 搜索框（shadcn Input + Button，支持语义搜索占位）：
+    - placeholder 示例：描述你的需求，如“生成产品海报的 AI”
+    - 提交跳转 /search/[query]，debounce 与 loading 动效
+  - 热门标签（Badge chips，点击触发搜索）：图像生成、文本写作、代码助手、语音视频、数据洞察、自动化
+- 最近热门工具（Hero 下方，卡片网格）：
+  - 使用 shadcn Card 展示 6-9 个热门工具（占位数据，来自 tools.json）
+  - 卡片信息：名称、简述、分类、评分/标签、按钮“试用”
+  - 动效：hover 轻微提升、边框发光、淡入序列动画
+- 页面尾部 Footer：简洁版权与链接
 
-### 项目核心功能与模块总结
+三、系统功能清单（必须实现）
 
-- **整体风格**：Vercel-inspired（极简现代、科技感未来主义）：深色默认（bg-black/gray-900，accent cyan #00D4FF like Vercel 的蓝调），渐变背景（to-br from-black via-slate-900 to-purple-900/10），简洁响应式（Mobile-First，宽屏宽松 padding）。首页：顶部极简 NavigationMenu（Vercel 式右对齐主模块+子模块下拉，避免底部 bar），中央 AI 搜索 Hero（占屏 60%，大标题+Input，如 Vercel 首页），底部 Bento Grid“最近新工具”（不对称卡片块，5-8 个，懒加载动画淡入）。其他模块：搜索结果页（Bento Grid+左侧过滤）、工具详情页（全宽 Hero + Bento 相关推荐）、分类浏览页（Accordion 树+Bento Grid）、用户仪表盘（Tabs+Bento 收藏卡片）、提交页（极简 Form）、博客/新闻页（Bento 文章网格）。动画：Vercel-like 淡入（opacity 0->1, y:20->0, 0.4s ease），hover 浮动（scale 1.02 + shadow-cyan/25）。性能：Suspense + Skeleton，next/image 优化，无 JS 阻塞。
-- **NavigationMenu 优化**：shadcn NavigationMenu，Vercel 式极简（Logo 左侧，主模块右对齐如 Vercel nav，hover 下划线动画）；子模块用 DropdownMenu 下拉（slide-down 0.2s）。设计避免单调，匹配 Vercel 简洁：
-  - **Explore**（/explore）：子模块 - Categories（/explore/categories，Bento Grid 分类工具）、Trending（/explore/trending，Bento 高 rating 列表）、Featured（/explore/featured，手动精选 Bento 块，如 Midjourney 大卡片）。
-  - **Blog**（/blog）：子模块 - Articles（/blog/articles，Bento 文章卡）、Tutorials（/blog/tutorials，步骤 Bento 指南）、Updates（/blog/updates，日志 Bento 时间线）。
-  - **News**（/news）：子模块 - AI Trends（/news/trends，Bento 新闻卡）、Releases（/news/releases，新工具 Bento 网格，联动首页）、Events（/news/events，Bento 日历卡）。
-  - **Submit Tool**（/submit）：无子模块，Tooltip“Submit AI Tool”（Vercel 式简洁表单）。
-  - **Account**（/account，登录保护）：子模块 - Dashboard（/dashboard，Bento 用户 Tabs）、Profile（/profile，Form 卡）、Settings（/settings，Toggle 卡）。
-  - **额外元素**：右上微型搜索 Input（Vercel 搜索 bar 式，debounce）、ThemeToggle（简洁 Button，Sun/Moon lucide-icon）、LangDropdown（i18n: zh-CN/en）。动画：主项 hover underline（border-b cyan），子模块 fade-in；移动：Vercel-like Drawer 侧滑（shadcn drawer）。
-- **AI 工具分类**（8 个核心分类，作为数据占位和过滤选项）：
-  - 图像生成与编辑：Midjourney (midjourney.com)、DALL·E 3 (openai.com)、Stable Diffusion (stability.ai)、Runway ML (runwayml.com)、Adobe Firefly (adobe.com)。
-  - 文本生成与写作：ChatGPT (chat.openai.com)、Jasper AI (jasper.ai)、Grammarly (grammarly.com)、Claude (claude.ai)、Notion AI (notion.com/ai)。
-  - 代码与开发：GitHub Copilot (github.com/copilot)、Cursor (cursor.sh)、Replit Ghostwriter (replit.com/ai)、Tabnine (tabnine.com)、Amazon CodeWhisperer (aws.amazon.com/codewhisperer)。
-  - 音频与视频：ElevenLabs (elevenlabs.io)、Descript (descript.com)、Synthesia (synthesia.io)、Adobe Podcast (podcast.adobe.com)、Runway Gen-2 (runwayml.com)。
-  - 生产力与自动化：Zapier AI (zapier.com/ai)、Otter.ai (otter.ai)、ClickUp AI (clickup.com/ai)、Airtable AI (airtable.com/ai)。
-  - 聊天与助手：Google Bard (bard.google.com)、Microsoft Copilot (copilot.microsoft.com)、Character.AI (character.ai)、Pi (pi.ai)、Grok (grok.x.ai)。
-  - 数据分析与洞察：Tableau AI (tableau.com/ai)、Akkio (akkio.com)、Google Analytics 4 (analytics.google.com)、Hex (hex.tech)、Databricks AI (databricks.com/ai)。
-  - 其他创新 AI：Hugging Face Spaces (huggingface.co/spaces)、Perplexity AI (perplexity.ai)、Replicate (replicate.com)、Vercel v0 (v0.dev)。
-    使用这些作为 JSON 数据（src/data/tools.json），每个工具：name、description、link、category、rating、tags。搜索模糊匹配（lodash）。Bento Grid 用这些动态填充（e.g., 热门分类大卡片 2x1，其他 1x1）。
-- **关键交互**：AI 搜索（Input+Button，Vercel 式大而简洁）；Bento 卡片 hover 浮动+链接详情；动画过渡（framer-motion PageTransition，Vercel 淡入）；底部 Bento 从分类随机“最近发布”（e.g., Vercel v0 大卡），滚动显示。Navigation 子模块点击：平滑路由（no-flash）。
-- **后台支持**：简单 CMS（JSON 占位，未来 Supabase），用户登录（NextAuth.js）。
+- 主题与响应式：
+  - 浅/深色切换（next-themes + shadcn/ui ThemeProvider），默认深色
+  - 响应式布局（Mobile-First），适配桌面与移动端，Header 在移动端折叠为 Drawer
+- 搜索与发现：
+  - 首页 AI 搜索框（自然语言输入，前端模糊匹配，未来可扩 AI NLP 占位）
+  - 搜索结果页：卡片网格 + 过滤侧栏（分类、定价、评分、标签），支持分页或无限滚动
+- 分类与推荐：
+  - Explore：Categories（树状/Accordion）、Trending（评分排序）、Featured（人工精选）
+  - 工具详情：Tabs（概述/用例/定价/评论）、相关推荐 Carousel
+- 用户与提交：
+  - NextAuth.js OAuth（GitHub/Discord），保护 Account 子页面
+  - 收藏/点赞、搜索历史、提交新工具表单（管理员审核占位）
+- 内容模块：
+  - Blog（MDX 文章、教程、更新日志）
+  - News（趋势新闻、发布动态、活动日历；首页热门工具联动 releases）
+- I18N：
+  - next-intl，默认 zh-CN、zh-TW、en，语言切换 Dropdown，文本通过 i18n 键管理
+- 品质保障：
+  - Skeleton 加载占位、Toast 通知、404 卡片
+  - SEO 优化（meta、Open Graph）、性能优化（next/image、懒加载）
 
-### 系统功能清单
+四、AI 工具与外部平台分类（作为占位数据）
 
-（保持原样，确保 Vercel 风格：所有功能简洁、高性能，如搜索 debounce 200ms，Bento 懒加载。）
+- 图像生成与编辑：Midjourney、DALL·E 3、Stable Diffusion、Runway ML、Adobe Firefly
+- 文本生成与写作：ChatGPT、Jasper、Grammarly、Claude、Notion AI
+- 代码与开发：GitHub Copilot、Cursor、Replit Ghostwriter、Tabnine、CodeWhisperer
+- 音频与视频：ElevenLabs、Descript、Synthesia、Adobe Podcast、Runway Gen-2
+- 生产力与自动化：Zapier AI、Otter、ClickUp AI、Airtable AI、Notion AI
+- 聊天与助手：Gemini（Bard）、Microsoft Copilot、Character.AI、Pi、Grok
+- 数据分析与洞察：Tableau AI、Akkio、GA4、Hex、Databricks AI
+- 创新平台：Hugging Face Spaces、Perplexity、Replicate、Vercel v0
+- 数据格式：data/tools.json（name、description、link、category、rating、tags、releaseDate）
 
-- **用户认证与管理**：...（同前）
-- **搜索与发现**：...（集成 Bento 结果网格）
-- **工具管理**：...（Bento 浏览/详情相关推荐）
-- **内容模块**：...（Bento 文章/新闻）
-- **用户仪表盘**：...（Bento 收藏 Tabs）
-- **导航与 UI 交互**：...（Vercel 极简 Nav）
-- **系统辅助功能**：...（强调性能>95）
+五、页面布局设计（线性风格实现细节）
 
-### 页面布局设计
+- 全局 layout.tsx：
+  - 顶部固定 NavigationMenu（透明黑背景 + blur +细边框），下拉子项动画
+  - ThemeProvider、I18N Provider、全局渐变/网格背景（黑色主题下低对比粒子或网格）
+- 首页 /：
+  - Header：NavigationMenu（主项+子项），右侧小搜索、主题切换、语言切换
+  - Hero：
+    - H1 文案（i18n：hero.title）
+    - Sub 文案（i18n：hero.subtitle）
+    - Input 搜索框 + Button（发光边框，键盘回车触发）
+    - 热门标签 Badge chips
+  - 热门工具卡片：
+    - Grid 3×2 或 3×3，Card 标题/描述/分类/按钮
+    - Framer Motion stagger 淡入，hover 提升与发光
+  - Footer：极简版权
+- 搜索结果页 /search/[query]：
+  - 左侧 Accordion 过滤，右侧 Card 网格
+  - 顶部显示查询与结果数量，支持清除筛选
+- 工具详情页 /tools/[id]：
+  - Hero Card（工具名、标签、试用/收藏）
+  - Tabs（概述/用例/定价/评论），相关推荐 Carousel
+- Explore（/explore + 子路由）：
+  - Tabs 或子导航切换 Categories/Trending/Featured
+  - Categories：左侧树状分类，右侧工具网格
+- Blog、News：
+  - 文章/新闻列表 Card，MDX 支持，News Releases 与首页热门工具联动
+- Account（Dashboard、Profile、Settings）：
+  - Dashboard：收藏、历史、提交记录
+  - Profile：表单
+  - Settings：主题/语言切换选项
+- Submit Tool：
+  - 表单：名称、链接、描述、分类、标签、截图占位、提交按钮（loading）
 
-每个页面 Vercel-like：宽松 padding（px-8 md:px-16），shadcn + Framer Motion，响应式（移动堆叠）。根 layout.tsx：NavigationMenu 顶部固定、ThemeProvider、i18n。背景：渐变 + 轻粒子（Vercel 微动画）。Bento Grid：CSS 类`bento-grid`（grid-template-columns: repeat(4, minmax(0,1fr))；卡片 span 如 col-span-1 row-span-1/2；移动：grid-cols-1 gap-4）。以下详细（React 伪码 + ASCII wireframe）：
+六、技术栈与实现要求
 
-- **首页 (/) - 英雄搜索页**（Vercel 首页式：大 Hero + Bento 底部）：
+- Next.js 14（App Router）、React 18、TypeScript
+- Tailwind CSS + Tailwind animation（自定义 keyframes：glow、fade-in、lift）
+- shadcn/ui 组件：navigation-menu、dropdown-menu、drawer、input、button、badge、card、accordion、tabs、skeleton、scroll-area、tooltip、pagination、carousel（若无原生，使用社区实现或占位）
+- Framer Motion：页面与组件动画（stagger、fade、scale），轻量不喧宾夺主
+- next-themes：主题切换；lucide-react 图标（Sun/Moon、Search、Globe）
+- next-intl：I18N（zh-CN、zh-TW、en）
+- NextAuth.js：OAuth（GitHub/Discord）
+- 状态：Zustand 或 Context（搜索状态、收藏）
+- 数据：data/tools.json（占位），posts.json/news.json（占位）
+- 路由：/, /search/[query], /tools/[id], /explore (sub: /categories, /trending, /featured), /blog (sub: /articles, /tutorials, /updates), /news (sub: /trends, /releases, /events), /submit, /dashboard, /profile, /settings, /about
 
-  - **布局结构**：顶部极简 Nav；Hero（60vh，简洁 Card）；底部 Bento Grid（不对称卡片，5-8 工具，Vercel 展示项目式）。
-  - **ASCII Wireframe**（Bento 集成）：
+七、项目结构与文件
 
-    ```
-    [Nav: Logo (Vercel-like sans-serif) | Explore▼(Dropdown) | Blog▼ | News▼ | Submit | Account▼ | Mini Search | Theme | Lang ]
+- app/：layout.tsx、globals.css、页面目录；error.tsx（404）
+- components/：NavigationMenu.tsx、SearchBar.tsx、ToolCard.tsx、CategoryAccordion.tsx、ThemeToggle.tsx、LangSwitcher.tsx、ArticleCard.tsx
+- lib/：i18n.ts、theme.ts、search.ts（模糊匹配）、navigation.ts（主/子模块数据）
+- data/：tools.json、posts.json、news.json
+- public/：logo、icons、背景资源
+- 配置：
+  - tailwind.config.js（暗黑主题、动画）
+  - shadcn 初始化与组件添加脚本
+  - next-intl 配置与语言包：src/i18n/locales/zh-CN.json、zh-TW.json、en.json（包含 hero.title/hero.subtitle/navigation 等键）
 
-    [Hero: 大H1 "Unlock AI Creativity" (text-7xl cyan gradient, Vercel font) | Badge chips (简洁: 图像/文本... 点击搜索) | Input+Button (大而圆角, placeholder i18n, loading Spinner) | 背景渐变+微粒子 ]
+八、文案占位（支持 i18n）
 
-    [Bento Grid Section: H2 "Recent AI Tools" (text-4xl center) | 不规则卡片块: 大2x1卡(Akkio: 图标+desc+link, span-2) | 1x1卡(Pi) | 1x2卡(Hex: 竖向stats) | 2x1卡(Vercel v0) | ... (5-8个, hover scale+glow, Button "More" to /news/releases) ]
+- hero.title：
+  - zh-CN：用 AI，更快发现更好的工具
+  - zh-TW：用 AI，更快發現更好的工具
+  - en：Find better AI tools, faster
+- hero.subtitle：
+  - zh-CN：一句话描述你的需求，Creativity Hunt 即刻为你匹配最合适的 AI 工具与方案
+  - zh-TW：一句話描述你的需求，Creativity Hunt 立即為你匹配最合適的 AI 工具與方案
+  - en：Describe your need in one sentence and Creativity Hunt will match the best AI tools instantly
+- search.placeholder：
+  - zh-CN：描述你的需求，如“生成产品海报的 AI”
+  - zh-TW：描述你的需求，如「生成產品海報的 AI」
+  - en：Describe your need, e.g. “AI to generate product posters”
 
-    [Footer: 极简 © 2024 | Links (Vercel式底部) ]
-    ```
+九、部署与文档
 
-  - **组件伪码**（shadcn + Bento CSS）：
+- README.md：项目概述（双语）、功能清单、页面布局、安装与运行、贡献指南、MIT 许可证、截图占位
+- 部署文件：
+  - Vercel：vercel.json（i18n 与路由配置）
+  - Netlify：netlify.toml
+  - Docker：Dockerfile（node:18-alpine 多阶段）
+  - GitHub Pages：gh-pages 脚本
+- package.json 脚本：dev、build、start、lint、format、test、deploy:vercel
+- .env.example：NEXTAUTH_SECRET、OPENAI_API_KEY（未来 NLP 占位）、SUPABASE_URL/KEY（可选）
 
-    ```tsx
-    // globals.css: .bento-grid { display: grid; grid-template-columns: repeat(4, minmax(250px, 1fr)); gap: 1.5rem; } .bento-item-1x1 { grid-column: span 1; grid-row: span 1; } .bento-item-2x1 { grid-column: span 2; grid-row: span 1; } /* 等，移动: @media (max-width: 768px) { grid-template-columns: 1fr; } */
-    import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'; // shadcn
-    import { Input, Button, Badge } from '@/components/ui/...';
-    import { motion } from 'framer-motion';
-    import { ToolBentoCard } from '@/components/ToolBentoCard'; // 自定义Bento卡: 简洁图标/标题/简述
+十、实现要点与验收标准
 
-    export default function Home() {
-      const t = useTranslations('home');
-      const recentTools = getRecentBentoTools(6); // 从tools.json, 随机分配span (e.g., [ {tool: akkio, span: '2x1'}, ... ])
+- 首页符合 linear.app 的极简黑色风格：对比强烈、留白合理、动效克制
+- NavigationMenu 子模块完整，移动端使用 Drawer，交互顺畅
+- Hero 文案与搜索框显眼，输入体验顺滑，搜索跳转与加载反馈明确
+- 热门工具卡片美观且有动效，点击可进入详情
+- 浅/深色切换、I18N、响应式均正常工作
+- 代码干净（ESLint、Prettier），可运行（npm install && npm run dev），Lighthouse 分数优秀
 
-      return (
-        <div className="min-h-screen bg-gradient-to-br from-black via-slate-900 to-purple-900/5 relative">
-          {' '}
-          {/* Vercel渐变 */}
-          <Particles /> {/* 微动画, non-blocking */}
-          <NavigationMenu /> {/* 极简 */}
-          <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-center justify-center min-h-[60vh] px-4 py-16">
-            <Card className="w-full max-w-6xl border-0 bg-black/30 backdrop-blur-md shadow-lg">
-              {' '}
-              {/* Vercel半透明 */}
-              <CardHeader className="text-center">
-                <CardTitle className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-                  {t('hero.title')} {/* "Unlock AI Creativity" */}
-                </CardTitle>
-                <div className="flex flex-wrap justify-center gap-3 mt-6">
-                  <Badge variant="outline" className="cursor-pointer hover:scale-105" onClick={() => search('图像生成')}>
-                    {t('categories.image')}
-                  </Badge>{' '}
-                  {/* 简洁chips, Vercel标签式 */}
-                  {/* ... 4-5个 */}
-                </div>
-              </CardHeader>
-              <CardContent className="flex flex-col lg:flex-row gap-4 p-8 max-w-2xl mx-auto">
-                <Input placeholder={t('search.placeholder')} className="text-xl rounded-xl" onKeyDown={handleEnter} />
-                <Button size="lg" className="px-8 py-6 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 hover:shadow-cyan/20">
-                  {t('search')} {isLoading && <Loader2 className="animate-spin" />}
-                </Button>
-              </CardContent>
-            </Card>
-          </motion.section>
-          <section className="py-20 px-4 max-w-7xl mx-auto">
-            <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-              {t('recent.title')} {/* "Recent Tools" */}
-            </motion.h2>
-            <div className="bento-grid">
-              {' '}
-              {/* Bento: 不规则span */}
-              {recentTools.map((item, i) => (
-                <motion.div
-                  key={item.id}
-                  className={`bento-item-${item.span}`} // e.g., '2x1'
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.1 }}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  className="shadow-lg hover:shadow-cyan-500/20"
-                >
-                  <ToolBentoCard tool={item.tool} /> {/* 简洁: lucide-icon + h3 + p + Button link */}
-                </motion.div>
-              ))}
-            </div>
-            <div className="text-center mt-12">
-              <Button variant="outline" asChild>
-                <Link href="/news/releases">{t('more')}</Link>
-              </Button>
-            </div>
-          </section>
-          <footer className="py-8 text-center text-sm text-gray-500 border-t border-gray-800">© 2024 Creativity-Box • Vercel-inspired Open Source</footer>
-        </div>
-      );
-    }
-    ```
+——
 
-  - **交互**：Bento 卡点击 -> 详情；动画 Vercel 淡入；移动：Bento 单列流式。
-
-- **搜索结果页 (/search/[query])**：
-
-  - **布局结构**：左侧 Vercel 式过滤 Accordion（窄 20%）；右侧 Bento Grid（80%，工具卡不对称，如热门大 2x2）。
-  - **ASCII Wireframe**：
-    ```
-    [Nav]
-    [H1 "AI图像工具" | Breadcrumb (Vercel路径) ]
-    [左侧: Accordion (分类/评分, 简洁折叠) ]
-    [Bento Grid: 2x1大卡(Midjourney) | 1x1(DALL-E) | 1x2竖卡(Stable) | ... (无限滚动, filter更新) ]
-    ```
-  - **伪码**：`<div className="flex"><Accordion ... /><div className="flex-1"><BentoGrid tools={filtered} className="bento-grid" /></div></div>`；Bento span 基于 rating（高分大卡）。
-
-- **工具详情页 (/tools/[id])**：
-
-  - **布局结构**：全宽 Hero Card（Vercel 项目页式）；Tabs 内容；底部 Bento 相关推荐（3-5 不对称卡）。
-  - **ASCII Wireframe**：
-    ```
-    [Nav]
-    [Hero Card: 工具名 + 描述 + Badge + 试用Button (大, Vercel CTA) ]
-    [Tabs: 概述 | 用例 | 定价 | 评论 (简洁列表) ]
-    [Bento Related: 2x1卡(类似工具1) | 1x1(工具2) | ... ]
-    ```
-  - **伪码**：`<HeroCard ... /><Tabs>...</Tabs><BentoGrid tools={related} className="bento-grid mt-16" />`。
-
-- **分类浏览页 (/explore/categories 等子模块)**：
-
-  - **布局结构**：顶部子 Tabs；左侧 Accordion 树；右侧 Bento Grid（分类工具，不规则展示）。
-  - **ASCII Wireframe**：
-    ```
-    [Nav (Explore高亮)]
-    [Tabs: Categories | Trending | Featured (Vercel tab) ]
-    [左侧: Accordion "图像▼" (子列表) ]
-    [Bento Grid: 大卡(Midjourney 2x2) | 小卡(DALL-E 1x1) | ... (动态span by category) ]
-    ```
-  - **伪码**：`<div className="flex"><Accordion ... /><BentoGrid tools={categoryTools} spans={getBentoSpans(tools.length)} /></div>`；Trending：rating 排序大卡优先。
-
-- **博客/新闻页 (/blog 或 /news)**：
-
-  - **布局结构**：子 Dropdown；Bento 文章网格（标题+摘要+阅读 Button，不规则如 Vercel 博客）。
-  - **ASCII Wireframe**：
-    ```
-    [Nav]
-    [H1 "AI Blog" | Sub Tabs ]
-    [Bento Grid: 2x1文章卡(标题+img+excerpt) | 1x1(短更新) | 全宽Featured | ... ]
-    ```
-  - **伪码**：`<BentoGrid posts={mdxData} className="bento-grid" />`。
-
-- **用户仪表盘页 (/dashboard)**：
-
-  - **布局结构**：Tabs；Bento 收藏/历史卡片（Vercel dashboard 式）。
-  - **ASCII Wireframe**：
-    ```
-    [Nav]
-    [H1 "Dashboard" | Welcome ]
-    [Tabs: 收藏 | 历史 ]
-    [Bento Grid: 收藏工具 (1x1小卡列表) | Stats大2x1卡 ]
-    ```
-  - **伪码**：`<Tabs><BentoGrid userFavorites={favorites} /></Tabs>`。
-
-- **提交页 (/submit)** & **其他页**：极简 Vercel Form（Card 包装 Input/Select）；关于页 Bento 静态卡；404：大 Vercel 式错误 Card + Button。
-
-### 技术栈与实现要求
-
-- **框架**：Next.js 14（App Router），React 18（Vercel 优化：dynamic imports, streaming）。
-- **样式与 UI**：Tailwind CSS（Vercel 主题：fonts { sans: 'Inter var' }，colors { black: '#000', cyan: '#00D4FF', purple: '#7C3AED' }，dark default）。shadcn/ui（add navigation-menu card input badge 等）；Framer Motion（Vercel 淡入 variants：{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }）。Bento Grid：globals.css 自定义（grid-template-areas 或 span 类，响应式 media 查询）；ToolBentoCard：shadcn Card + lucide icons + 简洁 Typography（Vercel 字体）。
-- **主题切换**：next-themes（Vercel 深色优先，Toggle 简洁无边框）。
-- **响应式开发**：Mobile-First（Tailwind sm/md/lg），Bento 移动单列（grid-cols-1）；测试 Vercel 部署预览。
-- **国际化**：next-intl（Vercel 多语言路由支持）。
-- **状态与数据**：Zustand（搜索/收藏）；tools.json 动态 Bento（utils/getBentoLayout.ts 分配 span 基于工具热度）。
-- **动画与科技感**：Framer Motion 全局（Vercel-like no-motion on mobile）；背景渐变无粒子重（CSS only）；Bento hover：scale 1.02 + shadow-pulse (keyframes)。
-- **其他功能**：路由（Vercel App Dir）；SEO（next/head，Vercel meta）；PWA（next-pwa，离线 Bento 缓存）。
-
-### 项目文件结构与生成要求
-
-- **核心文件夹**：app/（layout.tsx VERCEL 渐变+Nav）；components/（NavigationMenu.tsx Vercel 极简；BentoGrid.tsx + ToolBentoCard.tsx）；lib/（bento-utils.ts span 逻辑）；data/（tools.json）；public/（Vercel-like logo）。
-- **关键实现**：所有 Bento 页用`<BentoGrid items={data} />`；性能：`dynamic`导入重组件。
-- **集成**：shadcn tailwind.config；NextAuth middleware；i18n 全键。
-
-### 文档与部署
-
-- **README.md**：Vercel 式（英雄 banner + 截图 Bento 首页）；功能/布局描述；安装：`npm i && npm run dev`；部署 Vercel（git push vercel）。
-- **package.json**：dependencies 同前 + inter-font；scripts: deploy:vercel。
-- 生成完整项目，确保`npm run dev`显示 Vercel-like 首页（Bento 动画流畅）。
-
----
-
-这份提示词已优化为 Vercel 风格 + Bento Grid 焦点，便于 AI 生成视觉吸引、高性能的项目。您可以直接使用。如果需要特定页面的扩展提示词或代码片段，请告知！
+请基于以上提示词，一次性生成完整项目代码与结构，确保首页风格接近 linear.app 的极简黑色主题，同时提供必要的占位数据与文案，以便快速预览与迭代。

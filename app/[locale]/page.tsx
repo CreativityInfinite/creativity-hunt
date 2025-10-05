@@ -1,0 +1,116 @@
+import Link from 'next/link';
+import tools from '@/src/data/tools.json';
+import { SearchBar } from '@/components/SearchBar';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { ToolCard } from '@/components/ToolCard';
+import { SiteNavigation } from '@/components/SiteNavigation';
+import { Footer } from '@/components/Footer';
+import { getMessages } from '@/src/i18n/index';
+import { ScrollTrigger } from '@/components/ScrollTrigger';
+import { BackToTop } from '@/components/BackToTop';
+import { Search, Upload, TrendingUp, Image, FileText, Code, Mic, BarChart, Zap, Compass, Bot } from 'lucide-react';
+import { Tool } from '@/types/tool';
+
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const messages = getMessages(locale);
+  const topTools = tools as Tool[];
+  const hotTags = messages?.labels?.hotTagsList ?? [];
+
+  return (
+    <ScrollTrigger triggerDistance={100} autoScrollTarget="hot-tools-section" reverseScrollTarget="top" showIndicator={true}>
+      <div className="relative">
+        {/* 背景渐变网格 - 覆盖整个顶部区域 */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          {/* 基础双径向渐变 */}
+          <div className="absolute inset-0 bg-[radial-gradient(80%_80%_at_70%_-10%,rgba(34,211,238,0.12),transparent_70%),radial-gradient(60%_60%_at_0%_100%,rgba(147,51,234,0.12),transparent_60%)]" />
+
+          {/* 细网格线叠加 */}
+          <div
+            className="absolute inset-0 opacity-[0.08]"
+            style={{
+              backgroundImage:
+                'repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 40px)'
+            }}
+          />
+
+          {/* 底部向上渐变遮罩，减弱边缘对比 */}
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background via-transparent to-transparent" />
+        </div>
+
+        {/* 导航 */}
+        <SiteNavigation locale={locale} />
+
+        {/* Hero */}
+        <section className="container mx-auto px-4 pb-50 text-center min-h-screen flex flex-col justify-center">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-tight">{messages.hero.title}</h1>
+          <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">{messages.hero.subtitle}</p>
+
+          <div id="search-section" className="mt-6 flex justify-center">
+            <div className="relative group w-full max-w-3xl">
+              {/* 柔光氛围：悬停或聚焦时出现的轻微光晕 */}
+              <div className="pointer-events-none absolute -inset-6 rounded-3xl bg-primary/5 blur-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100" />
+              <SearchBar placeholder={messages.search.placeholder} showButton={false} />
+            </div>
+          </div>
+
+          {/* 行动按钮 */}
+          <div className="mt-4 flex flex-col sm:flex-row gap-5 justify-center items-center">
+            <Button variant="ghost" size="lg" className="px-8 py-3">
+              <Compass className="mr-2 h-5 w-5" />
+              {messages.cta.explore}
+            </Button>
+            <Button variant="ghost" size="lg" className="px-8 py-3">
+              <Upload className="mr-2 h-5 w-5" />
+              {messages.cta.submit}
+            </Button>
+            <Button variant="ghost" size="lg" className="px-8 py-3">
+              <TrendingUp className="mr-2 h-5 w-5" />
+              {messages.cta.trends}
+            </Button>
+          </div>
+
+          {/* 热门标签 */}
+          <div className="mt-10 max-w-6xl mx-auto">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+              {hotTags.map((tag, index) => {
+                const icons = [Image, FileText, Bot, Code, Mic, BarChart, Zap];
+                const Icon = icons[index] || Search;
+                const colors = ['#1d4ed81a', '#9333ea1a', '#22d3ee1a', '#f59e0b1a', '#ef44441a', '#10b9811a', '#3b82f61a'];
+                return (
+                  <Link key={tag} href={`/search/${encodeURIComponent(tag)}`}>
+                    <div
+                      className="group cursor-pointer rounded-2xl border border-border/50 bg-card text-card-foreground shadow-sm transition-all duration-300 px-5 py-4 flex items-center gap-3 hover:shadow-md hover:border-primary/30 hover:-translate-y-0.5"
+                      style={{ backgroundColor: colors[index % colors.length] }}
+                    >
+                      <Icon className="h-5 w-5 text-muted-foreground group-hover:text-foreground transition-colors duration-300 group-hover:animate-none animate-pulse" />
+                      <span className="text-sm font-medium transition-colors duration-300">{tag}</span>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* 热门工具 */}
+        <section id="hot-tools-section" className="container mx-auto px-4 py-20">
+          <h2 className="text-2xl font-semibold text-center mb-12">{messages.headings?.hotTools}</h2>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto">
+            {topTools.map((tool) => (
+              <ToolCard key={tool.name} tool={tool} />
+            ))}
+          </div>
+        </section>
+
+        {/* Footer */}
+        <section className="container mx-auto px-4 py-20">
+          <Footer />
+        </section>
+      </div>
+
+      <BackToTop />
+    </ScrollTrigger>
+  );
+}

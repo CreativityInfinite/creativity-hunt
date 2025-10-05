@@ -1,0 +1,28 @@
+{
+  "brand": "Creativity Hunt",
+  "hero": {
+    "title": "Discover the best AI tools",
+    "subtitle": "Explore curated AI tools to boost your productivity and creativity"
+  },
+  "search": {
+    "placeholder": "Describe your need, e.g. \"AI to generate product posters\""
+  },
+  "cta": {
+    "try": "Try",
+    "search": "Search",
+    "explore": "Start exploring",
+    "submit": "Submit a tool",
+    "trends": "View trends"
+  },
+  "labels": {
+    "hotTags": "Hot tags:",
+    "hotTagsList": ["Image Generation", "Text Writing", "Chat Tools", "Code Assistant", "Voice & Video", "Data Insights", "Automation"]
+  },
+  "headings": {
+    "hotTools": "Popular AI Tools"
+  },
+  "ui": {
+    "scrollHint": "Scroll down to explore tools"
+  },
+  "footer": "© YEAR Creativity Hunt · All rights reserved"
+}
