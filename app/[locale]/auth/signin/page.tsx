@@ -3,6 +3,7 @@ import { GradientBackground } from '@/components/shared/GradientBackground';
 import { Logo, LogoImage, LogoText } from '@/components/Logo';
 import { defaultLogo } from '@/src/constant/base.constant';
 import { LangSwitcher } from '@/components/LangSwitcher';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export default async function LoginPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -20,7 +21,8 @@ export default async function LoginPage({ params }: { params: Promise<{ locale: 
               <LogoText className="text-md">{defaultLogo.title}</LogoText>
             </Logo>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
             <LangSwitcher locale={locale} />
           </div>
         </div>
