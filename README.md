@@ -1,4 +1,4 @@
-# Creativity Box
+# Creativity Hunt
 
 以对话为入口，智能推荐优质 AI 工具与解决方案，助力创造力无限。
 
@@ -119,4 +119,4 @@ MIT License - 查看 [LICENSE](LICENSE) 文件了解详情。
 
 ---
 
-**Creativity Box** - 让 AI 工具发现变得简单而智能 ✨
+**Creativity Hunt** - 让 AI 工具发现变得简单而智能 ✨

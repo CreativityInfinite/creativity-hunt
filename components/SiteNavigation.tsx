@@ -9,7 +9,7 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuIte
 import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
 import { Folder, TrendingUp, Star, FileText, BookOpen, Bell, BarChart, Rocket, Calendar, MessageCircle, Wrench, Book, Image, Megaphone, LayoutDashboard, User, Settings } from 'lucide-react';
 import { Logo, LogoImage, LogoText } from './Logo';
-import { defaultLogo } from '@/src/constant/base.constant';
+import { defaultLogo, getNavSections } from '@/src/constant/base.constant';
 import UserMenu from './UserMenu';
 
 const iconMap = {
@@ -55,157 +55,195 @@ export function SiteNavigation({ locale }: { locale: string }) {
   // TODO: 使用真实的鉴权状态替换此占位
   const isAuthenticated = false;
 
-  const navSections: NavSection[] = [
-    {
-      trigger: 'Explore',
-      minW: 'min-w-[640px] md:min-w-[720px]',
-      groups: [
-        {
-          title: 'Categories',
-          items: [
-            { href: `${base}/categories/chat-tools`, title: 'Chat Tools', description: 'Conversational AI and assistants', icon: 'message-circle' },
-            { href: `${base}/categories/image-generation`, title: 'Image Generation', description: 'Create images with AI', icon: 'image' },
-            { href: `${base}/categories/writing`, title: 'Writing', description: 'AI writing and copy', icon: 'book' },
-            { href: `${base}/categories/code-assistant`, title: 'Code Assistant', description: 'Coding support and automation', icon: 'tool' },
-            { href: `${base}/categories/audio-voice`, title: 'Audio & Voice', description: 'Speech and media tools', icon: 'megaphone' },
-            { href: `${base}/categories/data-insights`, title: 'Data Insights', description: 'Analytics and visualization', icon: 'bar-chart' },
-            { href: `${base}/categories/automation`, title: 'Automation', description: 'Automate repetitive tasks', icon: 'settings' }
-          ]
-        },
-        {
-          title: 'Trending',
-          items: [
-            { href: `${base}/trending/now`, title: 'Trending Now', description: 'Most popular this week', icon: 'trending-up' },
-            { href: `${base}/trending/top-rated`, title: 'Top Rated', description: 'Highest user ratings', icon: 'star' },
-            { href: `${base}/trending/rising`, title: 'Rising Stars', description: 'Fast-growing tools', icon: 'rocket' },
-            { href: `${base}/trending/most-searched`, title: 'Most Searched', description: 'Top search queries', icon: 'layout-dashboard' }
-          ]
-        },
-        {
-          title: 'Featured',
-          items: [
-            { href: `${base}/featured/editors-picks`, title: "Editor's Picks", description: 'Curated recommendations', icon: 'book-open' },
-            { href: `${base}/featured/new-launches`, title: 'New Launches', description: 'Latest releases', icon: 'calendar' },
-            { href: `${base}/featured/community-favorites`, title: 'Community Favorites', description: 'Loved by our users', icon: 'user' },
-            { href: `${base}/featured/weekly-highlights`, title: 'Weekly Highlights', description: 'Highlights of the week', icon: 'bell' }
-          ]
-        }
-      ]
-    },
-    {
-      trigger: 'Blog',
-      minW: 'min-w-[640px] md:min-w-[720px]',
-      groups: [
-        {
-          title: 'Articles',
-          items: [
-            { href: `${base}/blog/articles`, title: 'All Articles', description: 'In-depth posts and insights', icon: 'book' },
-            { href: `${base}/blog/guides`, title: 'Guides', description: 'Step-by-step guides for beginners', icon: 'book-open' }
-          ]
-        },
-        {
-          title: 'Tutorials',
-          items: [
-            { href: `${base}/blog/tutorials`, title: 'Tutorials', description: 'Practical tutorials and walkthroughs', icon: 'book-open' },
-            { href: `${base}/blog/case-studies`, title: 'Case Studies', description: 'Real-world examples and results', icon: 'bar-chart' }
-          ]
-        },
-        {
-          title: 'Updates',
-          items: [
-            { href: `${base}/blog/updates`, title: 'Product Updates', description: 'Latest changes and improvements', icon: 'bell' },
-            { href: `${base}/blog/changelog`, title: 'Changelog', description: 'Release notes and version history', icon: 'layout-dashboard' }
-          ]
-        }
-      ]
-    },
-    {
-      trigger: 'News',
-      minW: 'min-w-[640px] md:min-w-[720px]',
-      groups: [
-        {
-          title: 'AI Trends',
-          items: [
-            { href: `${base}/news/trends`, title: 'Market Trends', description: 'Industry analyses and reports', icon: 'bar-chart' },
-            { href: `${base}/news/opinion`, title: 'Opinions', description: 'Editorials and commentary', icon: 'book-open' }
-          ]
-        },
-        {
-          title: 'Releases',
-          items: [
-            { href: `${base}/news/releases`, title: 'New Tools', description: 'Announcements and launches', icon: 'rocket' },
-            { href: `${base}/news/changelog`, title: 'Changelog', description: 'Release notes and updates', icon: 'layout-dashboard' }
-          ]
-        },
-        {
-          title: 'Events',
-          items: [
-            { href: `${base}/news/events`, title: 'Conferences', description: 'Talks, meetups and conferences', icon: 'calendar' },
-            { href: `${base}/news/webinars`, title: 'Webinars', description: 'Online sessions and demos', icon: 'calendar' }
-          ]
-        }
-      ]
-    },
-    {
-      trigger: 'Discussion',
-      minW: 'min-w-[640px] md:min-w-[720px]',
-      groups: [
-        {
-          title: 'General Discussion',
-          items: [
-            { href: `${base}/discussion/general`, title: 'General Topics', description: 'Community-wide conversations', icon: 'message-circle' },
-            { href: `${base}/discussion/feedback`, title: 'Feedback', description: 'Suggestions and feature requests', icon: 'megaphone' }
-          ]
-        },
-        {
-          title: 'Tool Recommendations',
-          items: [
-            { href: `${base}/discussion/tools`, title: 'Recommend Tools', description: 'Share handy tools you use', icon: 'tool' },
-            { href: `${base}/discussion/showcase`, title: 'Showcase', description: 'Present your creations', icon: 'image' }
-          ]
-        },
-        {
-          title: 'Tutorials',
-          items: [
-            { href: `${base}/discussion/tutorials`, title: 'Tutorials', description: 'Tips and how-tos', icon: 'book' },
-            { href: `${base}/discussion/resources`, title: 'Resources', description: 'Useful learning resources', icon: 'book-open' }
-          ]
-        }
-      ]
-    },
-    {
-      trigger: 'Account',
-      minW: 'min-w-[640px] md:min-w-[720px]',
-      groups: [
-        {
-          title: 'Dashboard',
-          items: [
-            { href: `${base}/account`, title: 'Overview', description: 'Personal control panel', icon: 'layout-dashboard' },
-            { href: `${base}/account/activity`, title: 'Activity', description: 'Recent actions and logs', icon: 'calendar' }
-          ]
-        },
-        {
-          title: 'Profile',
-          items: [
-            { href: `${base}/profile`, title: 'Profile', description: 'Personal information settings', icon: 'user' },
-            { href: `${base}/profile/security`, title: 'Security', description: 'Password & 2FA settings', icon: 'settings' }
-          ]
-        },
-        {
-          title: 'Settings',
-          items: [
-            { href: `${base}/settings`, title: 'Preferences', description: 'Account preferences and options', icon: 'settings' },
-            { href: `${base}/settings/notifications`, title: 'Notifications', description: 'Notification settings', icon: 'bell' }
-          ]
-        }
-      ]
-    },
-    {
-      trigger: 'About',
-      minW: 'min-w-[640px] md:min-w-[720px]',
-      href: `${base}/about`
-    }
-  ];
+  // 从 i18n 读取导航文案（trigger、分组标题、items 文案）
+  const translatedNav = getNavSections(locale);
+
+  // 为每个子项提供图标矩阵（按组序填充，长度不足时回退为 'star'）
+  // 静态导航映射：非文案字段在此维护（href、icon、minW）
+  type StaticMenuItem = { href: string; icon: IconKey };
+  type StaticMenuGroup = { title: string; items?: StaticMenuItem[] };
+  type StaticNavSection = { trigger: string; minW: string; href?: string; groups?: StaticMenuGroup[] };
+
+  function getStaticNavMap(base: string): StaticNavSection[] {
+    const minW = 'min-w-[640px] md:min-w-[720px]';
+    return [
+      {
+        trigger: 'Explore',
+        minW,
+        groups: [
+          {
+            title: 'Categories',
+            items: [
+              { href: `${base}/categories/chat-tools`, icon: 'message-circle' },
+              { href: `${base}/categories/image-generation`, icon: 'image' },
+              { href: `${base}/categories/writing`, icon: 'book' },
+              { href: `${base}/categories/code-assistant`, icon: 'tool' },
+              { href: `${base}/categories/audio-voice`, icon: 'megaphone' },
+              { href: `${base}/categories/data-insights`, icon: 'bar-chart' },
+              { href: `${base}/categories/automation`, icon: 'settings' }
+            ]
+          },
+          {
+            title: 'Trending',
+            items: [
+              { href: `${base}/trending/now`, icon: 'trending-up' },
+              { href: `${base}/trending/top-rated`, icon: 'star' },
+              { href: `${base}/trending/rising`, icon: 'rocket' },
+              { href: `${base}/trending/most-searched`, icon: 'layout-dashboard' }
+            ]
+          },
+          {
+            title: 'Featured',
+            items: [
+              { href: `${base}/featured/editors-picks`, icon: 'book-open' },
+              { href: `${base}/featured/new-launches`, icon: 'calendar' },
+              { href: `${base}/featured/community-favorites`, icon: 'user' },
+              { href: `${base}/featured/weekly-highlights`, icon: 'bell' }
+            ]
+          }
+        ]
+      },
+      {
+        trigger: 'Blog',
+        minW,
+        groups: [
+          {
+            title: 'Articles',
+            items: [
+              { href: `${base}/blog/articles`, icon: 'book' },
+              { href: `${base}/blog/guides`, icon: 'book-open' }
+            ]
+          },
+          {
+            title: 'Tutorials',
+            items: [
+              { href: `${base}/blog/tutorials`, icon: 'book-open' },
+              { href: `${base}/blog/case-studies`, icon: 'bar-chart' }
+            ]
+          },
+          {
+            title: 'Updates',
+            items: [
+              { href: `${base}/blog/updates`, icon: 'bell' },
+              { href: `${base}/blog/changelog`, icon: 'layout-dashboard' }
+            ]
+          }
+        ]
+      },
+      {
+        trigger: 'News',
+        minW,
+        groups: [
+          {
+            title: 'AI Trends',
+            items: [
+              { href: `${base}/news/trends`, icon: 'bar-chart' },
+              { href: `${base}/news/opinion`, icon: 'book-open' }
+            ]
+          },
+          {
+            title: 'Releases',
+            items: [
+              { href: `${base}/news/releases`, icon: 'rocket' },
+              { href: `${base}/news/changelog`, icon: 'layout-dashboard' }
+            ]
+          },
+          {
+            title: 'Events',
+            items: [
+              { href: `${base}/news/events`, icon: 'calendar' },
+              { href: `${base}/news/webinars`, icon: 'calendar' }
+            ]
+          }
+        ]
+      },
+      {
+        trigger: 'Discussion',
+        minW,
+        groups: [
+          {
+            title: 'General Discussion',
+            items: [
+              { href: `${base}/discussion/general`, icon: 'message-circle' },
+              { href: `${base}/discussion/feedback`, icon: 'megaphone' }
+            ]
+          },
+          {
+            title: 'Tool Recommendations',
+            items: [
+              { href: `${base}/discussion/tools`, icon: 'tool' },
+              { href: `${base}/discussion/showcase`, icon: 'image' }
+            ]
+          },
+          {
+            title: 'Tutorials',
+            items: [
+              { href: `${base}/discussion/tutorials`, icon: 'book' },
+              { href: `${base}/discussion/resources`, icon: 'book-open' }
+            ]
+          }
+        ]
+      },
+      {
+        trigger: 'Account',
+        minW,
+        groups: [
+          {
+            title: 'Dashboard',
+            items: [
+              { href: `${base}/account`, icon: 'layout-dashboard' },
+              { href: `${base}/account/activity`, icon: 'calendar' }
+            ]
+          },
+          {
+            title: 'Profile',
+            items: [
+              { href: `${base}/profile`, icon: 'user' },
+              { href: `${base}/profile/security`, icon: 'settings' }
+            ]
+          },
+          {
+            title: 'Settings',
+            items: [
+              { href: `${base}/settings`, icon: 'settings' },
+              { href: `${base}/settings/notifications`, icon: 'bell' }
+            ]
+          }
+        ]
+      },
+      {
+        trigger: 'About',
+        minW,
+        href: `${base}/about`
+      }
+    ];
+  }
+
+  // 合并：使用静态映射补齐 href、icon、minW，i18n 提供 trigger/title/description
+  const staticNav = getStaticNavMap(base);
+  const navSections: NavSection[] = translatedNav.map((section, si) => {
+    const s = staticNav[si];
+    const groups = (section.groups || []).map((g, gi) => {
+      const sg = s?.groups?.[gi];
+      const items = (g.items || []).map((it, ii) => {
+        const siItem = sg?.items?.[ii];
+        return {
+          href: siItem?.href || base,
+          title: it.title,
+          description: it.description,
+          icon: siItem?.icon || 'star'
+        };
+      });
+      return { title: g.title, items };
+    });
+
+    return {
+      trigger: section.trigger,
+      minW: s?.minW || section.minW || 'min-w-[640px] md:min-w-[720px]',
+      href: s?.href || section.href,
+      groups
+    };
+  });
 
   return (
     <div className="top-0">
@@ -277,7 +315,7 @@ function EnhancedMenuLink({ href, title, description, icon }: { href: string; ti
   return (
     <Link href={href} className="group block p-1.5 rounded-lg hover:bg-accent/50 transition-all duration-200">
       <div className="flex items-center gap-3.5">
-        <IconComponent className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors duration-200" />
+        <IconComponent className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors duration-200" />
         <div className="flex-1">
           <div className="font-medium text-sm group-hover:text-primary transition-colors duration-200">{title}</div>
           <div className="text-xs text-muted-foreground mt-0.5 group-hover:text-foreground/70 transition-colors duration-200">{description}</div>

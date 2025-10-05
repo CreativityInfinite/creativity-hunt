@@ -23,7 +23,7 @@ export default function SignUpPage({ params }: { params: { locale: string } }) {
       <Card className="w-full max-w-md border-border/60 backdrop-blur-sm">
         <CardHeader>
           <CardTitle>Create account</CardTitle>
-          <CardDescription>Join Creativity Box and explore top AI tools.</CardDescription>
+          <CardDescription>Join Creativity Hunt and explore top AI tools.</CardDescription>
         </CardHeader>
         <CardContent>
           <form className="grid gap-4" onSubmit={onSubmit}>

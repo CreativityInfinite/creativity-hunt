@@ -62,5 +62,150 @@
   "footerBottomLinks": [
     { "text": "Terms", "url": "#" },
     { "text": "Privacy Policy", "url": "#" }
+  ],
+  "navSections": [
+    {
+      "trigger": "Explore",
+      "groups": [
+        {
+          "title": "Categories",
+          "items": [
+            { "title": "Chat Tools", "description": "Conversational AI and assistants" },
+            { "title": "Image Generation", "description": "Create images with AI" },
+            { "title": "Writing", "description": "AI writing and copy" },
+            { "title": "Code Assistant", "description": "Coding support and automation" },
+            { "title": "Audio & Voice", "description": "Speech and media tools" },
+            { "title": "Data Insights", "description": "Analytics and visualization" },
+            { "title": "Automation", "description": "Automate repetitive tasks" }
+          ]
+        },
+        {
+          "title": "Trending",
+          "items": [
+            { "title": "Trending Now", "description": "Most popular this week" },
+            { "title": "Top Rated", "description": "Highest user ratings" },
+            { "title": "Rising Stars", "description": "Fast-growing tools" },
+            { "title": "Most Searched", "description": "Top search queries" }
+          ]
+        },
+        {
+          "title": "Featured",
+          "items": [
+            { "title": "Editor's Picks", "description": "Curated recommendations" },
+            { "title": "New Launches", "description": "Latest releases" },
+            { "title": "Community Favorites", "description": "Loved by our users" },
+            { "title": "Weekly Highlights", "description": "Highlights of the week" }
+          ]
+        }
+      ]
+    },
+    {
+      "trigger": "Blog",
+      "groups": [
+        {
+          "title": "Articles",
+          "items": [
+            { "title": "All Articles", "description": "In-depth posts and insights" },
+            { "title": "Guides", "description": "Step-by-step guides for beginners" }
+          ]
+        },
+        {
+          "title": "Tutorials",
+          "items": [
+            { "title": "Tutorials", "description": "Practical tutorials and walkthroughs" },
+            { "title": "Case Studies", "description": "Real-world examples and results" }
+          ]
+        },
+        {
+          "title": "Updates",
+          "items": [
+            { "title": "Product Updates", "description": "Latest changes and improvements" },
+            { "title": "Changelog", "description": "Release notes and version history" }
+          ]
+        }
+      ]
+    },
+    {
+      "trigger": "News",
+      "groups": [
+        {
+          "title": "AI Trends",
+          "items": [
+            { "title": "Market Trends", "description": "Industry analyses and reports" },
+            { "title": "Opinions", "description": "Editorials and commentary" }
+          ]
+        },
+        {
+          "title": "Releases",
+          "items": [
+            { "title": "New Tools", "description": "Announcements and launches" },
+            { "title": "Changelog", "description": "Release notes and updates" }
+          ]
+        },
+        {
+          "title": "Events",
+          "items": [
+            { "title": "Conferences", "description": "Talks, meetups and conferences" },
+            { "title": "Webinars", "description": "Online sessions and demos" }
+          ]
+        }
+      ]
+    },
+    {
+      "trigger": "Discussion",
+      "groups": [
+        {
+          "title": "General Discussion",
+          "items": [
+            { "title": "General Topics", "description": "Community-wide conversations" },
+            { "title": "Feedback", "description": "Suggestions and feature requests" }
+          ]
+        },
+        {
+          "title": "Tool Recommendations",
+          "items": [
+            { "title": "Recommend Tools", "description": "Share handy tools you use" },
+            { "title": "Showcase", "description": "Present your creations" }
+          ]
+        },
+        {
+          "title": "Tutorials",
+          "items": [
+            { "title": "Tutorials", "description": "Tips and how-tos" },
+            { "title": "Resources", "description": "Useful learning resources" }
+          ]
+        }
+      ]
+    },
+    {
+      "trigger": "Account",
+      "groups": [
+        {
+          "title": "Dashboard",
+          "items": [
+            { "title": "Overview", "description": "Personal control panel" },
+            { "title": "Activity", "description": "Recent actions and logs" }
+          ]
+        },
+        {
+          "title": "Profile",
+          "items": [
+            { "title": "Profile", "description": "Personal information settings" },
+            { "title": "Security", "description": "Password & 2FA settings" }
+          ]
+        },
+        {
+          "title": "Settings",
+          "items": [
+            { "title": "Preferences", "description": "Account preferences and options" },
+            { "title": "Notifications", "description": "Notification settings" }
+          ]
+        }
+      ]
+    },
+    {
+      "trigger": "About",
+      "groups": []
+    }
   ]
 }

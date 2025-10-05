@@ -62,5 +62,150 @@
   "footerBottomLinks": [
     { "text": "使用條款", "url": "#" },
     { "text": "隱私政策", "url": "#" }
+  ],
+  "navSections": [
+    {
+      "trigger": "探索",
+      "groups": [
+        {
+          "title": "分類",
+          "items": [
+            { "title": "聊天工具", "description": "對話式 AI 與助理" },
+            { "title": "影像生成", "description": "用 AI 生成圖片" },
+            { "title": "文字寫作", "description": "AI 寫作與文案" },
+            { "title": "程式助理", "description": "程式輔助與自動化" },
+            { "title": "音訊與語音", "description": "語音與媒體工具" },
+            { "title": "數據洞察", "description": "分析與可視化" },
+            { "title": "自動化", "description": "自動處理重複任務" }
+          ]
+        },
+        {
+          "title": "趨勢",
+          "items": [
+            { "title": "當下熱門", "description": "本週最受歡迎" },
+            { "title": "高分推薦", "description": "使用者評分最高" },
+            { "title": "新星崛起", "description": "成長快速的工具" },
+            { "title": "最多搜尋", "description": "熱門搜尋關鍵詞" }
+          ]
+        },
+        {
+          "title": "精選",
+          "items": [
+            { "title": "編輯精選", "description": "精心策劃的推薦" },
+            { "title": "最新發布", "description": "最新上線" },
+            { "title": "社群最愛", "description": "使用者最喜愛" },
+            { "title": "每週精選", "description": "本週亮點" }
+          ]
+        }
+      ]
+    },
+    {
+      "trigger": "文章",
+      "groups": [
+        {
+          "title": "文章",
+          "items": [
+            { "title": "全部文章", "description": "深入文章與洞察" },
+            { "title": "指南", "description": "新手入門與實作指南" }
+          ]
+        },
+        {
+          "title": "教程",
+          "items": [
+            { "title": "教程", "description": "實用教程與演示" },
+            { "title": "案例研究", "description": "真實案例與成果" }
+          ]
+        },
+        {
+          "title": "更新",
+          "items": [
+            { "title": "產品更新", "description": "最新變更與改進" },
+            { "title": "變更記錄", "description": "版本記錄與說明" }
+          ]
+        }
+      ]
+    },
+    {
+      "trigger": "資訊",
+      "groups": [
+        {
+          "title": "AI 趨勢",
+          "items": [
+            { "title": "市場趨勢", "description": "產業分析與報告" },
+            { "title": "觀點評論", "description": "社論與評論" }
+          ]
+        },
+        {
+          "title": "發布",
+          "items": [
+            { "title": "新工具", "description": "公告與發布" },
+            { "title": "變更記錄", "description": "版本記錄與更新" }
+          ]
+        },
+        {
+          "title": "活動",
+          "items": [
+            { "title": "會議與峰會", "description": "演講、聚會與會議" },
+            { "title": "線上研討", "description": "線上分享與演示" }
+          ]
+        }
+      ]
+    },
+    {
+      "trigger": "討論",
+      "groups": [
+        {
+          "title": "綜合討論",
+          "items": [
+            { "title": "綜合主題", "description": "社群範圍的交流" },
+            { "title": "回饋建議", "description": "提議與功能需求" }
+          ]
+        },
+        {
+          "title": "工具推薦",
+          "items": [
+            { "title": "分享工具", "description": "分享你常用的好工具" },
+            { "title": "作品展示", "description": "展示你的創作" }
+          ]
+        },
+        {
+          "title": "教程",
+          "items": [
+            { "title": "教程", "description": "技巧與方法" },
+            { "title": "資源", "description": "有用的學習資源" }
+          ]
+        }
+      ]
+    },
+    {
+      "trigger": "帳戶",
+      "groups": [
+        {
+          "title": "控制台",
+          "items": [
+            { "title": "總覽", "description": "個人控制面板" },
+            { "title": "動態", "description": "近期操作與記錄" }
+          ]
+        },
+        {
+          "title": "個人資料",
+          "items": [
+            { "title": "資料", "description": "個人資訊設定" },
+            { "title": "安全", "description": "密碼與雙重驗證" }
+          ]
+        },
+        {
+          "title": "設定",
+          "items": [
+            { "title": "偏好設定", "description": "帳戶選項與偏好" },
+            { "title": "通知", "description": "通知設定" }
+          ]
+        }
+      ]
+    },
+    {
+      "trigger": "關於",
+      "groups": []
+    }
   ]
 }

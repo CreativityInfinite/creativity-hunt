@@ -62,5 +62,150 @@
   "footerBottomLinks": [
     { "text": "使用条款", "url": "#" },
     { "text": "隐私政策", "url": "#" }
+  ],
+  "navSections": [
+    {
+      "trigger": "探索",
+      "groups": [
+        {
+          "title": "分类",
+          "items": [
+            { "title": "聊天工具", "description": "对话式 AI 与助手" },
+            { "title": "图像生成", "description": "用 AI 生成图片" },
+            { "title": "文本写作", "description": "AI 写作与文案" },
+            { "title": "代码助手", "description": "编码支持与自动化" },
+            { "title": "音频与语音", "description": "语音与媒体工具" },
+            { "title": "数据洞察", "description": "分析与可视化" },
+            { "title": "自动化", "description": "自动处理重复任务" }
+          ]
+        },
+        {
+          "title": "趋势",
+          "items": [
+            { "title": "当下热门", "description": "本周最受欢迎" },
+            { "title": "高分推荐", "description": "用户评分最高" },
+            { "title": "新星崛起", "description": "增长迅速的工具" },
+            { "title": "搜索最多", "description": "热门搜索词" }
+          ]
+        },
+        {
+          "title": "精选",
+          "items": [
+            { "title": "编辑精选", "description": "精心策划的推荐" },
+            { "title": "最新发布", "description": "最新上线" },
+            { "title": "社区最爱", "description": "用户最喜爱" },
+            { "title": "每周精选", "description": "本周亮点" }
+          ]
+        }
+      ]
+    },
+    {
+      "trigger": "文章",
+      "groups": [
+        {
+          "title": "文章",
+          "items": [
+            { "title": "全部文章", "description": "深入文章与洞察" },
+            { "title": "指南", "description": "新手入门与实践指南" }
+          ]
+        },
+        {
+          "title": "教程",
+          "items": [
+            { "title": "教程", "description": "实用教程与演示" },
+            { "title": "案例研究", "description": "真实案例与成果" }
+          ]
+        },
+        {
+          "title": "更新",
+          "items": [
+            { "title": "产品更新", "description": "最新变更与改进" },
+            { "title": "变更记录", "description": "版本记录与说明" }
+          ]
+        }
+      ]
+    },
+    {
+      "trigger": "资讯",
+      "groups": [
+        {
+          "title": "AI 趋势",
+          "items": [
+            { "title": "市场趋势", "description": "行业分析与报告" },
+            { "title": "观点评论", "description": "社论与评论" }
+          ]
+        },
+        {
+          "title": "发布",
+          "items": [
+            { "title": "新工具", "description": "公告与发布" },
+            { "title": "变更记录", "description": "版本记录与更新" }
+          ]
+        },
+        {
+          "title": "活动",
+          "items": [
+            { "title": "会议与峰会", "description": "演讲、聚会与会议" },
+            { "title": "线上研讨", "description": "在线分享与演示" }
+          ]
+        }
+      ]
+    },
+    {
+      "trigger": "讨论",
+      "groups": [
+        {
+          "title": "综合讨论",
+          "items": [
+            { "title": "综合话题", "description": "社区范围的交流" },
+            { "title": "反馈建议", "description": "提议与功能需求" }
+          ]
+        },
+        {
+          "title": "工具推荐",
+          "items": [
+            { "title": "分享工具", "description": "分享你常用的好工具" },
+            { "title": "作品展示", "description": "展示你的创作" }
+          ]
+        },
+        {
+          "title": "教程",
+          "items": [
+            { "title": "教程", "description": "技巧与方法" },
+            { "title": "资源", "description": "有用的学习资源" }
+          ]
+        }
+      ]
+    },
+    {
+      "trigger": "账户",
+      "groups": [
+        {
+          "title": "控制台",
+          "items": [
+            { "title": "总览", "description": "个人控制面板" },
+            { "title": "动态", "description": "近期操作与记录" }
+          ]
+        },
+        {
+          "title": "个人资料",
+          "items": [
+            { "title": "资料", "description": "个人信息设置" },
+            { "title": "安全", "description": "密码与双重认证" }
+          ]
+        },
+        {
+          "title": "设置",
+          "items": [
+            { "title": "偏好设置", "description": "账户选项与偏好" },
+            { "title": "通知", "description": "通知设置" }
+          ]
+        }
+      ]
+    },
+    {
+      "trigger": "关于",
+      "groups": []
+    }
   ]
 }
