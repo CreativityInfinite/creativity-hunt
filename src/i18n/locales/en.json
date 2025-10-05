@@ -24,6 +24,23 @@
   "ui": {
     "scrollHint": "Scroll down to explore tools"
   },
+  "auth": {
+    "signin": {
+      "title": "Welcome to {brand}",
+      "noAccount": "Don't have an account?",
+      "signup": "Sign up",
+      "emailLabel": "Email",
+      "emailPlaceholder": "m@example.com",
+      "login": "Login",
+      "or": "Or",
+      "apple": "Continue with Apple",
+      "google": "Continue with Google",
+      "terms": "By clicking continue, you agree to our",
+      "tos": "Terms of Service",
+      "and": "and",
+      "privacy": "Privacy Policy"
+    }
+  },
   "footerTagline": "Discover and search popular AI tools",
   "footerCopyright": "© YEAR Creativity Hunt · All rights reserved",
   "footerMenuGroups": [

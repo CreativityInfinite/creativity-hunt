@@ -11,6 +11,7 @@ import { ScrollTrigger } from '@/components/ScrollTrigger';
 import { BackToTop } from '@/components/BackToTop';
 import { Search, Upload, TrendingUp, Image, FileText, Code, Mic, BarChart, Zap, Compass, Bot } from 'lucide-react';
 import { Tool } from '@/types/tool';
+import { GradientBackground } from '@/components/shared/GradientBackground';
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -22,22 +23,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <ScrollTrigger triggerDistance={100} autoScrollTarget="hot-tools-section" reverseScrollTarget="top" showIndicator={true}>
       <div className="relative">
         {/* 背景渐变网格 - 覆盖整个顶部区域 */}
-        <div aria-hidden className="pointer-events-none absolute inset-0">
-          {/* 基础双径向渐变 */}
-          <div className="absolute inset-0 bg-[radial-gradient(80%_80%_at_70%_-10%,rgba(34,211,238,0.12),transparent_70%),radial-gradient(60%_60%_at_0%_100%,rgba(147,51,234,0.12),transparent_60%)]" />
-
-          {/* 细网格线叠加 */}
-          <div
-            className="absolute inset-0 opacity-[0.08]"
-            style={{
-              backgroundImage:
-                'repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 40px)'
-            }}
-          />
-
-          {/* 底部向上渐变遮罩，减弱边缘对比 */}
-          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background via-transparent to-transparent" />
-        </div>
+        <GradientBackground />
 
         {/* 导航 */}
         <SiteNavigation locale={locale} />

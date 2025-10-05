@@ -24,6 +24,23 @@
   "ui": {
     "scrollHint": "向下滾動探索工具"
   },
+  "auth": {
+    "signin": {
+      "title": "歡迎來到 {brand}",
+      "noAccount": "還沒有帳戶？",
+      "signup": "註冊",
+      "emailLabel": "邮箱",
+      "emailPlaceholder": "m@example.com",
+      "login": "登入",
+      "or": "或",
+      "apple": "使用 Apple 登入",
+      "google": "使用 Google 登入",
+      "terms": "點擊繼續，即表示你同意我們的",
+      "tos": "服務條款",
+      "and": "與",
+      "privacy": "隱私政策"
+    }
+  },
   "footerTagline": "發現與搜索熱門 AI 工具",
   "footerCopyright": "© YEAR Creativity Hunt · 保留所有權利",
   "footerMenuGroups": [

@@ -1,57 +1,35 @@
-'use client';
+import { LoginForm } from '@/components/LoginForm';
+import { GradientBackground } from '@/components/shared/GradientBackground';
+import { Logo, LogoImage, LogoText } from '@/components/Logo';
+import { defaultLogo } from '@/src/constant/base.constant';
+import { LangSwitcher } from '@/components/LangSwitcher';
 
-import Link from 'next/link';
-import { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-
-export default function SignInPage({ params }: { params: { locale: string } }) {
-  const { locale } = params;
-  const [loading, setLoading] = useState(false);
-
-  const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (loading) return;
-    setLoading(true);
-    setTimeout(() => setLoading(false), 1000);
-  };
-
+export default async function LoginPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   return (
-    <div className="min-h-[calc(100vh-56px)] w-full flex items-center justify-center px-4 py-12">
-      <Card className="w-full max-w-md border-border/60 backdrop-blur-sm">
-        <CardHeader>
-          <CardTitle>Sign in</CardTitle>
-          <CardDescription>Welcome back. Sign in to your account.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form className="grid gap-4" onSubmit={onSubmit}>
-            <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" name="email" type="email" placeholder="you@example.com" required />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="password">Password</Label>
-              <Input id="password" name="password" type="password" required />
-            </div>
-            <div className="flex items-center justify-between text-sm">
-              <Link href={`/${locale}/auth/forgot-password`} className="text-muted-foreground hover:text-foreground transition-colors">
-                Forgot password?
-              </Link>
-            </div>
-            <Button type="submit" disabled={loading}>
-              {loading ? 'Signing in...' : 'Sign in'}
-            </Button>
-          </form>
-        </CardContent>
-        <CardFooter className="text-sm text-muted-foreground">
-          <span className="mr-1">Don't have an account?</span>
-          <Link href={`/${locale}/auth/signup`} className="text-primary hover:underline">
-            Sign up
-          </Link>
-        </CardFooter>
-      </Card>
+    <div className="relative flex min-h-svh flex-col items-center justify-center bg-background p-6 md:p-10">
+      {/* 全局背景，与首页一致 */}
+      <GradientBackground />
+
+      {/* 顶部栏：左侧 Logo + 右侧语言切换 */}
+      <div className="absolute inset-x-0 top-0 z-20 px-4 md:px-8 py-6">
+        <div className="flex items-center justify-between w-full">
+          <div className="flex items-center gap-2">
+            <Logo url={defaultLogo.url}>
+              <LogoImage size={32} src={defaultLogo.src} alt={defaultLogo.alt} title={defaultLogo.title} className="h-10" />
+              <LogoText className="text-md">{defaultLogo.title}</LogoText>
+            </Logo>
+          </div>
+          <div className="flex items-center">
+            <LangSwitcher locale={locale} />
+          </div>
+        </div>
+      </div>
+
+      {/* 居中登录卡片 */}
+      <div className="relative z-10 w-full max-w-sm">
+        <LoginForm locale={locale} />
+      </div>
     </div>
   );
 }
