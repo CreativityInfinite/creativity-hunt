@@ -24,5 +24,43 @@
   "ui": {
     "scrollHint": "向下滾動探索工具"
   },
-  "footer": "© YEAR Creativity Hunt · 保留所有權利"
+  "footerTagline": "發現與搜索熱門 AI 工具",
+  "footerCopyright": "© YEAR Creativity Hunt · 保留所有權利",
+  "footerMenuGroups": [
+    {
+      "title": "產品",
+      "links": [
+        { "text": "探索", "url": "#" },
+        { "text": "提交工具", "url": "#" },
+        { "text": "熱門與趨勢", "url": "#" }
+      ]
+    },
+    {
+      "title": "關於",
+      "links": [
+        { "text": "關於我們", "url": "#" },
+        { "text": "聯絡我們", "url": "#" },
+        { "text": "博客", "url": "#" }
+      ]
+    },
+    {
+      "title": "資源",
+      "links": [
+        { "text": "幫助中心", "url": "#" },
+        { "text": "使用指南", "url": "#" }
+      ]
+    },
+    {
+      "title": "社交",
+      "links": [
+        { "text": "GitHub", "url": "#" },
+        { "text": "Twitter/X", "url": "#" },
+        { "text": "LinkedIn", "url": "#" }
+      ]
+    }
+  ],
+  "footerBottomLinks": [
+    { "text": "使用條款", "url": "#" },
+    { "text": "隱私政策", "url": "#" }
+  ]
 }

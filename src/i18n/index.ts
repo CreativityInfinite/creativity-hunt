@@ -13,8 +13,7 @@ const map: Record<LocaleKey, Messages> = {
 
 export function getMessages(locale: string): Messages {
   const msg = map[locale as LocaleKey] ?? map['zh-CN'];
-  // 动态年份替换
   const year = new Date().getFullYear().toString();
-  const footer = (msg.footer as string)?.replace('YEAR', year);
+  const footer = (msg.footerCopyright as string)?.replace('YEAR', year);
   return { ...msg, footer } as Messages;
 }

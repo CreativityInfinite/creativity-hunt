@@ -106,7 +106,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
         {/* Footer */}
         <section className="container mx-auto px-4 py-20">
-          <Footer />
+          <Footer locale={locale} />
         </section>
       </div>
 

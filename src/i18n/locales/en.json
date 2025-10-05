@@ -24,5 +24,43 @@
   "ui": {
     "scrollHint": "Scroll down to explore tools"
   },
-  "footer": "© YEAR Creativity Hunt · All rights reserved"
+  "footerTagline": "Discover and search popular AI tools",
+  "footerCopyright": "© YEAR Creativity Hunt · All rights reserved",
+  "footerMenuGroups": [
+    {
+      "title": "Products",
+      "links": [
+        { "text": "Explore", "url": "#" },
+        { "text": "Submit Tool", "url": "#" },
+        { "text": "Trending", "url": "#" }
+      ]
+    },
+    {
+      "title": "About",
+      "links": [
+        { "text": "About Us", "url": "#" },
+        { "text": "Contact Us", "url": "#" },
+        { "text": "Blog", "url": "#" }
+      ]
+    },
+    {
+      "title": "Resources",
+      "links": [
+        { "text": "Help Center", "url": "#" },
+        { "text": "Getting Started", "url": "#" }
+      ]
+    },
+    {
+      "title": "Social",
+      "links": [
+        { "text": "GitHub", "url": "#" },
+        { "text": "Twitter/X", "url": "#" },
+        { "text": "LinkedIn", "url": "#" }
+      ]
+    }
+  ],
+  "footerBottomLinks": [
+    { "text": "Terms", "url": "#" },
+    { "text": "Privacy Policy", "url": "#" }
+  ]
 }
