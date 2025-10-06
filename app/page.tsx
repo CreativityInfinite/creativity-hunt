@@ -14,15 +14,16 @@ import { Tool } from '@/types/tool';
 import { GradientBackground } from '@component/shared/GradientBackground';
 import { cookies } from 'next/headers';
 
-export default async function HomePage({ searchParams }: { searchParams?: { lang?: string } }) {
+export default async function HomePage({ searchParams }: { searchParams?: Promise<{ lang?: string }> }) {
   const cookieStore = await cookies();
-  const locale = searchParams?.lang || cookieStore.get('NEXT_LOCALE')?.value || 'zh-CN';
+  const sp = searchParams ? await searchParams : undefined;
+  const locale = sp?.lang || cookieStore.get('NEXT_LOCALE')?.value || 'zh-CN';
   const messages = getMessages(locale);
   const topTools = tools as Tool[];
   const hotTags = messages?.labels?.hotTagsList ?? [];
 
   return (
-    <ScrollTrigger triggerDistance={100} autoScrollTarget="hot-tools-section" reverseScrollTarget="top" showIndicator={true}>
+    <ScrollTrigger locale={locale} triggerDistance={100} autoScrollTarget="hot-tools-section" reverseScrollTarget="top" showIndicator={true}>
       <div className="relative">
         {/* 背景渐变网格 - 覆盖整个顶部区域 */}
         <GradientBackground type="index" />

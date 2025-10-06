@@ -1,4 +1,5 @@
 'use client';
+
 import Link from 'next/link';
 import { Button } from './ui/button';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from './ui/dropdown-menu';
@@ -10,7 +11,6 @@ export default function UserMenu({ locale }: { locale: string }) {
   const { data: session, status } = useSession();
   const isAuthenticated = status === 'authenticated' && !!session?.user;
 
-  console.log('UserMenu', locale);
   const displayName = session?.user?.name || session?.user?.email || 'User';
   const avatar = (session?.user as any)?.picture || '/avatars/default.png';
   const messages = getMessages(locale);

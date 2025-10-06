@@ -5,28 +5,8 @@ import { NavigationMenu, NavigationMenuItem, NavigationMenuList, NavigationMenuT
 import { ThemeToggle } from './ThemeToggle';
 import { LangSwitcher } from './LangSwitcher';
 import { Folder, TrendingUp, Star, FileText, BookOpen, Bell, BarChart, Rocket, Calendar, MessageCircle, Wrench, Book, Image, Megaphone } from 'lucide-react';
-import { LayoutDashboard, User, Settings, LineChart, PieChart, Trophy, Search, Bookmark } from 'lucide-react';
-import {
-  CalendarDays,
-  History,
-  Activity,
-  Cpu,
-  Zap,
-  Clock,
-  Newspaper,
-  MessageSquare,
-  Camera,
-  GraduationCap,
-  Shield,
-  BellRing,
-  Images,
-  PenLine,
-  Code,
-  Mic,
-  MessageCircleMore,
-  ThumbsUp,
-  Gauge
-} from 'lucide-react';
+import { LayoutDashboard, User, Settings, LineChart, PieChart, Trophy, Search, Bookmark, CalendarDays, History, Activity } from 'lucide-react';
+import { Zap, Clock, Newspaper, MessageSquare, Camera, GraduationCap, Shield, BellRing, Images, PenLine, Code, Mic, MessageCircleMore, ThumbsUp, Gauge } from 'lucide-react';
 import { Logo, LogoImage, LogoText } from './Logo';
 import { defaultLogo, getNavSections } from '@constant/base.constant';
 import UserMenu from './UserMenu';

@@ -2,10 +2,10 @@
 
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useParams } from 'next/navigation';
 import { getMessages } from '@i18n/index';
 
 interface ScrollTriggerProps {
+  locale: string;
   children: React.ReactNode;
   triggerDistance?: number;
   autoScrollTarget?: string;
@@ -13,14 +13,13 @@ interface ScrollTriggerProps {
   showIndicator?: boolean;
 }
 
-export function ScrollTrigger({ children, triggerDistance = 400, autoScrollTarget, reverseScrollTarget = 'search-section', showIndicator = true }: ScrollTriggerProps) {
+export function ScrollTrigger({ locale, children, triggerDistance = 400, autoScrollTarget, reverseScrollTarget = 'search-section', showIndicator = true }: ScrollTriggerProps) {
   const [hasAutoScrolledDown, setHasAutoScrolledDown] = useState(false);
   const [hasAutoScrolledUp, setHasAutoScrolledUp] = useState(false);
   const [showScrollHint, setShowScrollHint] = useState(true);
   const [suppressAutoScroll, setSuppressAutoScroll] = useState(false);
+
   const prevYRef = useRef(0);
-  const params = useParams();
-  const locale = (params?.locale as string) || 'zh-CN';
   const messages = getMessages(locale);
 
   const handleScroll = useCallback(() => {

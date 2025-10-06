@@ -17,7 +17,6 @@ export default function SignUpPage() {
   const searchParams = useSearchParams();
   const locale = searchParams.get('lang') || 'zh-CN';
   const [loading, setLoading] = useState(false);
-
   const [message, setMessage] = useState<string | null>(null);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
