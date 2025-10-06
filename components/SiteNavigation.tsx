@@ -4,9 +4,6 @@ import Link from 'next/link';
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from './ui/navigation-menu';
 import { ThemeToggle } from './ThemeToggle';
 import { LangSwitcher } from './LangSwitcher';
-import { Button } from './ui/button';
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from './ui/dropdown-menu';
-import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
 import { Folder, TrendingUp, Star, FileText, BookOpen, Bell, BarChart, Rocket, Calendar, MessageCircle, Wrench, Book, Image, Megaphone, LayoutDashboard, User, Settings } from 'lucide-react';
 import { Logo, LogoImage, LogoText } from './Logo';
 import { defaultLogo, getNavSections } from '@constant/base.constant';
@@ -51,7 +48,7 @@ interface NavSection {
 }
 
 export function SiteNavigation({ locale }: { locale: string }) {
-  const base = `/${locale}`;
+  const base = '';
   // TODO: 使用真实的鉴权状态替换此占位
   const isAuthenticated = false;
 

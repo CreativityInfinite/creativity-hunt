@@ -21,3 +21,13 @@ export async function POST(request: Request) {
     return R.error(undefined, err);
   }
 }
+
+export async function GET(request: Request) {
+  const u = new URL(request.url);
+  const isCancel = u.searchParams.get('error') === 'Callback';
+  if (isCancel) {
+    const home = new URL('/auth/signin', request.url);
+    return Response.redirect(home, 302);
+  }
+  return new Response(null, { status: 204 });
+}

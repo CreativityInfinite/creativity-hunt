@@ -11,10 +11,11 @@ import { Logo, LogoImage, LogoText } from '@component/Logo';
 import { defaultLogo } from '@constant/base.constant';
 import { LangSwitcher } from '@component/LangSwitcher';
 import { ThemeToggle } from '@component/ThemeToggle';
-import { useParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
 export default function SignUpPage() {
-  const { locale } = useParams() as { locale: string };
+  const searchParams = useSearchParams();
+  const locale = searchParams.get('lang') || 'zh-CN';
   const [loading, setLoading] = useState(false);
 
   const [message, setMessage] = useState<string | null>(null);
@@ -41,9 +42,9 @@ export default function SignUpPage() {
       if (data?.Code === 0) {
         setMessage('Account created, redirecting to sign in...');
         // 简单延迟后跳转到登录页
-        // setTimeout(() => {
-        //   window.location.href = `/${locale}/auth/signin`;
-        // }, 800);
+        setTimeout(() => {
+          window.location.href = `/auth/signin`;
+        }, 800);
       } else {
         setMessage(data?.message || 'Sign up failed');
       }
@@ -111,7 +112,7 @@ export default function SignUpPage() {
 
           <CardFooter className="text-sm text-muted-foreground">
             <span className="mr-1">Already have an account?</span>
-            <Link href={`/${locale}/auth/signin`} className="text-primary hover:underline">
+            <Link href={`/auth/signin?lang=${locale}`} className="text-primary hover:underline">
               Sign in
             </Link>
           </CardFooter>

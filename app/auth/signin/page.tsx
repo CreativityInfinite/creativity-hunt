@@ -4,9 +4,11 @@ import { Logo, LogoImage, LogoText } from '@component/Logo';
 import { defaultLogo } from '@constant/base.constant';
 import { LangSwitcher } from '@component/LangSwitcher';
 import { ThemeToggle } from '@component/ThemeToggle';
+import { cookies } from 'next/headers';
 
-export default async function LoginPage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
+export default async function LoginPage({ searchParams }: { searchParams?: { lang?: string } }) {
+  const cookieStore = await cookies();
+  const locale = searchParams?.lang || cookieStore.get('NEXT_LOCALE')?.value || 'zh-CN';
   return (
     <div className="relative flex min-h-svh flex-col items-center justify-center bg-background p-6 md:p-10">
       {/* 全局背景，与首页一致 */}

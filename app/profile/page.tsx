@@ -6,10 +6,11 @@ import { Button } from '@component/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@component/ui/avatar';
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
-import { useParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
 export default function ProfilePage() {
-  const { locale } = useParams() as { locale: string };
+  const searchParams = useSearchParams();
+  const locale = searchParams.get('lang') || 'zh-CN';
   const { data: session } = useSession();
   const user = session?.user;
   const displayName = user?.name || 'Username';
@@ -63,17 +64,17 @@ export default function ProfilePage() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            <Link href={`/${locale}/settings`}>
+            <Link href={`/settings?lang=${locale}`}>
               <Button variant="secondary" size="sm">
                 Settings
               </Button>
             </Link>
-            <Link href={`/${locale}/account/activity`}>
+            <Link href={`/account/activity?lang=${locale}`}>
               <Button variant="ghost" size="sm">
                 Activity
               </Button>
             </Link>
-            <Link href={`/${locale}/auth/signout`}>
+            <Link href={`/auth/signout?lang=${locale}`}>
               <Button size="sm">Sign out</Button>
             </Link>
           </div>

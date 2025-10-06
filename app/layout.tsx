@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
-import '@/app/globals.css';
-import { ThemeProvider } from '@component/ThemeProvider';
 import { Inter } from 'next/font/google';
+import { cookies } from 'next/headers';
 import { cn } from '@/lib/utils';
+import { ThemeProvider } from '@component/ThemeProvider';
 import ClientSessionProvider from '@component/ClientSessionProvider';
+
+import '@/app/globals.css';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -15,8 +17,9 @@ export const metadata: Metadata = {
   description: 'AI 工具导航'
 };
 
-export default async function LocaleLayout({ children, params }: { children: React.ReactNode; params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies();
+  const locale = cookieStore.get('NEXT_LOCALE')?.value || 'zh-CN';
 
   return (
     <html lang={locale} suppressHydrationWarning>

@@ -5,7 +5,6 @@ import GoogleSvg from '@asset/icons/google.svg';
 
 import { cn } from '@/lib/utils';
 import { defaultLogo } from '@constant/base.constant';
-import { Logo, LogoImage, LogoText } from '@component/Logo';
 import { Button } from '@component/ui/button';
 import { Input } from '@component/ui/input';
 import { Label } from '@component/ui/label';
@@ -24,8 +23,7 @@ export function LoginForm({ className, locale, ...props }: React.ComponentPropsW
 
   const handleGoogleSignIn = () => {
     // 使用 NextAuth 触发 Google 登录，登录成功后跳转到当前语言的 profile 页面（可按需修改）
-    const targetLocale = locale || 'en';
-    signIn('google', { callbackUrl: `/${targetLocale}/profile` });
+    signIn('google', { callbackUrl: `/profile` });
   };
 
   return (
