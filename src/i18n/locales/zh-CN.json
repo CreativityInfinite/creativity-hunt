@@ -224,5 +224,14 @@
       "trigger": "关于",
       "groups": []
     }
-  ]
+  ],
+  "userMenu": {
+    "signIn": "登录",
+    "signUp": "注册",
+    "signedInAs": "已登录：{name}",
+    "profile": "个人资料",
+    "settings": "设置",
+    "activity": "动态",
+    "signOut": "退出登录"
+  }
 }

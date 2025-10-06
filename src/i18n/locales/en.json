@@ -224,5 +224,14 @@
       "trigger": "About",
       "groups": []
     }
-  ]
+  ],
+  "userMenu": {
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "signedInAs": "Signed in as {name}",
+    "profile": "Profile",
+    "settings": "Settings",
+    "activity": "Activity",
+    "signOut": "Sign out"
+  }
 }

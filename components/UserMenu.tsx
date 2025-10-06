@@ -1,15 +1,25 @@
+'use client';
 import Link from 'next/link';
 import { Button } from './ui/button';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from './ui/dropdown-menu';
 import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
 import { useSession, signOut } from 'next-auth/react';
+import { getMessages } from '@i18n/index';
 
-export default function UserMenu() {
+export default function UserMenu({ locale }: { locale: string }) {
   const { data: session, status } = useSession();
   const isAuthenticated = status === 'authenticated' && !!session?.user;
 
+  console.log('UserMenu', locale);
   const displayName = session?.user?.name || session?.user?.email || 'User';
   const avatar = (session?.user as any)?.picture || '/avatars/default.png';
+  const messages = getMessages(locale);
+  const userMenuMsgs: Record<string, string> = messages?.userMenu || {};
+
+  const tran = (key: string) => {
+    const raw = userMenuMsgs[key] ?? '';
+    return key === 'signedInAs' ? raw.replace('{name}', displayName) : raw;
+  };
 
   return (
     <>
@@ -17,11 +27,11 @@ export default function UserMenu() {
         <>
           <Link href={`/auth/signin`} className="hidden sm:block">
             <Button variant="ghost" size="sm">
-              Sign in
+              {tran('signIn')}
             </Button>
           </Link>
           <Link href={`/auth/signup`}>
-            <Button size="sm">Sign up</Button>
+            <Button size="sm">{tran('signUp')}</Button>
           </Link>
         </>
       ) : (
@@ -35,18 +45,18 @@ export default function UserMenu() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56 bg-background/95 backdrop-blur rounded-md border border-border/50 shadow-md">
-            <div className="px-2 py-1.5 text-xs text-muted-foreground">Signed in as {displayName}</div>
+            <div className="px-2 py-1.5 text-xs text-muted-foreground">{tran('signedInAs')}</div>
             <DropdownMenuItem asChild>
-              <Link href={`/profile`}>Profile</Link>
+              <Link href={`/profile`}>{tran('profile')}</Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <Link href={`/settings`}>Settings</Link>
+              <Link href={`/settings`}>{tran('settings')}</Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <Link href={`/account/activity`}>Activity</Link>
+              <Link href={`/account/activity`}>{tran('activity')}</Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => signOut({ callbackUrl: '/' })}>Sign out</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => signOut({ callbackUrl: '/' })}>{tran('signOut')}</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )}

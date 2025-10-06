@@ -224,5 +224,14 @@
       "trigger": "關於",
       "groups": []
     }
-  ]
+  ],
+  "userMenu": {
+    "signIn": "登入",
+    "signUp": "註冊",
+    "signedInAs": "已登入：{name}",
+    "profile": "個人資料",
+    "settings": "設定",
+    "activity": "動態",
+    "signOut": "登出"
+  }
 }

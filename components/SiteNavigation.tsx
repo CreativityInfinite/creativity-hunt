@@ -342,7 +342,7 @@ export function SiteNavigation({ locale }: { locale: string }) {
         <div className="flex items-center gap-2">
           <ThemeToggle />
           <LangSwitcher locale={locale} />
-          <UserMenu />
+          <UserMenu locale={locale} />
         </div>
       </div>
     </div>
