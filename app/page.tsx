@@ -25,7 +25,7 @@ export default async function HomePage({ searchParams }: { searchParams?: { lang
     <ScrollTrigger triggerDistance={100} autoScrollTarget="hot-tools-section" reverseScrollTarget="top" showIndicator={true}>
       <div className="relative">
         {/* 背景渐变网格 - 覆盖整个顶部区域 */}
-        <GradientBackground />
+        <GradientBackground type="index" />
 
         {/* 导航 */}
         <SiteNavigation locale={locale} />

@@ -3,13 +3,17 @@ import { cn } from '@/lib/utils';
 
 type GradientBackgroundProps = {
   className?: string;
+  type?: 'index' | 'other';
 };
 
-export function GradientBackground({ className }: GradientBackgroundProps) {
+const indexGradient = 'bg-[radial-gradient(80%_80%_at_70%_-10%,rgba(34,211,238,0.12),transparent_70%),radial-gradient(60%_60%_at_0%_100%,rgba(147,51,234,0.12),transparent_60%)]';
+const otherGradient = 'bg-gradient-to-tr from-[rgba(34,211,238,0.02)] to-[rgba(34,211,238,0.06)] hover:from-[rgba(34,211,238,0.03)] hover:to-[rgba(34,211,238,0.08)]';
+
+export function GradientBackground({ className, type = 'index' }: GradientBackgroundProps) {
   return (
     <div aria-hidden className={cn('pointer-events-none absolute inset-0', className)}>
       {/* 基础双径向渐变 */}
-      <div className="absolute inset-0 bg-[radial-gradient(80%_80%_at_70%_-10%,rgba(34,211,238,0.12),transparent_70%),radial-gradient(60%_60%_at_0%_100%,rgba(147,51,234,0.12),transparent_60%)]" />
+      <div className={`absolute inset-0 ${type === 'index' ? indexGradient : otherGradient}`} />
 
       {/* 细网格线叠加 */}
       <div

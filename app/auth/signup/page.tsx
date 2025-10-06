@@ -58,7 +58,7 @@ export default function SignUpPage() {
   return (
     <div className="relative flex min-h-svh flex-col items-center justify-center bg-background p-6 md:p-10">
       {/* 全局背景，与登录页一致 */}
-      <GradientBackground />
+      <GradientBackground type="index" />
 
       {/* 顶部栏：左侧 Logo + 右侧语言切换/主题切换 */}
       <div className="absolute inset-x-0 top-0 z-20 px-4 md:px-8 py-6">
