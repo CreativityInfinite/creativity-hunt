@@ -9,7 +9,7 @@ import { Footer } from '@component/Footer';
 import { getMessages } from '@i18n/index';
 import { ScrollTrigger } from '@component/ScrollTrigger';
 import { BackToTop } from '@component/BackToTop';
-import { Search, Upload, TrendingUp, Image, FileText, Code, Mic, BarChart, Zap, Compass, Bot } from 'lucide-react';
+import { Search, Upload, TrendingUp, Image, SquarePen, Code, Mic, BarChart, Zap, Compass, MessageCircleMore } from 'lucide-react';
 import { Tool } from '@/types/tool';
 import { GradientBackground } from '@component/shared/GradientBackground';
 import { cookies } from 'next/headers';
@@ -63,7 +63,7 @@ export default async function HomePage({ searchParams }: { searchParams?: { lang
           <div className="mt-10 max-w-6xl mx-auto">
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
               {hotTags.map((tag, index) => {
-                const icons = [Image, FileText, Bot, Code, Mic, BarChart, Zap];
+                const icons = [Image, SquarePen, MessageCircleMore, Code, Mic, BarChart, Zap];
                 const Icon = icons[index] || Search;
                 const colors = ['#1d4ed81a', '#9333ea1a', '#22d3ee1a', '#f59e0b1a', '#ef44441a', '#10b9811a', '#3b82f61a'];
                 return (

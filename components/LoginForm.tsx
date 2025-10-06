@@ -22,8 +22,8 @@ export function LoginForm({ className, locale, ...props }: React.ComponentPropsW
   };
 
   const handleGoogleSignIn = () => {
-    // 使用 NextAuth 触发 Google 登录，登录成功后跳转到当前语言的 profile 页面（可按需修改）
-    signIn('google', { callbackUrl: `/profile` });
+    // 使用 NextAuth 触发 Google 登录，登录成功后返回首页
+    signIn('google', { callbackUrl: `/` });
   };
 
   return (

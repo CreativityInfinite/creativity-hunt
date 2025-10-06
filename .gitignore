@@ -1,7 +1,7 @@
 node_modules
 .next
 .env
-.env.local
+.secret
 pnpm-lock.yaml
 .codebuddy/.ignored_image
 /src/generated/prisma

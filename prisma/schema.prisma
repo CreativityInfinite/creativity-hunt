@@ -10,10 +10,14 @@ datasource db {
 }
 
 model User {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  name         String?
-  email        String   @unique
-  passwordHash String
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id                String    @id @default(auto()) @map("_id") @db.ObjectId
+  name              String?
+  email             String    @unique
+  passwordHash      String?
+  avatarUrl         String?
+  provider          String?
+  providerAccountId String?
+  lastLoginAt       DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
 }
