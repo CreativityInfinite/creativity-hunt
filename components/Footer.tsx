@@ -51,13 +51,13 @@ const Footer = ({ locale = 'zh-CN', logo = defaultLogo, tagline, menuItems, copy
 
           <div className="text-muted-foreground/70 mt-15 flex flex-col justify-between gap-4 pt-8 text-sm font-medium leading-tight md:flex-row md:items-center">
             <p>{finalCopyright}</p>
-            <ul className="flex gap-4">
+            {/* <ul className="flex gap-4">
               {finalBottomLinks.map((link: LinkItem, linkIdx: number) => (
                 <li key={linkIdx} className="hover:text-primary underline leading-tight">
                   <a href={link.url}>{link.text}</a>
                 </li>
               ))}
-            </ul>
+            </ul> */}
           </div>
         </footer>
       </div>

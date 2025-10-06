@@ -4,7 +4,29 @@ import Link from 'next/link';
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from './ui/navigation-menu';
 import { ThemeToggle } from './ThemeToggle';
 import { LangSwitcher } from './LangSwitcher';
-import { Folder, TrendingUp, Star, FileText, BookOpen, Bell, BarChart, Rocket, Calendar, MessageCircle, Wrench, Book, Image, Megaphone, LayoutDashboard, User, Settings } from 'lucide-react';
+import { Folder, TrendingUp, Star, FileText, BookOpen, Bell, BarChart, Rocket, Calendar, MessageCircle, Wrench, Book, Image, Megaphone } from 'lucide-react';
+import { LayoutDashboard, User, Settings, LineChart, PieChart, Trophy, Search, Bookmark } from 'lucide-react';
+import {
+  CalendarDays,
+  History,
+  Activity,
+  Cpu,
+  Zap,
+  Clock,
+  Newspaper,
+  MessageSquare,
+  Camera,
+  GraduationCap,
+  Shield,
+  BellRing,
+  Images,
+  PenLine,
+  Code,
+  Mic,
+  MessageCircleMore,
+  ThumbsUp,
+  Gauge
+} from 'lucide-react';
 import { Logo, LogoImage, LogoText } from './Logo';
 import { defaultLogo, getNavSections } from '@constant/base.constant';
 import UserMenu from './UserMenu';
@@ -16,17 +38,40 @@ const iconMap = {
   'file-text': FileText,
   'book-open': BookOpen,
   bell: Bell,
+  'bell-ring': BellRing,
   'bar-chart': BarChart,
   rocket: Rocket,
   calendar: Calendar,
+  'calendar-days': CalendarDays,
   'message-circle': MessageCircle,
+  'message-square': MessageSquare,
   tool: Wrench,
   book: Book,
   image: Image,
+  images: Images,
   megaphone: Megaphone,
   'layout-dashboard': LayoutDashboard,
   user: User,
-  settings: Settings
+  settings: Settings,
+  'line-chart': LineChart,
+  'pie-chart': PieChart,
+  trophy: Trophy,
+  search: Search,
+  bookmark: Bookmark,
+  history: History,
+  activity: Activity,
+  zap: Zap,
+  clock: Clock,
+  newspaper: Newspaper,
+  camera: Camera,
+  'graduation-cap': GraduationCap,
+  shield: Shield,
+  'pen-line': PenLine,
+  code: Code,
+  mic: Mic,
+  bot: MessageCircleMore,
+  'thumbs-up': ThumbsUp,
+  gauge: Gauge
 };
 
 type IconKey = keyof typeof iconMap;
@@ -49,8 +94,6 @@ interface NavSection {
 
 export function SiteNavigation({ locale }: { locale: string }) {
   const base = '';
-  // TODO: 使用真实的鉴权状态替换此占位
-  const isAuthenticated = false;
 
   // 从 i18n 读取导航文案（trigger、分组标题、items 文案）
   const translatedNav = getNavSections(locale);
@@ -61,7 +104,7 @@ export function SiteNavigation({ locale }: { locale: string }) {
   type StaticMenuGroup = { title: string; items?: StaticMenuItem[] };
   type StaticNavSection = { trigger: string; minW: string; href?: string; groups?: StaticMenuGroup[] };
 
-  function getStaticNavMap(base: string): StaticNavSection[] {
+  function getStaticNavMap(): StaticNavSection[] {
     const minW = 'min-w-[640px] md:min-w-[720px]';
     return [
       {
@@ -71,31 +114,31 @@ export function SiteNavigation({ locale }: { locale: string }) {
           {
             title: 'Categories',
             items: [
-              { href: `${base}/categories/chat-tools`, icon: 'message-circle' },
-              { href: `${base}/categories/image-generation`, icon: 'image' },
-              { href: `${base}/categories/writing`, icon: 'book' },
-              { href: `${base}/categories/code-assistant`, icon: 'tool' },
-              { href: `${base}/categories/audio-voice`, icon: 'megaphone' },
-              { href: `${base}/categories/data-insights`, icon: 'bar-chart' },
-              { href: `${base}/categories/automation`, icon: 'settings' }
+              { href: `/categories/chat-tools`, icon: 'bot' },
+              { href: `/categories/image-generation`, icon: 'images' },
+              { href: `/categories/writing`, icon: 'pen-line' },
+              { href: `/categories/code-assistant`, icon: 'code' },
+              { href: `/categories/audio-voice`, icon: 'mic' },
+              { href: `/categories/data-insights`, icon: 'line-chart' },
+              { href: `/categories/automation`, icon: 'zap' }
             ]
           },
           {
             title: 'Trending',
             items: [
-              { href: `${base}/trending/now`, icon: 'trending-up' },
-              { href: `${base}/trending/top-rated`, icon: 'star' },
-              { href: `${base}/trending/rising`, icon: 'rocket' },
-              { href: `${base}/trending/most-searched`, icon: 'layout-dashboard' }
+              { href: `/trending/now`, icon: 'trending-up' },
+              { href: `/trending/top-rated`, icon: 'trophy' },
+              { href: `/trending/rising`, icon: 'rocket' },
+              { href: `/trending/most-searched`, icon: 'search' }
             ]
           },
           {
             title: 'Featured',
             items: [
-              { href: `${base}/featured/editors-picks`, icon: 'book-open' },
-              { href: `${base}/featured/new-launches`, icon: 'calendar' },
-              { href: `${base}/featured/community-favorites`, icon: 'user' },
-              { href: `${base}/featured/weekly-highlights`, icon: 'bell' }
+              { href: `/featured/editors-picks`, icon: 'bookmark' },
+              { href: `/featured/new-launches`, icon: 'calendar-days' },
+              { href: `/featured/community-favorites`, icon: 'thumbs-up' },
+              { href: `/featured/weekly-highlights`, icon: 'bell' }
             ]
           }
         ]
@@ -107,22 +150,22 @@ export function SiteNavigation({ locale }: { locale: string }) {
           {
             title: 'Articles',
             items: [
-              { href: `${base}/blog/articles`, icon: 'book' },
-              { href: `${base}/blog/guides`, icon: 'book-open' }
+              { href: `/blog/articles`, icon: 'file-text' },
+              { href: `/blog/guides`, icon: 'book-open' }
             ]
           },
           {
             title: 'Tutorials',
             items: [
-              { href: `${base}/blog/tutorials`, icon: 'book-open' },
-              { href: `${base}/blog/case-studies`, icon: 'bar-chart' }
+              { href: `/blog/tutorials`, icon: 'book' },
+              { href: `/blog/case-studies`, icon: 'pie-chart' }
             ]
           },
           {
             title: 'Updates',
             items: [
-              { href: `${base}/blog/updates`, icon: 'bell' },
-              { href: `${base}/blog/changelog`, icon: 'layout-dashboard' }
+              { href: `/blog/updates`, icon: 'history' },
+              { href: `/blog/changelog`, icon: 'activity' }
             ]
           }
         ]
@@ -134,22 +177,22 @@ export function SiteNavigation({ locale }: { locale: string }) {
           {
             title: 'AI Trends',
             items: [
-              { href: `${base}/news/trends`, icon: 'bar-chart' },
-              { href: `${base}/news/opinion`, icon: 'book-open' }
+              { href: `/news/trends`, icon: 'bar-chart' },
+              { href: `/news/opinion`, icon: 'newspaper' }
             ]
           },
           {
             title: 'Releases',
             items: [
-              { href: `${base}/news/releases`, icon: 'rocket' },
-              { href: `${base}/news/changelog`, icon: 'layout-dashboard' }
+              { href: `/news/releases`, icon: 'zap' },
+              { href: `/news/changelog`, icon: 'calendar' }
             ]
           },
           {
             title: 'Events',
             items: [
-              { href: `${base}/news/events`, icon: 'calendar' },
-              { href: `${base}/news/webinars`, icon: 'calendar' }
+              { href: `/news/events`, icon: 'clock' },
+              { href: `/news/webinars`, icon: 'megaphone' }
             ]
           }
         ]
@@ -161,22 +204,22 @@ export function SiteNavigation({ locale }: { locale: string }) {
           {
             title: 'General Discussion',
             items: [
-              { href: `${base}/discussion/general`, icon: 'message-circle' },
-              { href: `${base}/discussion/feedback`, icon: 'megaphone' }
+              { href: `/discussion/general`, icon: 'message-circle' },
+              { href: `/discussion/feedback`, icon: 'message-square' }
             ]
           },
           {
             title: 'Tool Recommendations',
             items: [
-              { href: `${base}/discussion/tools`, icon: 'tool' },
-              { href: `${base}/discussion/showcase`, icon: 'image' }
+              { href: `/discussion/tools`, icon: 'tool' },
+              { href: `/discussion/showcase`, icon: 'camera' }
             ]
           },
           {
             title: 'Tutorials',
             items: [
-              { href: `${base}/discussion/tutorials`, icon: 'book' },
-              { href: `${base}/discussion/resources`, icon: 'book-open' }
+              { href: `/discussion/tutorials`, icon: 'graduation-cap' },
+              { href: `/discussion/resources`, icon: 'folder' }
             ]
           }
         ]
@@ -188,22 +231,22 @@ export function SiteNavigation({ locale }: { locale: string }) {
           {
             title: 'Dashboard',
             items: [
-              { href: `${base}/account`, icon: 'layout-dashboard' },
-              { href: `${base}/account/activity`, icon: 'calendar' }
+              { href: `/account`, icon: 'layout-dashboard' },
+              { href: `/account/activity`, icon: 'gauge' }
             ]
           },
           {
             title: 'Profile',
             items: [
-              { href: `${base}/profile`, icon: 'user' },
-              { href: `${base}/profile/security`, icon: 'settings' }
+              { href: `/profile`, icon: 'user' },
+              { href: `/profile/security`, icon: 'shield' }
             ]
           },
           {
             title: 'Settings',
             items: [
-              { href: `${base}/settings`, icon: 'settings' },
-              { href: `${base}/settings/notifications`, icon: 'bell' }
+              { href: `/settings`, icon: 'settings' },
+              { href: `/settings/notifications`, icon: 'bell-ring' }
             ]
           }
         ]
@@ -211,13 +254,13 @@ export function SiteNavigation({ locale }: { locale: string }) {
       {
         trigger: 'About',
         minW,
-        href: `${base}/about`
+        href: `/about`
       }
     ];
   }
 
   // 合并：使用静态映射补齐 href、icon、minW，i18n 提供 trigger/title/description
-  const staticNav = getStaticNavMap(base);
+  const staticNav = getStaticNavMap();
   const navSections: NavSection[] = translatedNav.map((section, si) => {
     const s = staticNav[si];
     const groups = (section.groups || []).map((g, gi) => {
@@ -299,7 +342,7 @@ export function SiteNavigation({ locale }: { locale: string }) {
         <div className="flex items-center gap-2">
           <ThemeToggle />
           <LangSwitcher locale={locale} />
-          <UserMenu base={base} isAuthenticated={isAuthenticated} />
+          <UserMenu />
         </div>
       </div>
     </div>
