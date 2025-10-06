@@ -1,6 +1,6 @@
-import en from '../i18n/locales/en.json';
-import zhCN from '../i18n/locales/zh-CN.json';
-import zhTW from '../i18n/locales/zh-TW.json';
+import en from '@i18n/locales/en.json';
+import zhCN from '@i18n/locales/zh-CN.json';
+import zhTW from '@i18n/locales/zh-TW.json';
 
 const defaultLogo = { src: '/logo.svg', alt: 'Creativity Hunt', title: 'Creativity Hunt', url: '/' };
 

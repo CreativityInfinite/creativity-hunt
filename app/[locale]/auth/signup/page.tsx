@@ -2,26 +2,56 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { GradientBackground } from '@/components/shared/GradientBackground';
-import { Logo, LogoImage, LogoText } from '@/components/Logo';
-import { defaultLogo } from '@/src/constant/base.constant';
-import { LangSwitcher } from '@/components/LangSwitcher';
-import { ThemeToggle } from '@/components/ThemeToggle';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@component/ui/card';
+import { Label } from '@component/ui/label';
+import { Input } from '@component/ui/input';
+import { Button } from '@component/ui/button';
+import { GradientBackground } from '@component/shared/GradientBackground';
+import { Logo, LogoImage, LogoText } from '@component/Logo';
+import { defaultLogo } from '@constant/base.constant';
+import { LangSwitcher } from '@component/LangSwitcher';
+import { ThemeToggle } from '@component/ThemeToggle';
 import { useParams } from 'next/navigation';
 
 export default function SignUpPage() {
   const { locale } = useParams() as { locale: string };
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const [message, setMessage] = useState<string | null>(null);
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (loading) return;
     setLoading(true);
-    setTimeout(() => setLoading(false), 1000);
+    setMessage(null);
+
+    const formData = new FormData(e.currentTarget);
+    const name = String(formData.get('name') || '');
+    const email = String(formData.get('email') || '');
+    const password = String(formData.get('password') || '');
+
+    try {
+      const res = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password })
+      });
+
+      const data = await res.json();
+      if (data?.Code === 0) {
+        setMessage('Account created, redirecting to sign in...');
+        // 简单延迟后跳转到登录页
+        // setTimeout(() => {
+        //   window.location.href = `/${locale}/auth/signin`;
+        // }, 800);
+      } else {
+        setMessage(data?.message || 'Sign up failed');
+      }
+    } catch (err) {
+      setMessage('Network error');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -72,6 +102,12 @@ export default function SignUpPage() {
               </Button>
             </form>
           </CardContent>
+
+          {message && (
+            <div className="px-6 pb-2 text-sm">
+              <span className="text-muted-foreground">{message}</span>
+            </div>
+          )}
 
           <CardFooter className="text-sm text-muted-foreground">
             <span className="mr-1">Already have an account?</span>

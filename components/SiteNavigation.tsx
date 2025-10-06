@@ -9,7 +9,7 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuIte
 import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
 import { Folder, TrendingUp, Star, FileText, BookOpen, Bell, BarChart, Rocket, Calendar, MessageCircle, Wrench, Book, Image, Megaphone, LayoutDashboard, User, Settings } from 'lucide-react';
 import { Logo, LogoImage, LogoText } from './Logo';
-import { defaultLogo, getNavSections } from '@/src/constant/base.constant';
+import { defaultLogo, getNavSections } from '@constant/base.constant';
 import UserMenu from './UserMenu';
 
 const iconMap = {

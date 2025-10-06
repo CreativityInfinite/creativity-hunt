@@ -1,15 +1,15 @@
 'use client';
 
-import AppleSvg from '@/src/assets/icons/apple.svg';
-import GoogleSvg from '@/src/assets/icons/google.svg';
+import AppleSvg from '@assets/icons/apple.svg';
+import GoogleSvg from '@assets/icons/google.svg';
 
 import { cn } from '@/lib/utils';
-import { defaultLogo } from '@/src/constant/base.constant';
-import { Logo, LogoImage, LogoText } from '@/components/Logo';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { getMessages } from '@/src/i18n/index';
+import { defaultLogo } from '@constant/base.constant';
+import { Logo, LogoImage, LogoText } from '@component/Logo';
+import { Button } from '@component/ui/button';
+import { Input } from '@component/ui/input';
+import { Label } from '@component/ui/label';
+import { getMessages } from '@i18n/index';
 import { signIn } from 'next-auth/react';
 
 export function LoginForm({ className, locale, ...props }: React.ComponentPropsWithoutRef<'div'> & { locale: string }) {
@@ -59,11 +59,11 @@ export function LoginForm({ className, locale, ...props }: React.ComponentPropsW
 
       <div className="grid gap-4 sm:grid-cols-2">
         <Button variant="outline" className="w-full">
-          <AppleSvg className="size-4" />
+          <AppleSvg className="size-3" />
           {t?.apple || 'Continue with Apple'}
         </Button>
         <Button variant="outline" className="w-full" onClick={handleGoogleSignIn}>
-          <GoogleSvg className="size-4" />
+          <GoogleSvg className="size-3" />
           {t?.google || 'Continue with Google'}
         </Button>
       </div>

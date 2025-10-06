@@ -1,9 +1,9 @@
-import { LoginForm } from '@/components/LoginForm';
-import { GradientBackground } from '@/components/shared/GradientBackground';
-import { Logo, LogoImage, LogoText } from '@/components/Logo';
-import { defaultLogo } from '@/src/constant/base.constant';
-import { LangSwitcher } from '@/components/LangSwitcher';
-import { ThemeToggle } from '@/components/ThemeToggle';
+import { LoginForm } from '@component/LoginForm';
+import { GradientBackground } from '@component/shared/GradientBackground';
+import { Logo, LogoImage, LogoText } from '@component/Logo';
+import { defaultLogo } from '@constant/base.constant';
+import { LangSwitcher } from '@component/LangSwitcher';
+import { ThemeToggle } from '@component/ThemeToggle';
 
 export default async function LoginPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

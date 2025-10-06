@@ -7,12 +7,12 @@ import { ChevronLeftIcon, ChevronRightIcon, EllipsisVerticalIcon } from 'lucide-
 import type { ColumnDef, PaginationState } from '@tanstack/react-table';
 import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem } from '@/components/ui/pagination';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Avatar, AvatarFallback, AvatarImage } from '@component/ui/avatar';
+import { Badge } from '@component/ui/badge';
+import { Button } from '@component/ui/button';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from '@component/ui/dropdown-menu';
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem } from '@component/ui/pagination';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@component/ui/table';
 
 import { usePagination } from '@/hooks/use-pagination';
 

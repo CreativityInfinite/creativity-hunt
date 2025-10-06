@@ -1,5 +1,5 @@
-import { Logo, LogoImage, LogoText } from '@/components/Logo';
-import { defaultLogo, getFooterContent } from '@/src/constant/base.constant';
+import { Logo, LogoImage, LogoText } from '@component/Logo';
+import { defaultLogo, getFooterContent } from '@constant/base.constant';
 
 type LinkItem = { text: string; url: string };
 type MenuSection = { title: string; links: LinkItem[] };

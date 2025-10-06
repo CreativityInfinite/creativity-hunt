@@ -2,8 +2,8 @@ import type { ReactNode } from 'react';
 
 import { UserIcon, SettingsIcon, CreditCardIcon, UsersIcon, SquarePenIcon, CirclePlusIcon, LogOutIcon } from 'lucide-react';
 
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { Avatar, AvatarImage, AvatarFallback } from '@component/ui/avatar';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@component/ui/dropdown-menu';
 
 type Props = {
   trigger: ReactNode;

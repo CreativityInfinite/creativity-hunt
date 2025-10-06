@@ -1,17 +1,17 @@
 import Link from 'next/link';
-import tools from '@/src/data/tools.json';
-import { SearchBar } from '@/components/SearchBar';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { ToolCard } from '@/components/ToolCard';
-import { SiteNavigation } from '@/components/SiteNavigation';
-import { Footer } from '@/components/Footer';
-import { getMessages } from '@/src/i18n/index';
-import { ScrollTrigger } from '@/components/ScrollTrigger';
-import { BackToTop } from '@/components/BackToTop';
+import tools from '@data/tools.json';
+import { SearchBar } from '@component/SearchBar';
+import { Badge } from '@component/ui/badge';
+import { Button } from '@component/ui/button';
+import { ToolCard } from '@component/ToolCard';
+import { SiteNavigation } from '@component/SiteNavigation';
+import { Footer } from '@component/Footer';
+import { getMessages } from '@i18n/index';
+import { ScrollTrigger } from '@component/ScrollTrigger';
+import { BackToTop } from '@component/BackToTop';
 import { Search, Upload, TrendingUp, Image, FileText, Code, Mic, BarChart, Zap, Compass, Bot } from 'lucide-react';
 import { Tool } from '@/types/tool';
-import { GradientBackground } from '@/components/shared/GradientBackground';
+import { GradientBackground } from '@component/shared/GradientBackground';
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

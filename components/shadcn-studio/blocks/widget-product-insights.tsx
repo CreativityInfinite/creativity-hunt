@@ -2,9 +2,9 @@
 
 import { Bar, BarChart } from 'recharts';
 
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { type ChartConfig, ChartContainer } from '@/components/ui/chart';
-import { Separator } from '@/components/ui/separator';
+import { Card, CardContent, CardHeader } from '@component/ui/card';
+import { type ChartConfig, ChartContainer } from '@component/ui/chart';
+import { Separator } from '@component/ui/separator';
 
 import { cn } from '@/lib/utils';
 

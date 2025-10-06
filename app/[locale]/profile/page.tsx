@@ -1,9 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@component/ui/card';
+import { Button } from '@component/ui/button';
+import { Avatar, AvatarImage, AvatarFallback } from '@component/ui/avatar';
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useParams } from 'next/navigation';

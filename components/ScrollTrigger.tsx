@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useParams } from 'next/navigation';
-import { getMessages } from '@/src/i18n/index';
+import { getMessages } from '@i18n/index';
 
 interface ScrollTriggerProps {
   children: React.ReactNode;
