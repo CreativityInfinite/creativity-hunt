@@ -1,24 +1,13 @@
 import type { NextConfig } from 'next';
-
 import path from 'path';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'placehold.co'
-      }
-    ]
+    remotePatterns: [{ protocol: 'https', hostname: 'placehold.co' }]
   },
   turbopack: {
-    rules: {
-      '*.svg': {
-        loaders: ['@svgr/webpack'],
-        as: '*.js'
-      }
-    }
+    rules: { '*.svg': { loaders: ['@svgr/webpack'], as: '*.js' } }
   },
   webpack: (config) => {
     config.resolve = config.resolve || {};

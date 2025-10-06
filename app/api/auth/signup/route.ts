@@ -1,6 +1,9 @@
 import bcrypt from 'bcryptjs';
 import { prisma } from '@/lib/prisma';
 import { R } from '@util/R';
+import { createLogger } from '@/lib/logger';
+
+const log = createLogger('AuthSignup');
 
 export async function POST(request: Request) {
   try {
@@ -19,6 +22,7 @@ export async function POST(request: Request) {
     const user = await prisma.user.create({ data: { name: name || null, email, passwordHash } });
     return R.ok(user);
   } catch (err: any) {
+    log.error('Signup error', err);
     return R.error(undefined, err);
   }
 }
