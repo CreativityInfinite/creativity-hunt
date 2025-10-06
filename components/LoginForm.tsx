@@ -1,7 +1,7 @@
 'use client';
 
-import AppleSvg from '@assets/icons/apple.svg';
-import GoogleSvg from '@assets/icons/google.svg';
+import AppleSvg from '@asset/icons/apple.svg';
+import GoogleSvg from '@asset/icons/google.svg';
 
 import { cn } from '@/lib/utils';
 import { defaultLogo } from '@constant/base.constant';
