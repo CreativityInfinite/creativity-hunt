@@ -26,9 +26,7 @@ export default function UserMenu({ locale }: { locale: string }) {
       {!isAuthenticated ? (
         <>
           <Link href={`/auth/signin`} className="sm:hidden">
-            <Button size="sm">
-              {tran('signIn')}
-            </Button>
+            <Button size="sm">{tran('signIn')}</Button>
           </Link>
           <Link href={`/auth/signin`} className="hidden sm:block">
             <Button variant="ghost" size="sm">
