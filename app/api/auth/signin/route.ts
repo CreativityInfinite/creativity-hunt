@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import { prisma } from '@/lib/prisma';
-import { R } from '@util/R';
+import { R } from '@/lib/R';
 import { createLogger } from '@/lib/logger';
 
 const log = createLogger('AuthSignin');

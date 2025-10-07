@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { uuid } from '@util/tool';
+import { uuid } from '@/lib/tool';
 
 class R extends Map<string, any> {
   // 基础返回值封装
