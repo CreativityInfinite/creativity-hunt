@@ -5,7 +5,9 @@
     "link": "https://chat.openai.com",
     "category": "文本生成与写作",
     "rating": 4.9,
-    "tags": ["text", "assistant", "chat", "multimodal"]
+    "tags": ["text", "assistant", "chat", "multimodal"],
+    "primaryCategory": "TextWriting",
+    "subcategory": "LongFormWriting"
   },
   {
     "name": "Jasper AI",
@@ -13,7 +15,9 @@
     "link": "https://www.jasper.ai",
     "category": "文本生成与写作",
     "rating": 4.4,
-    "tags": ["copywriting", "marketing", "templates"]
+    "tags": ["copywriting", "marketing", "templates"],
+    "primaryCategory": "TextWriting",
+    "subcategory": "WritingRewriting"
   },
   {
     "name": "Grammarly",
@@ -21,7 +25,9 @@
     "link": "https://www.grammarly.com",
     "category": "文本生成与写作",
     "rating": 4.5,
-    "tags": ["grammar", "editing", "proofreading"]
+    "tags": ["grammar", "editing", "proofreading"],
+    "primaryCategory": "TextWriting",
+    "subcategory": "GrammarCheck"
   },
   {
     "name": "Claude",
@@ -29,7 +35,9 @@
     "link": "https://claude.ai",
     "category": "文本生成与写作",
     "rating": 4.7,
-    "tags": ["long-context", "analysis", "assistant"]
+    "tags": ["long-context", "analysis", "assistant"],
+    "primaryCategory": "TextWriting",
+    "subcategory": "LongFormWriting"
   },
   {
     "name": "Notion AI",
@@ -37,6 +45,8 @@
     "link": "https://www.notion.com/ai",
     "category": "文本生成与写作",
     "rating": 4.3,
-    "tags": ["notes", "docs", "productivity"]
+    "tags": ["notes", "docs", "productivity"],
+    "primaryCategory": "TextWriting",
+    "subcategory": "NotesDocuments"
   }
 ]

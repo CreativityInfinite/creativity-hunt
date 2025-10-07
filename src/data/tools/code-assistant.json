@@ -5,7 +5,9 @@
     "link": "https://github.com/copilot",
     "category": "代码与开发",
     "rating": 4.6,
-    "tags": ["code", "completion", "productivity"]
+    "tags": ["code", "completion", "productivity"],
+    "primaryCategory": "CodeAssistant",
+    "subcategory": "CodeCompletion"
   },
   {
     "name": "Cursor",
@@ -13,7 +15,9 @@
     "link": "https://cursor.sh",
     "category": "代码与开发",
     "rating": 4.4,
-    "tags": ["editor", "code", "assistant"]
+    "tags": ["editor", "code", "assistant"],
+    "primaryCategory": "CodeAssistant",
+    "subcategory": "AIEditor"
   },
   {
     "name": "Replit Ghostwriter",
@@ -21,7 +25,9 @@
     "link": "https://replit.com/ai",
     "category": "代码与开发",
     "rating": 4.2,
-    "tags": ["ide", "cloud", "assistant"]
+    "tags": ["ide", "cloud", "assistant"],
+    "primaryCategory": "CodeAssistant",
+    "subcategory": "IDEAssistant"
   },
   {
     "name": "Tabnine",
@@ -29,7 +35,9 @@
     "link": "https://www.tabnine.com",
     "category": "代码与开发",
     "rating": 4.1,
-    "tags": ["completion", "privacy", "team"]
+    "tags": ["completion", "privacy", "team"],
+    "primaryCategory": "CodeAssistant",
+    "subcategory": "TeamPrivacy"
   },
   {
     "name": "Amazon CodeWhisperer",
@@ -37,6 +45,8 @@
     "link": "https://aws.amazon.com/codewhisperer",
     "category": "代码与开发",
     "rating": 4.0,
-    "tags": ["aws", "code", "assistant"]
+    "tags": ["aws", "code", "assistant"],
+    "primaryCategory": "CodeAssistant",
+    "subcategory": "CloudAssistant"
   }
 ]

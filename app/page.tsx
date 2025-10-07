@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import tools from '@data/tools.json';
+import { toolsData } from '@data/tools';
 import { SearchBar } from '@component/SearchBar';
 import { Badge } from '@component/ui/badge';
 import { Button } from '@component/ui/button';
@@ -19,7 +19,7 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
   const sp = searchParams ? await searchParams : undefined;
   const locale = sp?.lang || cookieStore.get('NEXT_LOCALE')?.value || 'zh-CN';
   const messages = getMessages(locale);
-  const topTools = tools as Tool[];
+  const topTools = toolsData as Tool[];
   const hotTags = messages?.labels?.hotTagsList ?? [];
   const hotTagColors = ['#1d4ed81a', '#9333ea1a', '#22d3ee1a', '#f59e0b1a', '#ef44441a', '#10b9811a', '#3b82f61a'];
 
@@ -51,10 +51,12 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
 
           {/* 行动按钮 - 响应式布局 */}
           <div className="mt-6 sm:mt-8 lg:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-5 justify-center items-center px-4 sm:px-0">
-            <Button variant="ghost" size="sm" className="w-full sm:w-auto px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base">
-              <Compass className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-              {messages.cta.explore}
-            </Button>
+            <Link href="/explore" className="w-full sm:w-auto">
+              <Button variant="ghost" size="sm" className="w-full sm:w-auto px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base">
+                <Compass className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                {messages.cta.explore}
+              </Button>
+            </Link>
             <Button variant="ghost" size="sm" className="w-full sm:w-auto px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base">
               <Upload className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
               {messages.cta.submit}

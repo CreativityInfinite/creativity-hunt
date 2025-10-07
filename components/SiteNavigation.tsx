@@ -68,7 +68,7 @@ export function SiteNavigation({ locale }: { locale: string }) {
           {/* 移动端汉堡菜单 */}
           <MobileNav locale={locale} />
 
-          <Link href={base} className="font-semibold tracking-tight">
+          <Link href={'/'} className="font-semibold tracking-tight">
             <span className="flex items-center gap-2">
               <Logo url={defaultLogo.url}>
                 <LogoImage size={32} src={defaultLogo.src} alt={defaultLogo.alt} title={defaultLogo.title} className="h-8 sm:h-10" />

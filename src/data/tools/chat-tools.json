@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Google Bard",
+    "description": "多模态搜索与问答助手，支持信息检索与创作。",
+    "link": "https://bard.google.com",
+    "category": "聊天与助手",
+    "rating": 4.2,
+    "tags": ["search", "assistant", "multimodal"],
+    "primaryCategory": "ChatTools",
+    "subcategory": "GeneralAssistant"
+  },
+  {
+    "name": "Microsoft Copilot",
+    "description": "与 Microsoft 365/Office 深度集成的工作助手。",
+    "link": "https://copilot.microsoft.com",
+    "category": "聊天与助手",
+    "rating": 4.3,
+    "tags": ["office", "assistant", "productivity"],
+    "primaryCategory": "ChatTools",
+    "subcategory": "OfficeAssistant"
+  },
+  {
+    "name": "Character.AI",
+    "description": "可创建并对话的角色型 AI，适合娱乐与陪伴。",
+    "link": "https://character.ai",
+    "category": "聊天与助手",
+    "rating": 4.1,
+    "tags": ["characters", "chat", "entertainment"],
+    "primaryCategory": "ChatTools",
+    "subcategory": "CharacterChat"
+  },
+  {
+    "name": "Pi",
+    "description": "温和陪伴型个人助手，注重对话体验与情感支持。",
+    "link": "https://pi.ai",
+    "category": "聊天与助手",
+    "rating": 4.1,
+    "tags": ["companion", "chat", "assistant"],
+    "primaryCategory": "ChatTools",
+    "subcategory": "Companion"
+  },
+  {
+    "name": "Grok",
+    "description": "风格幽默的对话式 AI，支持通用问答与创作。",
+    "link": "https://grok.x.ai",
+    "category": "聊天与助手",
+    "rating": 4.0,
+    "tags": ["chat", "assistant", "humor"],
+    "primaryCategory": "ChatTools",
+    "subcategory": "GeneralChat"
+  }
+]

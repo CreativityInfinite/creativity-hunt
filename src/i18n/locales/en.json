@@ -16,10 +16,77 @@
   },
   "labels": {
     "hotTags": "Hot tags:",
-    "hotTagsList": ["Image Generation", "Text Writing", "Chat Tools", "Code Assistant", "Voice & Video", "Data Insights", "Automation"]
+    "hotTagsList": ["Image Generation", "Text Writing", "Chat Tools", "Code Assistant", "Voice & Video", "Data Insights", "Automation"],
+    "primaryCategories": {
+      "ImageGeneration": "Image Generation",
+      "TextWriting": "Text Writing",
+      "ChatTools": "Chat Tools",
+      "CodeAssistant": "Code Assistant",
+      "VoiceVideo": "Voice & Video",
+      "DataInsights": "Data Insights",
+      "Automation": "Automation",
+      "Others": "Others"
+    },
+    "subcategories": {
+      "ImageGeneration": {
+        "CommonImageTools": "Common Image Tools",
+        "ImageIllustration": "Image & Illustration",
+        "BackgroundRemoval": "Background Removal",
+        "ObjectRemoval": "Object Removal",
+        "ImageUpscaling": "Image Upscaling",
+        "ImageEnhancement": "Image Enhancement",
+        "ProductImages": "Product Images",
+        "Model3DGeneration": "3D Model Generation"
+      },
+      "TextWriting": {
+        "LongFormWriting": "Long-form Writing",
+        "WritingRewriting": "Writing & Rewriting",
+        "GrammarCheck": "Grammar Check",
+        "NotesDocuments": "Notes & Documents"
+      },
+      "ChatTools": {
+        "GeneralAssistant": "General Assistant",
+        "OfficeAssistant": "Office Assistant",
+        "CharacterChat": "Character Chat",
+        "Companion": "Companion",
+        "GeneralChat": "General Chat"
+      },
+      "CodeAssistant": {
+        "CodeCompletion": "Code Completion",
+        "AIEditor": "AI Editor",
+        "IDEAssistant": "IDE Assistant",
+        "TeamPrivacy": "Team & Privacy",
+        "CloudAssistant": "Cloud Assistant"
+      },
+      "VoiceVideo": {
+        "TextToSpeech": "Text-to-Speech",
+        "TextBasedEditing": "Text-based Editing",
+        "DigitalAvatar": "Digital Avatar",
+        "AudioEnhancement": "Audio Enhancement",
+        "TextToVideo": "Text-to-Video"
+      },
+      "DataInsights": {
+        "BusinessIntelligence": "Business Intelligence",
+        "DataNotebook": "Data Notebook",
+        "DataAIPlatform": "Data/AI Platform"
+      },
+      "Automation": {
+        "WorkflowAutomation": "Workflow Automation",
+        "MeetingNotes": "Meeting Notes",
+        "TaskDocuments": "Task & Documents",
+        "DataAutomation": "Data Automation"
+      },
+      "Others": {
+        "ComprehensivePlatform": "Comprehensive Platform",
+        "SearchQA": "Search & QA",
+        "InferenceAPI": "Inference API",
+        "UIGeneration": "UI Generation"
+      }
+    }
   },
   "headings": {
-    "hotTools": "Popular AI Tools"
+    "hotTools": "Popular AI Tools",
+    "explore": "Explore All Categories"
   },
   "ui": {
     "scrollHint": "Scroll down to explore tools"

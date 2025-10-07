@@ -5,7 +5,9 @@
     "link": "https://zapier.com/ai",
     "category": "生产力与自动化",
     "rating": 4.4,
-    "tags": ["automation", "workflow", "integration"]
+    "tags": ["automation", "workflow", "integration"],
+    "primaryCategory": "Automation",
+    "subcategory": "WorkflowAutomation"
   },
   {
     "name": "Otter.ai",
@@ -13,7 +15,9 @@
     "link": "https://otter.ai",
     "category": "生产力与自动化",
     "rating": 4.3,
-    "tags": ["transcription", "meetings", "notes"]
+    "tags": ["transcription", "meetings", "notes"],
+    "primaryCategory": "Automation",
+    "subcategory": "MeetingNotes"
   },
   {
     "name": "ClickUp AI",
@@ -21,7 +25,9 @@
     "link": "https://clickup.com/ai",
     "category": "生产力与自动化",
     "rating": 4.2,
-    "tags": ["tasks", "docs", "project-management"]
+    "tags": ["tasks", "docs", "project-management"],
+    "primaryCategory": "Automation",
+    "subcategory": "TaskDocuments"
   },
   {
     "name": "Airtable AI",
@@ -29,6 +35,8 @@
     "link": "https://airtable.com/ai",
     "category": "生产力与自动化",
     "rating": 4.1,
-    "tags": ["database", "automation", "no-code"]
+    "tags": ["database", "automation", "no-code"],
+    "primaryCategory": "Automation",
+    "subcategory": "DataAutomation"
   }
 ]

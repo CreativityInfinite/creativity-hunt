@@ -1,25 +1,92 @@
 {
   "brand": "Creativity Hunt",
   "hero": {
-    "title": "發現最優秀的 AI 工具",
-    "subtitle": "探索精選的人工智慧工具，提升你的工作效率與創造力"
+    "title": "用 AI，更快發現更好的工具",
+    "subtitle": "一句話描述你的需求，Creativity Hunt 立即為你匹配最合適的 AI 工具與方案"
   },
   "search": {
     "placeholder": "描述你的需求，如「生成產品海報的 AI」"
   },
   "cta": {
     "try": "試用",
-    "search": "搜索",
+    "search": "搜尋",
     "explore": "開始探索",
     "submit": "提交工具",
     "trends": "查看趨勢"
   },
   "labels": {
-    "hotTags": "熱門標籤:",
-    "hotTagsList": ["影像生成", "文字寫作", "聊天工具", "程式助理", "語音影音", "數據洞察", "自動化"]
+    "hotTags": "熱門標籤：",
+    "hotTagsList": ["影像生成", "文字寫作", "聊天工具", "程式助手", "語音影音", "數據洞察", "自動化"],
+    "primaryCategories": {
+      "ImageGeneration": "影像生成",
+      "TextWriting": "文字寫作",
+      "ChatTools": "聊天工具",
+      "CodeAssistant": "程式助手",
+      "VoiceVideo": "語音影音",
+      "DataInsights": "數據洞察",
+      "Automation": "自動化",
+      "Others": "其他"
+    },
+    "subcategories": {
+      "ImageGeneration": {
+        "CommonImageTools": "常用影像工具",
+        "ImageIllustration": "圖片插畫生成",
+        "BackgroundRemoval": "圖片背景移除",
+        "ObjectRemoval": "圖片物體抹除",
+        "ImageUpscaling": "圖片無損放大",
+        "ImageEnhancement": "圖片優化修復",
+        "ProductImages": "商品圖生成",
+        "Model3DGeneration": "3D模型生成"
+      },
+      "TextWriting": {
+        "LongFormWriting": "長文生成",
+        "WritingRewriting": "寫作與改寫",
+        "GrammarCheck": "語法糾錯",
+        "NotesDocuments": "筆記與文檔"
+      },
+      "ChatTools": {
+        "GeneralAssistant": "通用助手",
+        "OfficeAssistant": "辦公助手",
+        "CharacterChat": "角色聊天",
+        "Companion": "陪伴",
+        "GeneralChat": "通用聊天"
+      },
+      "CodeAssistant": {
+        "CodeCompletion": "程式補全",
+        "AIEditor": "AI編輯器",
+        "IDEAssistant": "IDE助手",
+        "TeamPrivacy": "團隊與隱私",
+        "CloudAssistant": "雲端助手"
+      },
+      "VoiceVideo": {
+        "TextToSpeech": "TTS",
+        "TextBasedEditing": "文字剪輯",
+        "DigitalAvatar": "數字人",
+        "AudioEnhancement": "音頻增強",
+        "TextToVideo": "文生視頻"
+      },
+      "DataInsights": {
+        "BusinessIntelligence": "商業智能",
+        "DataNotebook": "數據筆記本",
+        "DataAIPlatform": "數據/AI平台"
+      },
+      "Automation": {
+        "WorkflowAutomation": "自動化編排",
+        "MeetingNotes": "會議紀要",
+        "TaskDocuments": "任務文檔",
+        "DataAutomation": "數據自動化"
+      },
+      "Others": {
+        "ComprehensivePlatform": "綜合平台",
+        "SearchQA": "檢索問答",
+        "InferenceAPI": "推理API",
+        "UIGeneration": "UI生成"
+      }
+    }
   },
   "headings": {
-    "hotTools": "熱門 AI 工具"
+    "hotTools": "熱門 AI 工具",
+    "explore": "探索全部分類"
   },
   "ui": {
     "scrollHint": "向下滾動探索工具"
@@ -29,19 +96,19 @@
       "title": "歡迎來到 {brand}",
       "noAccount": "還沒有帳戶？",
       "signup": "註冊",
-      "emailLabel": "邮箱",
+      "emailLabel": "電子郵件",
       "emailPlaceholder": "m@example.com",
       "login": "登入",
       "or": "或",
-      "apple": "使用 Apple 登入",
-      "google": "使用 Google 登入",
-      "terms": "點擊繼續，即表示你同意我們的",
+      "apple": "使用 Apple 繼續",
+      "google": "使用 Google 繼續",
+      "terms": "點擊繼續即表示您同意我們的",
       "tos": "服務條款",
-      "and": "與",
+      "and": "和",
       "privacy": "隱私政策"
     }
   },
-  "footerTagline": "發現與搜索熱門 AI 工具",
+  "footerTagline": "發現和搜尋熱門 AI 工具",
   "footerCopyright": "© YEAR Creativity Hunt · 保留所有權利",
   "footerMenuGroups": [
     {
@@ -49,7 +116,7 @@
       "links": [
         { "text": "探索", "url": "#" },
         { "text": "提交工具", "url": "#" },
-        { "text": "熱門與趨勢", "url": "#" }
+        { "text": "趨勢", "url": "#" }
       ]
     },
     {
@@ -57,18 +124,18 @@
       "links": [
         { "text": "關於我們", "url": "#" },
         { "text": "聯絡我們", "url": "#" },
-        { "text": "博客", "url": "#" }
+        { "text": "部落格", "url": "#" }
       ]
     },
     {
       "title": "資源",
       "links": [
         { "text": "幫助中心", "url": "#" },
-        { "text": "使用指南", "url": "#" }
+        { "text": "快速開始", "url": "#" }
       ]
     },
     {
-      "title": "社交",
+      "title": "社群",
       "links": [
         { "text": "GitHub", "url": "#" },
         { "text": "Twitter/X", "url": "#" },
@@ -77,7 +144,7 @@
     }
   ],
   "footerBottomLinks": [
-    { "text": "使用條款", "url": "#" },
+    { "text": "條款", "url": "#" },
     { "text": "隱私政策", "url": "#" }
   ],
   "navSections": [
@@ -87,83 +154,83 @@
         {
           "title": "分類",
           "items": [
-            { "title": "聊天工具", "description": "對話式 AI 與助理" },
-            { "title": "影像生成", "description": "用 AI 生成圖片" },
-            { "title": "文字寫作", "description": "AI 寫作與文案" },
-            { "title": "程式助理", "description": "程式輔助與自動化" },
-            { "title": "音訊與語音", "description": "語音與媒體工具" },
-            { "title": "數據洞察", "description": "分析與可視化" },
-            { "title": "自動化", "description": "自動處理重複任務" }
+            { "title": "聊天工具", "description": "對話式 AI 和助手" },
+            { "title": "影像生成", "description": "使用 AI 創建影像" },
+            { "title": "文字寫作", "description": "AI 寫作和文案" },
+            { "title": "程式助手", "description": "程式設計支援和自動化" },
+            { "title": "語音影音", "description": "語音和媒體工具" },
+            { "title": "數據洞察", "description": "分析和視覺化" },
+            { "title": "自動化", "description": "自動化重複任務" }
           ]
         },
         {
           "title": "趨勢",
           "items": [
-            { "title": "當下熱門", "description": "本週最受歡迎" },
-            { "title": "高分推薦", "description": "使用者評分最高" },
-            { "title": "新星崛起", "description": "成長快速的工具" },
-            { "title": "最多搜尋", "description": "熱門搜尋關鍵詞" }
+            { "title": "當前趨勢", "description": "本週最受歡迎" },
+            { "title": "最高評分", "description": "用戶評分最高" },
+            { "title": "新星崛起", "description": "快速增長的工具" },
+            { "title": "最多搜尋", "description": "熱門搜尋查詢" }
           ]
         },
         {
           "title": "精選",
           "items": [
-            { "title": "編輯精選", "description": "精心策劃的推薦" },
-            { "title": "最新發布", "description": "最新上線" },
-            { "title": "社群最愛", "description": "使用者最喜愛" },
-            { "title": "每週精選", "description": "本週亮點" }
+            { "title": "編輯推薦", "description": "精心挑選的推薦" },
+            { "title": "新品發佈", "description": "最新發佈" },
+            { "title": "社群最愛", "description": "用戶喜愛" },
+            { "title": "每週亮點", "description": "本週亮點" }
           ]
         }
       ]
     },
     {
-      "trigger": "文章",
+      "trigger": "部落格",
       "groups": [
         {
           "title": "文章",
           "items": [
-            { "title": "全部文章", "description": "深入文章與洞察" },
-            { "title": "指南", "description": "新手入門與實作指南" }
+            { "title": "所有文章", "description": "深度文章和見解" },
+            { "title": "指南", "description": "新手分步指南" }
           ]
         },
         {
-          "title": "教程",
+          "title": "教學",
           "items": [
-            { "title": "教程", "description": "實用教程與演示" },
-            { "title": "案例研究", "description": "真實案例與成果" }
+            { "title": "教學", "description": "實用教學和演練" },
+            { "title": "案例研究", "description": "真實案例和結果" }
           ]
         },
         {
           "title": "更新",
           "items": [
-            { "title": "產品更新", "description": "最新變更與改進" },
-            { "title": "變更記錄", "description": "版本記錄與說明" }
+            { "title": "產品更新", "description": "最新變化和改進" },
+            { "title": "更新日誌", "description": "發佈說明和版本歷史" }
           ]
         }
       ]
     },
     {
-      "trigger": "資訊",
+      "trigger": "新聞",
       "groups": [
         {
           "title": "AI 趨勢",
           "items": [
-            { "title": "市場趨勢", "description": "產業分析與報告" },
-            { "title": "觀點評論", "description": "社論與評論" }
+            { "title": "市場趨勢", "description": "行業分析和報告" },
+            { "title": "觀點", "description": "社論和評論" }
           ]
         },
         {
-          "title": "發布",
+          "title": "發佈",
           "items": [
-            { "title": "新工具", "description": "公告與發布" },
-            { "title": "變更記錄", "description": "版本記錄與更新" }
+            { "title": "新工具", "description": "公告和發佈" },
+            { "title": "更新日誌", "description": "發佈說明和更新" }
           ]
         },
         {
           "title": "活動",
           "items": [
-            { "title": "會議與峰會", "description": "演講、聚會與會議" },
-            { "title": "線上研討", "description": "線上分享與演示" }
+            { "title": "會議", "description": "演講、聚會和會議" },
+            { "title": "網路研討會", "description": "線上會議和演示" }
           ]
         }
       ]
@@ -172,23 +239,23 @@
       "trigger": "討論",
       "groups": [
         {
-          "title": "綜合討論",
+          "title": "一般討論",
           "items": [
-            { "title": "綜合主題", "description": "社群範圍的交流" },
-            { "title": "回饋建議", "description": "提議與功能需求" }
+            { "title": "一般話題", "description": "社群範圍的對話" },
+            { "title": "回饋", "description": "建議和功能請求" }
           ]
         },
         {
           "title": "工具推薦",
           "items": [
-            { "title": "分享工具", "description": "分享你常用的好工具" },
-            { "title": "作品展示", "description": "展示你的創作" }
+            { "title": "推薦工具", "description": "分享您使用的便利工具" },
+            { "title": "展示", "description": "展示您的創作" }
           ]
         },
         {
-          "title": "教程",
+          "title": "教學",
           "items": [
-            { "title": "教程", "description": "技巧與方法" },
+            { "title": "教學", "description": "技巧和操作方法" },
             { "title": "資源", "description": "有用的學習資源" }
           ]
         }
@@ -198,23 +265,23 @@
       "trigger": "帳戶",
       "groups": [
         {
-          "title": "控制台",
+          "title": "儀表板",
           "items": [
-            { "title": "總覽", "description": "個人控制面板" },
-            { "title": "動態", "description": "近期操作與記錄" }
+            { "title": "概覽", "description": "個人控制面板" },
+            { "title": "活動", "description": "最近操作和日誌" }
           ]
         },
         {
           "title": "個人資料",
           "items": [
-            { "title": "資料", "description": "個人資訊設定" },
-            { "title": "安全", "description": "密碼與雙重驗證" }
+            { "title": "個人資料", "description": "個人資訊設定" },
+            { "title": "安全", "description": "密碼和雙因素認證設定" }
           ]
         },
         {
           "title": "設定",
           "items": [
-            { "title": "偏好設定", "description": "帳戶選項與偏好" },
+            { "title": "偏好設定", "description": "帳戶偏好和選項" },
             { "title": "通知", "description": "通知設定" }
           ]
         }
@@ -228,10 +295,10 @@
   "userMenu": {
     "signIn": "登入",
     "signUp": "註冊",
-    "signedInAs": "已登入：{name}",
+    "signedInAs": "已登入為 {name}",
     "profile": "個人資料",
     "settings": "設定",
-    "activity": "動態",
+    "activity": "活動",
     "signOut": "登出"
   }
 }
