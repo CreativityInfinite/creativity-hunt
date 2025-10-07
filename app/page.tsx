@@ -21,6 +21,7 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
   const messages = getMessages(locale);
   const topTools = tools as Tool[];
   const hotTags = messages?.labels?.hotTagsList ?? [];
+  const hotTagColors = ['#1d4ed81a', '#9333ea1a', '#22d3ee1a', '#f59e0b1a', '#ef44441a', '#10b9811a', '#3b82f61a'];
 
   return (
     <ScrollTrigger locale={locale} triggerDistance={100} autoScrollTarget="hot-tools-section" reverseScrollTarget="top" showIndicator={true}>
@@ -32,49 +33,52 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
         <SiteNavigation locale={locale} />
 
         {/* Hero */}
-        <section className="container mx-auto px-4 pb-50 text-center min-h-screen flex flex-col justify-center">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-tight">{messages.hero.title}</h1>
-          <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">{messages.hero.subtitle}</p>
+        <section className="container mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-20 lg:pb-50 text-center min-h-screen flex flex-col justify-center">
+          {/* 标题 - 响应式字体大小 */}
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-tight px-2 sm:px-0">{messages.hero.title}</h1>
 
-          <div id="search-section" className="mt-6 flex justify-center">
-            <div className="relative group w-full max-w-3xl">
+          {/* 副标题 - 响应式间距和字体 */}
+          <p className="mt-4 sm:mt-6 lg:mt-8 text-base sm:text-lg lg:text-xl text-muted-foreground max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto px-4 sm:px-0 leading-relaxed">{messages.hero.subtitle}</p>
+
+          {/* 搜索框 - 响应式宽度和间距 */}
+          <div id="search-section" className="mt-6 sm:mt-8 lg:mt-10 flex justify-center px-4 sm:px-0">
+            <div className="relative group w-full max-w-sm sm:max-w-2xl lg:max-w-3xl">
               {/* 柔光氛围：悬停或聚焦时出现的轻微光晕 */}
-              <div className="pointer-events-none absolute -inset-6 rounded-3xl bg-primary/5 blur-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100" />
+              <div className="pointer-events-none absolute -inset-3 sm:-inset-6 rounded-2xl sm:rounded-3xl bg-primary/5 blur-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100" />
               <SearchBar placeholder={messages.search.placeholder} showButton={false} />
             </div>
           </div>
 
-          {/* 行动按钮 */}
-          <div className="mt-4 flex flex-col sm:flex-row gap-5 justify-center items-center">
-            <Button variant="ghost" size="lg" className="px-8 py-3">
-              <Compass className="mr-2 h-5 w-5" />
+          {/* 行动按钮 - 响应式布局 */}
+          <div className="mt-6 sm:mt-8 lg:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-5 justify-center items-center px-4 sm:px-0">
+            <Button variant="ghost" size="sm" className="w-full sm:w-auto px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base">
+              <Compass className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
               {messages.cta.explore}
             </Button>
-            <Button variant="ghost" size="lg" className="px-8 py-3">
-              <Upload className="mr-2 h-5 w-5" />
+            <Button variant="ghost" size="sm" className="w-full sm:w-auto px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base">
+              <Upload className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
               {messages.cta.submit}
             </Button>
-            <Button variant="ghost" size="lg" className="px-8 py-3">
-              <TrendingUp className="mr-2 h-5 w-5" />
+            <Button variant="ghost" size="sm" className="w-full sm:w-auto px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base">
+              <TrendingUp className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
               {messages.cta.trends}
             </Button>
           </div>
 
-          {/* 热门标签 */}
-          <div className="mt-10 max-w-6xl mx-auto">
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          {/* 热门标签 - 响应式网格 */}
+          <div className="mt-8 sm:mt-10 lg:mt-12 max-w-xs sm:max-w-4xl lg:max-w-6xl mx-auto px-4 sm:px-0">
+            <div className="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
               {hotTags.map((tag, index) => {
                 const icons = [Image, SquarePen, MessageCircleMore, Code, Mic, BarChart, Zap];
                 const Icon = icons[index] || Search;
-                const colors = ['#1d4ed81a', '#9333ea1a', '#22d3ee1a', '#f59e0b1a', '#ef44441a', '#10b9811a', '#3b82f61a'];
                 return (
                   <Link key={tag} href={`/search/${encodeURIComponent(tag)}`}>
                     <div
-                      className="group cursor-pointer rounded-2xl border border-border/50 bg-card text-card-foreground shadow-sm transition-all duration-300 px-5 py-4 flex items-center gap-3 hover:shadow-md hover:border-primary/30 hover:-translate-y-0.5"
-                      style={{ backgroundColor: colors[index % colors.length] }}
+                      className="group cursor-pointer rounded-xl sm:rounded-2xl border border-border/50 bg-card text-card-foreground shadow-sm transition-all duration-300 px-3 sm:px-4 lg:px-5 py-3 sm:py-4 flex items-center gap-2 sm:gap-3 hover:shadow-md hover:border-primary/30 hover:-translate-y-0.5 text-left"
+                      style={{ backgroundColor: hotTagColors[index % hotTagColors.length] }}
                     >
-                      <Icon className="h-5 w-5 text-muted-foreground group-hover:text-foreground transition-colors duration-300 group-hover:animate-none animate-pulse" />
-                      <span className="text-sm font-medium transition-colors duration-300">{tag}</span>
+                      <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground group-hover:text-foreground transition-colors duration-300 group-hover:animate-none animate-pulse shrink-0" />
+                      <span className="text-xs sm:text-sm font-medium transition-colors duration-300 truncate">{tag}</span>
                     </div>
                   </Link>
                 );
@@ -83,18 +87,18 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
           </div>
         </section>
 
-        {/* 热门工具 */}
-        <section id="hot-tools-section" className="container mx-auto px-4 py-20">
-          <h2 className="text-2xl font-semibold text-center mb-12">{messages.headings?.hotTools}</h2>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto">
+        {/* 热门工具 - 响应式网格和间距 */}
+        <section id="hot-tools-section" className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-center mb-8 sm:mb-10 lg:mb-12 px-4 sm:px-0">{messages.headings?.hotTools}</h2>
+          <div className="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-7xl mx-auto">
             {topTools.map((tool) => (
               <ToolCard key={tool.name} tool={tool} />
             ))}
           </div>
         </section>
 
-        {/* Footer */}
-        <section className="container mx-auto px-4 py-20">
+        {/* Footer - 响应式间距 */}
+        <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
           <Footer locale={locale} />
         </section>
       </div>
