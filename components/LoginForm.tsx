@@ -34,7 +34,7 @@ export function LoginForm({ className, locale, ...props }: React.ComponentPropsW
             <h1 className="text-xl font-bold">{t?.title?.replace('{brand}', brand) || `Welcome to ${brand}`}</h1>
             <div className="text-center text-sm">
               {t?.noAccount || "Don't have an account?"}
-              <a href="#" className="underline underline-offset-4 ml-2">
+              <a href="/auth/signup" className="underline underline-offset-4 ml-2">
                 {t?.signup || 'Sign up'}
               </a>
             </div>

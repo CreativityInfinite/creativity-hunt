@@ -87,10 +87,10 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
           </div>
         </section>
 
-        {/* 热门工具 - 响应式网格和间距 */}
-        <section id="hot-tools-section" className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-center mb-8 sm:mb-10 lg:mb-12 px-4 sm:px-0">{messages.headings?.hotTools}</h2>
-          <div className="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-7xl mx-auto">
+        {/* 热门工具 - 优化移动端展示 */}
+        <section id="hot-tools-section" className="container mx-auto px-3 sm:px-6 lg:px-8 py-8 sm:py-16 lg:py-20">
+          <h2 className="text-lg sm:text-2xl lg:text-3xl font-semibold text-center mb-6 sm:mb-10 lg:mb-12 px-2 sm:px-0">{messages.headings?.hotTools}</h2>
+          <div className="grid gap-3 sm:gap-6 lg:gap-8 grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-7xl mx-auto">
             {topTools.map((tool) => (
               <ToolCard key={tool.name} tool={tool} />
             ))}
