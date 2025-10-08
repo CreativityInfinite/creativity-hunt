@@ -84,7 +84,9 @@ export function SiteNavigation({ locale }: { locale: string }) {
                   {section.groups && section.groups.length ? (
                     <>
                       <NavigationMenuTrigger className="bg-transparent">{section.trigger}</NavigationMenuTrigger>
-                      <NavigationMenuContent className={`p-6 ${section.minW} bg-[radial-gradient(120%_120%_at_50%_0%,rgba(34,211,238,0.08),transparent_65%)] backdrop-blur border-0 shadow-lg rounded-2xl`}>
+                      <NavigationMenuContent
+                        className={`p-6 ${section.minW} bg-[radial-gradient(120%_120%_at_50%_0%,rgba(34,211,238,0.08),transparent_65%)] backdrop-blur border-0 shadow-lg rounded-2xl`}
+                      >
                         <div className="grid gap-4 md:grid-cols-3">
                           {section.groups
                             .filter((group) => group.items && group.items.length)
