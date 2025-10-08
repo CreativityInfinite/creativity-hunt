@@ -49,22 +49,43 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
             </div>
           </div>
 
-          {/* 行动按钮 - 响应式布局 */}
-          <div className="mt-6 sm:mt-8 lg:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-5 justify-center items-center px-4 sm:px-0">
-            <Link href="/explore" className="w-full sm:w-auto">
-              <Button variant="ghost" size="sm" className="w-full sm:w-auto px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base">
-                <Compass className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                {messages.cta.explore}
+          {/* 行动按钮 - 移动端优化 */}
+          <div className="mt-6 sm:mt-8 lg:mt-10 px-4 sm:px-0">
+            {/* 移动端：紧凑的图标按钮 */}
+            <div className="sm:hidden flex justify-center gap-4">
+              <Link href="/explore">
+                <Button variant="ghost" size="sm" className="flex flex-col items-center gap-1 px-3 py-2 h-auto">
+                  <Compass className="h-5 w-5" />
+                  <span className="text-xs">{messages.cta.explore}</span>
+                </Button>
+              </Link>
+              <Button variant="ghost" size="sm" className="flex flex-col items-center gap-1 px-3 py-2 h-auto">
+                <Upload className="h-5 w-5" />
+                <span className="text-xs">{messages.cta.submit}</span>
               </Button>
-            </Link>
-            <Button variant="ghost" size="sm" className="w-full sm:w-auto px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base">
-              <Upload className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-              {messages.cta.submit}
-            </Button>
-            <Button variant="ghost" size="sm" className="w-full sm:w-auto px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base">
-              <TrendingUp className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-              {messages.cta.trends}
-            </Button>
+              <Button variant="ghost" size="sm" className="flex flex-col items-center gap-1 px-3 py-2 h-auto">
+                <TrendingUp className="h-5 w-5" />
+                <span className="text-xs">{messages.cta.trends}</span>
+              </Button>
+            </div>
+
+            {/* 桌面端：原有的横向布局 */}
+            <div className="hidden sm:flex flex-row gap-4 lg:gap-5 justify-center items-center">
+              <Link href="/explore">
+                <Button variant="ghost" size="sm" className="px-8 py-3 text-base">
+                  <Compass className="mr-2 h-5 w-5" />
+                  {messages.cta.explore}
+                </Button>
+              </Link>
+              <Button variant="ghost" size="sm" className="px-8 py-3 text-base">
+                <Upload className="mr-2 h-5 w-5" />
+                {messages.cta.submit}
+              </Button>
+              <Button variant="ghost" size="sm" className="px-8 py-3 text-base">
+                <TrendingUp className="mr-2 h-5 w-5" />
+                {messages.cta.trends}
+              </Button>
+            </div>
           </div>
 
           {/* 热门标签 - 响应式网格 */}
