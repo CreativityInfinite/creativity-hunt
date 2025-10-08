@@ -1,5 +1,6 @@
 [
   {
+    "key": "voice-video-elevenlabs",
     "name": "ElevenLabs",
     "description": "高自然度语音克隆与多语言文本转语音。",
     "link": "https://elevenlabs.io",
@@ -10,6 +11,7 @@
     "subcategory": "TextToSpeech"
   },
   {
+    "key": "voice-video-descript",
     "name": "Descript",
     "description": "基于文字编辑音频/视频，支持配音与去噪。",
     "link": "https://www.descript.com",
@@ -20,6 +22,7 @@
     "subcategory": "TextBasedEditing"
   },
   {
+    "key": "voice-video-synthesia",
     "name": "Synthesia",
     "description": "虚拟数字人视频生成，适合教学与营销内容。",
     "link": "https://www.synthesia.io",
@@ -30,6 +33,7 @@
     "subcategory": "DigitalAvatar"
   },
   {
+    "key": "voice-video-adobe-podcast",
     "name": "Adobe Podcast",
     "description": "一键增强语音清晰度与音质的音频工具。",
     "link": "https://podcast.adobe.com",
@@ -40,6 +44,7 @@
     "subcategory": "AudioEnhancement"
   },
   {
+    "key": "voice-video-runway-gen-2",
     "name": "Runway Gen-2",
     "description": "文本到视频与图像到视频的生成式模型。",
     "link": "https://runwayml.com",

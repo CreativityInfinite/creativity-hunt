@@ -20,7 +20,7 @@ import othersData from '@/src/data/tools/others.json';
 
 import { PRIMARY_CATEGORIES, CATEGORY_ICONS, CATEGORY_COLORS, getCategoryDisplayName, getSubcategoryDisplayName, type PrimaryCategoryKey } from '@/src/constants/category.constant';
 import type { Tool } from '@/types/tool';
-import { Search } from 'lucide-react';
+import { Search, SearchX } from 'lucide-react';
 
 // 汇总所有工具数据
 const ALL_TOOLS_DATA = {
@@ -225,8 +225,8 @@ export default function ExplorePage() {
                 })()}
 
                 {(() => {
-                  // 计算过滤后的结果数量
-                  let displayList = currentTools.filter((t) => (activeSub === '全部' ? true : t.subcategory === activeSub));
+                  // 计算过滤后的结果数量 - 使用与上面相同的逻辑
+                  let displayList = currentTools.filter((t) => (activeSub === 'ALL' ? true : t.subcategory === activeSub));
 
                   if (searchQuery.trim()) {
                     const query = searchQuery.toLowerCase().trim();
@@ -241,11 +241,13 @@ export default function ExplorePage() {
                     });
                   }
 
+                  // 只有在有搜索条件或者不是ALL分类时才显示空状态
                   return (
-                    displayList.length === 0 && (
+                    displayList.length === 0 &&
+                    (searchQuery.trim() || activeSub !== 'ALL') && (
                       <div className="col-span-full text-center text-sm text-muted-foreground py-12">
                         <div className="flex flex-col items-center gap-2">
-                          <div className="text-4xl">🔍</div>
+                          <SearchX className="h-16 w-16 text-muted-foreground/40" />
                           <div>
                             {searchQuery.trim()
                               ? messages?.explore?.noResultsSearch || '未找到匹配的工具，尝试调整搜索关键词'

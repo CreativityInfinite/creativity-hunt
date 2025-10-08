@@ -1,5 +1,6 @@
 [
   {
+    "key": "others-hugging-face-spaces",
     "name": "Hugging Face Spaces",
     "description": "展示与运行社区模型/应用的托管平台。",
     "link": "https://huggingface.co/spaces",
@@ -10,6 +11,7 @@
     "subcategory": "ComprehensivePlatform"
   },
   {
+    "key": "others-perplexity-ai",
     "name": "Perplexity AI",
     "description": "带引用的即时问答与检索式生成。",
     "link": "https://www.perplexity.ai",
@@ -20,6 +22,7 @@
     "subcategory": "SearchQA"
   },
   {
+    "key": "others-replicate",
     "name": "Replicate",
     "description": "面向开源模型的推理 API 与托管。",
     "link": "https://replicate.com",
@@ -30,6 +33,7 @@
     "subcategory": "InferenceAPI"
   },
   {
+    "key": "others-vercel-v0",
     "name": "Vercel v0",
     "description": "从描述到 UI 的生成式工具，快速生成前端组件。",
     "link": "https://v0.dev",

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { NavigationMenu, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from './ui/navigation-menu';
+import { NavigationMenu, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuViewport } from './ui/navigation-menu';
 import { ThemeToggle } from './ThemeToggle';
 import { LangSwitcher } from './LangSwitcher';
 
@@ -84,9 +84,7 @@ export function SiteNavigation({ locale }: { locale: string }) {
                   {section.groups && section.groups.length ? (
                     <>
                       <NavigationMenuTrigger className="bg-transparent">{section.trigger}</NavigationMenuTrigger>
-                      <NavigationMenuContent
-                        className={`p-6 ${section.minW} bg-[radial-gradient(120%_120%_at_50%_0%,rgba(34,211,238,0.08),transparent_65%)] backdrop-blur rounded-2xl border border-border/40 shadow-lg`}
-                      >
+                      <NavigationMenuContent className={`p-6 ${section.minW} bg-[radial-gradient(120%_120%_at_50%_0%,rgba(34,211,238,0.08),transparent_65%)] backdrop-blur border-0 shadow-lg rounded-2xl`}>
                         <div className="grid gap-4 md:grid-cols-3">
                           {section.groups
                             .filter((group) => group.items && group.items.length)
@@ -113,6 +111,7 @@ export function SiteNavigation({ locale }: { locale: string }) {
                 </NavigationMenuItem>
               ))}
             </NavigationMenuList>
+            <NavigationMenuViewport className="rounded-2xl border-0" />
           </NavigationMenu>
         </div>
 

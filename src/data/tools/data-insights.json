@@ -1,5 +1,6 @@
 [
   {
+    "key": "data-insights-tableau-ai",
     "name": "Tableau AI",
     "description": "内置生成式分析与可视化问答，缩短洞察路径。",
     "link": "https://www.tableau.com/ai",
@@ -10,6 +11,7 @@
     "subcategory": "BusinessIntelligence"
   },
   {
+    "key": "data-insights-akkio",
     "name": "Akkio",
     "description": "面向业务的无代码预测建模与部署。",
     "link": "https://akkio.com",
@@ -20,6 +22,7 @@
     "subcategory": "BusinessIntelligence"
   },
   {
+    "key": "data-insights-google-analytics-4",
     "name": "Google Analytics 4",
     "description": "网站/应用分析与预测，事件模型与受众洞察。",
     "link": "https://analytics.google.com",
@@ -30,6 +33,7 @@
     "subcategory": "BusinessIntelligence"
   },
   {
+    "key": "data-insights-hex",
     "name": "Hex",
     "description": "SQL+Python 的协作数据笔记本，适配可视化与分享。",
     "link": "https://hex.tech",
@@ -40,6 +44,7 @@
     "subcategory": "DataNotebook"
   },
   {
+    "key": "data-insights-databricks-ai",
     "name": "Databricks AI",
     "description": "统一数据与 AI 平台，面向湖仓与大规模训练推理。",
     "link": "https://www.databricks.com/ai",

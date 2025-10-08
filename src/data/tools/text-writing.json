@@ -1,5 +1,6 @@
 [
   {
+    "key": "text-writing-chatgpt",
     "name": "ChatGPT",
     "description": "多用途对话与写作助手，支持创作、问答与代码草拟。",
     "link": "https://chat.openai.com",
@@ -10,6 +11,7 @@
     "subcategory": "LongFormWriting"
   },
   {
+    "key": "text-writing-jasper-ai",
     "name": "Jasper AI",
     "description": "面向营销的文案生成与模板化写作，提高产出效率。",
     "link": "https://www.jasper.ai",
@@ -20,6 +22,7 @@
     "subcategory": "WritingRewriting"
   },
   {
+    "key": "text-writing-grammarly",
     "name": "Grammarly",
     "description": "英文写作纠错与润色助手，语法风格与清晰度优化。",
     "link": "https://www.grammarly.com",
@@ -30,6 +33,7 @@
     "subcategory": "GrammarCheck"
   },
   {
+    "key": "text-writing-claude",
     "name": "Claude",
     "description": "长上下文与安全对齐突出，适合长文生成与分析。",
     "link": "https://claude.ai",
@@ -40,6 +44,7 @@
     "subcategory": "LongFormWriting"
   },
   {
+    "key": "text-writing-notion-ai",
     "name": "Notion AI",
     "description": "Notion 内的一键生成与改写，适配知识库与笔记协作。",
     "link": "https://www.notion.com/ai",

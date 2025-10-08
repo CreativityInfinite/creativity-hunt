@@ -1,5 +1,6 @@
 [
   {
+    "key": "automation-zapier-ai",
     "name": "Zapier AI",
     "description": "无代码自动化与 AI 步骤编排，连接数千服务。",
     "link": "https://zapier.com/ai",
@@ -10,6 +11,7 @@
     "subcategory": "WorkflowAutomation"
   },
   {
+    "key": "automation-otter-ai",
     "name": "Otter.ai",
     "description": "会议转录与摘要，自动生成行动项与共享记录。",
     "link": "https://otter.ai",
@@ -20,6 +22,7 @@
     "subcategory": "MeetingNotes"
   },
   {
+    "key": "automation-clickup-ai",
     "name": "ClickUp AI",
     "description": "任务/文档一体化的 AI 能力，支持总结与分解。",
     "link": "https://clickup.com/ai",
@@ -30,6 +33,7 @@
     "subcategory": "TaskDocuments"
   },
   {
+    "key": "automation-airtable-ai",
     "name": "Airtable AI",
     "description": "数据库表单与自动化结合的 AI 能力。",
     "link": "https://airtable.com/ai",

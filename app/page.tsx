@@ -9,7 +9,7 @@ import { Footer } from '@component/Footer';
 import { getMessages } from '@i18n/index';
 import { ScrollTrigger } from '@component/ScrollTrigger';
 import { BackToTop } from '@component/BackToTop';
-import { Search, Upload, TrendingUp, Image, SquarePen, Code, Mic, BarChart, Zap, Compass, MessageCircleMore } from 'lucide-react';
+import { Search, Upload, TrendingUp, Image, SquarePen, Code, Mic, LineChart, Zap, Compass, MessageCircleMore } from 'lucide-react';
 import { Tool } from '@/types/tool';
 import { GradientBackground } from '@component/shared/GradientBackground';
 import { cookies } from 'next/headers';
@@ -92,7 +92,7 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
           <div className="mt-8 sm:mt-10 lg:mt-12 max-w-xs sm:max-w-4xl lg:max-w-6xl mx-auto px-4 sm:px-0">
             <div className="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
               {hotTags.map((tag, index) => {
-                const icons = [Image, SquarePen, MessageCircleMore, Code, Mic, BarChart, Zap];
+                const icons = [Image, SquarePen, MessageCircleMore, Code, Mic, LineChart, Zap];
                 const Icon = icons[index] || Search;
                 return (
                   <Link key={tag} href={`/search/${encodeURIComponent(tag)}`}>
