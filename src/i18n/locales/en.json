@@ -89,7 +89,19 @@
     "explore": "Explore All Categories"
   },
   "ui": {
-    "scrollHint": "Scroll down to explore tools"
+    "scrollHint": "Scroll down to explore tools",
+    "all": "All",
+    "searchPlaceholder": "Search tool names, descriptions or tags...",
+    "noResultsSearch": "No matching tools found, try adjusting your search keywords",
+    "noResultsCategory": "No content available, try switching to other subcategories"
+  },
+  "explore": {
+    "title": "Explore All Categories",
+    "subtitle": "Discover quality AI tools and platforms, quickly locate by category and purpose",
+    "searchPlaceholder": "Search tool names, descriptions or tags...",
+    "all": "All",
+    "noResultsSearch": "No matching tools found, try adjusting your search keywords",
+    "noResultsCategory": "No content available, try switching to other subcategories"
   },
   "auth": {
     "signin": {

@@ -89,7 +89,19 @@
     "explore": "探索全部分类"
   },
   "ui": {
-    "scrollHint": "向下滚动探索工具"
+    "scrollHint": "向下滚动探索工具",
+    "all": "全部",
+    "searchPlaceholder": "搜索工具名称、描述或标签...",
+    "noResultsSearch": "未找到匹配的工具，尝试调整搜索关键词",
+    "noResultsCategory": "暂无内容，切换其他二级分类试试"
+  },
+  "explore": {
+    "title": "探索全部分类",
+    "subtitle": "发现优质 AI 工具与平台，按分类和用途快速定位",
+    "searchPlaceholder": "搜索工具名称、描述或标签...",
+    "all": "全部",
+    "noResultsSearch": "未找到匹配的工具，尝试调整搜索关键词",
+    "noResultsCategory": "暂无内容，切换其他二级分类试试"
   },
   "auth": {
     "signin": {
