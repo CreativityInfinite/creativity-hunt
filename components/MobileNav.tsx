@@ -15,7 +15,7 @@ import { ThemeToggle } from './ThemeToggle';
 import { LangSwitcher } from './LangSwitcher';
 import UserMenu from './UserMenu';
 import { GradientBackground } from './shared/GradientBackground';
-import { cn } from '@/lib/utils';
+import { cn } from '@component/lib/utils';
 
 interface MobileNavProps {
   locale: string;

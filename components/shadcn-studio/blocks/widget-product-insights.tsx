@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader } from '@component/ui/card';
 import { type ChartConfig, ChartContainer } from '@component/ui/chart';
 import { Separator } from '@component/ui/separator';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@component/lib/utils';
 
 // Product reached data
 const productReachChartData = [

@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '@component/lib/utils';
 
 type GradientBackgroundProps = {
   className?: string;

@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { Loader2, Search, ArrowRight, Sparkles } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { cn } from '@component/lib/utils';
 import { motion } from 'framer-motion';
 
 const searchSuggestions = ['生成产品海报的 AI', '视频剪辑工具', '代码自动补全', '语音转文字', '图片背景移除', 'PPT 自动生成'];

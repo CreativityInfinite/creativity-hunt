@@ -1,7 +1,7 @@
 'use client';
 
 import { Download } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { cn } from '@component/lib/utils';
 import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from '@component/ui/context-menu';
 
 interface LogoProps extends React.HTMLAttributes<HTMLAnchorElement> {

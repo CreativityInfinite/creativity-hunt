@@ -28,7 +28,7 @@ interface NavSection {
   groups?: MenuGroup[];
 }
 
-export function SiteNavigation({ locale }: { locale: string }) {
+export function SiteNavigation({ locale, fixed = false }: { locale: string; fixed?: boolean }) {
   const base = '';
 
   // 从 i18n 读取导航文案（trigger、分组标题、items 文案）
@@ -61,7 +61,7 @@ export function SiteNavigation({ locale }: { locale: string }) {
   });
 
   return (
-    <div className="top-0">
+    <div className={fixed ? 'fixed top-0 left-0 right-0 z-50 backdrop-blur-md' : 'top-0'}>
       <div className="container mx-auto flex h-12 sm:h-14 items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* 左侧导航页 */}
         <div className="flex items-center gap-3 sm:gap-6">

@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { cn } from '@/lib/utils';
+import { cn } from '@component/lib/utils';
 
 interface LogoProps extends React.HTMLAttributes<HTMLDivElement> {
   url?: string;

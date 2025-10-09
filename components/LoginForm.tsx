@@ -3,7 +3,7 @@
 import AppleSvg from '@asset/icons/apple.svg';
 import GoogleSvg from '@asset/icons/google.svg';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@component/lib/utils';
 import { defaultLogo } from '@constant/base.constant';
 import { Button } from '@component/ui/button';
 import { Input } from '@component/ui/input';

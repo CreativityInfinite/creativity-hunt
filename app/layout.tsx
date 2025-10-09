@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { cookies } from 'next/headers';
-import { cn } from '@/lib/utils';
+import { cn } from '@component/lib/utils';
 import { ThemeProvider } from '@component/ThemeProvider';
 import ClientSessionProvider from '@component/ClientSessionProvider';
 
