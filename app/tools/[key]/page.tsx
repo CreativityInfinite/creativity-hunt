@@ -94,6 +94,7 @@ export default function ToolDetailPage() {
   const [isFavorited, setIsFavorited] = React.useState(false);
   const [isFollowed, setIsFollowed] = React.useState(false);
   const [activeSidebarTab, setActiveSidebarTab] = React.useState('useCases');
+  const [moduleDisplayCollapsed, setModuleDisplayCollapsed] = React.useState(true);
 
   // 模块显示控制状态
   const [sidebarModulesVisibility, setSidebarModulesVisibility] = React.useState(DEFAULT_MODULES_VISIBILITY);
@@ -212,41 +213,61 @@ export default function ToolDetailPage() {
       case 'moduleDisplay':
         return (
           <div className={baseClasses}>
-            <div className="flex items-center justify-between mb-3">
+            <button
+              type="button"
+              className="w-full flex items-center justify-between mb-2 group"
+              onClick={() => setModuleDisplayCollapsed((v) => !v)}
+              aria-expanded={!moduleDisplayCollapsed}
+              aria-controls="module-display-panel"
+            >
               <div className="flex items-center gap-2">
                 <Settings className="h-4 w-4 text-gray-500" />
                 <h3 className="text-sm font-semibold">自定义显示</h3>
               </div>
-              <Button variant="ghost" size="sm" className="h-6 px-2" onClick={toggleAllModules}>
-                {Object.values(sidebarModulesVisibility).every((v) => v) ? (
-                  <>
-                    <EyeOff className="h-3 w-3 mr-1" />
-                    隐藏全部
-                  </>
-                ) : (
-                  <>
-                    <Eye className="h-3 w-3 mr-1" />
-                    显示全部
-                  </>
-                )}
-              </Button>
-            </div>
-            <div className="grid grid-cols-2 gap-2 text-xs">
-              {Object.entries(sidebarModulesVisibility)
-                .filter(([key]) => MODULE_LABELS[key])
-                .map(([key, visible]) => (
-                  <button
-                    key={key}
-                    onClick={() => toggleModuleVisibility(key)}
-                    className={`flex items-center gap-1.5 px-2 py-1 rounded-md transition-all duration-200 hover:scale-105 ${
-                      visible ? 'bg-primary/10 text-primary border border-primary/20' : 'bg-muted/50 text-muted-foreground hover:bg-muted/70'
-                    }`}
-                  >
-                    {visible ? <Eye className="h-3 w-3" /> : <EyeOff className="h-3 w-3" />}
-                    <span className="text-xs font-medium">{MODULE_LABELS[key].label}</span>
-                  </button>
-                ))}
-            </div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-muted-foreground">{moduleDisplayCollapsed ? '展开' : '收起'}</span>
+                <svg className={`h-3.5 w-3.5 transition-transform duration-200 ${moduleDisplayCollapsed ? '' : 'rotate-180'}`} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M5.23 7.21a.75.75 0 011.06.02L10 11.086l3.71-3.855a.75.75 0 111.08 1.04l-4.24 4.4a.75.75 0 01-1.08 0l-4.24-4.4a.75.75 0 01.02-1.06z" />
+                </svg>
+              </div>
+            </button>
+
+            {!moduleDisplayCollapsed && (
+              <div id="module-display-panel" className="space-y-3">
+                <div className="flex items-center justify-end">
+                  <Button variant="ghost" size="sm" className="h-6 px-2" onClick={toggleAllModules}>
+                    {Object.values(sidebarModulesVisibility).every((v) => v) ? (
+                      <>
+                        <EyeOff className="h-3 w-3 mr-1" />
+                        隐藏全部
+                      </>
+                    ) : (
+                      <>
+                        <Eye className="h-3 w-3 mr-1" />
+                        显示全部
+                      </>
+                    )}
+                  </Button>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 text-xs">
+                  {Object.entries(sidebarModulesVisibility)
+                    .filter(([key]) => MODULE_LABELS[key])
+                    .map(([key, visible]) => (
+                      <button
+                        key={key}
+                        onClick={() => toggleModuleVisibility(key)}
+                        className={`flex items-center gap-1.5 px-2 py-1 rounded-md transition-all duration-200 hover:scale-105 ${
+                          visible ? 'bg-primary/10 text-primary border border-primary/20' : 'bg-muted/50 text-muted-foreground hover:bg-muted/70'
+                        }`}
+                      >
+                        {visible ? <Eye className="h-3 w-3" /> : <EyeOff className="h-3 w-3" />}
+                        <span className="text-xs font-medium">{MODULE_LABELS[key].label}</span>
+                      </button>
+                    ))}
+                </div>
+              </div>
+            )}
           </div>
         );
 
@@ -834,7 +855,7 @@ export default function ToolDetailPage() {
 
             {/* 移动端 Tab 切换 */}
             <div className="lg:hidden mb-4">
-              <div className="flex items-center gap-1 border-b border-border/30 overflow-x-auto">
+              <div className="flex items-center gap-1 border-b border-border/30 overflow-x-auto overflow-y-hidden">
                 {MODULE_DISPLAY_ORDER.filter((key) => MODULE_LABELS[key].available(tool, highlights, changelog)).map((key) => {
                   const config = MODULE_LABELS[key];
                   return (

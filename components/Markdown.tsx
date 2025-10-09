@@ -65,16 +65,57 @@ export function MarkdownToc({ markdown, className }: MarkdownTocProps) {
     });
   }, [markdown, slugify]);
 
+  // 移动端展开控制与外部点击关闭
+  const [open, setOpen] = React.useState(false);
+  const tocContainerRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (tocContainerRef.current && !tocContainerRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKey);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKey);
+    };
+  }, []);
+
   if (toc.length === 0) return null;
 
   return (
-    <div className={cn('absolute top-2 left-0 group z-10', className)}>
-      <div className="flex items-center rounded-md justify-center w-8 h-8 bg-background/80 border border-border/40 cursor-pointer hover:bg-background transition-colors shadow-lg">
+    <div ref={tocContainerRef} className={cn('absolute top-2 left-0 group z-10', className)}>
+      <div
+        className="flex items-center rounded-md justify-center w-8 h-8 bg-background/80 border border-border/40 cursor-pointer hover:bg-background transition-colors shadow-lg"
+        role="button"
+        tabIndex={0}
+        aria-expanded={open}
+        aria-label="展开/收起目录"
+        onClick={() => setOpen((v) => !v)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            setOpen((v) => !v);
+          }
+        }}
+      >
         <List className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
       </div>
 
       {/* 悬浮显示的大纲内容 - 移动端适配 */}
-      <div className="absolute top-0 left-10 w-56 sm:w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-20">
+      <div
+        className={cn(
+          'absolute top-0 left-10 w-56 sm:w-64 transition-all duration-200 z-20',
+          open ? 'opacity-100 visible' : 'opacity-0 invisible',
+          // 桌面端使用 hover 展示
+          'md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible'
+        )}
+      >
         <div className="relative rounded-lg border border-border/40 backdrop-blur-sm p-3 shadow-lg overflow-hidden">
           <GradientBackground type="index" />
           <div className="relative z-10">
@@ -82,7 +123,7 @@ export function MarkdownToc({ markdown, className }: MarkdownTocProps) {
             <ul className="space-y-1 text-sm max-h-48 sm:max-h-64 overflow-y-auto">
               {toc.map((i: TocItem) => (
                 <li key={i.slug} className={tocIndentClass(i.level)}>
-                  <a className="hover:underline hover:text-primary transition-colors block py-0.5 text-xs sm:text-sm" href={`#${i.slug}`}>
+                  <a className="hover:underline hover:text-primary transition-colors block py-0.5 text-xs sm:text-sm" href={`#${i.slug}`} onClick={() => setOpen(false)}>
                     {i.text}
                   </a>
                 </li>
@@ -137,7 +178,7 @@ const EnhancedCodeBlock = ({ language, children, isDark }: { language: string; c
           <Button
             variant="ghost"
             size="sm"
-            className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
+            className="h-6 w-6 p-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
             onClick={() => setWordWrap(!wordWrap)}
             title={wordWrap ? '取消换行' : '启用换行'}
           >
@@ -149,7 +190,7 @@ const EnhancedCodeBlock = ({ language, children, isDark }: { language: string; c
             <Button
               variant="ghost"
               size="sm"
-              className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
+              className="h-6 w-6 p-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
               onClick={() => setIsExpanded(!isExpanded)}
               title={isExpanded ? '收起代码' : '展开代码'}
             >
@@ -158,7 +199,7 @@ const EnhancedCodeBlock = ({ language, children, isDark }: { language: string; c
           )}
 
           {/* 复制按钮 */}
-          <Button variant="ghost" size="sm" className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100 transition-opacity" onClick={handleCopy} title="复制代码">
+          <Button variant="ghost" size="sm" className="h-6 w-6 p-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity" onClick={handleCopy} title="复制代码">
             {copied ? <Check className="h-3 w-3 text-green-500" /> : <Copy className="h-3 w-3 text-muted-foreground" />}
           </Button>
         </div>

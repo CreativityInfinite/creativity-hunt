@@ -10,7 +10,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './ui/collap
 import { Menu, ChevronDown, X } from 'lucide-react';
 import { Logo, LogoImage, LogoText } from './Logo';
 import { defaultLogo, getNavSections } from '@constant/base.constant';
-import { getIconComponent, getMobileNavIcon } from '@constant/navigation.constant';
+import { getIconComponent, getMobileNavIcon, desktopStaticNavigation } from '@constant/navigation.constant';
 import { ThemeToggle } from './ThemeToggle';
 import { LangSwitcher } from './LangSwitcher';
 import UserMenu from './UserMenu';
@@ -25,7 +25,28 @@ export function MobileNav({ locale }: MobileNavProps) {
   const [open, setOpen] = React.useState(false);
   const [openSections, setOpenSections] = React.useState<string[]>([]);
   const pathname = usePathname();
-  const navSections = getNavSections(locale);
+  // 与桌面端一致：合并 i18n 与静态导航，补齐 href 等信息
+  const translatedNav = getNavSections(locale);
+  const staticNav = desktopStaticNavigation;
+  const navSections = translatedNav.map((section, si) => {
+    const s = staticNav[si];
+    const groups = (section.groups || []).map((g, gi) => {
+      const sg = s?.groups?.[gi];
+      const items = (g.items || []).map((it, ii) => {
+        const siItem = sg?.items?.[ii];
+        return {
+          href: siItem?.href || it.href || '/',
+          title: it.title
+        };
+      });
+      return { title: g.title, items };
+    });
+    return {
+      trigger: section.trigger,
+      href: s?.href || section.href,
+      groups
+    };
+  });
 
   const toggleSection = (sectionName: string) => {
     setOpenSections((prev) => (prev.includes(sectionName) ? prev.filter((name) => name !== sectionName) : [...prev, sectionName]));
