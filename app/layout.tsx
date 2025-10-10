@@ -4,7 +4,6 @@ import { cookies } from 'next/headers';
 import { cn } from '@component/lib/utils';
 import { ThemeProvider } from '@component/ThemeProvider';
 import ClientSessionProvider from '@component/ClientSessionProvider';
-import { AuthProvider } from '@/components/AuthContext';
 
 import '@/app/globals.css';
 
@@ -27,9 +26,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body className={cn('min-h-screen bg-background font-sans antialiased', inter.variable)}>
         <ClientSessionProvider>
           <ThemeProvider>
-            <AuthProvider>
-              <main>{children}</main>
-            </AuthProvider>
+            <main>{children}</main>
           </ThemeProvider>
         </ClientSessionProvider>
       </body>
