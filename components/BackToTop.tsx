@@ -24,10 +24,11 @@ export function BackToTop() {
     };
 
     const toggleVisibility = () => {
-      // 当滚动超过视口高度时显示按钮（兼容不同滚动根）
+      // 更早显示：超过阈值（视口高度的 1/3 或至少 200px；兼容不同滚动根）
       const y = getScrollY();
       const vh = getViewportH();
-      setIsVisible(y > vh);
+      const threshold = Math.max(200, Math.floor(vh * 0.33));
+      setIsVisible(y > threshold);
     };
 
     window.addEventListener('scroll', toggleVisibility, { passive: true });

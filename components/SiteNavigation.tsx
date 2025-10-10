@@ -45,7 +45,7 @@ export function SiteNavigation({ locale, fixed = false }: { locale: string; fixe
             <span className="flex items-center gap-2">
               <Logo url={defaultLogo.url}>
                 <LogoImage size={32} src={defaultLogo.src} alt={defaultLogo.alt} title={defaultLogo.title} className="h-8 sm:h-10" />
-                <LogoText className="text-sm sm:text-md hidden xs:block">{defaultLogo.title}</LogoText>
+                <LogoText className="xs:block font-extrabold tracking-wide text-sm sm:text-sm lg:text-sm">{defaultLogo.title}</LogoText>
               </Logo>
             </span>
           </Link>
