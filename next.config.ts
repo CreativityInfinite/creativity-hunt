@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
   turbopack: {
     rules: { '*.svg': { loaders: ['@svgr/webpack'], as: '*.js' } }
   },
+  serverExternalPackages: ['winston', 'node-cron'],
   webpack: (config) => {
     config.resolve = config.resolve || {};
     config.resolve.alias = {

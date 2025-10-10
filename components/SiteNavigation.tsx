@@ -8,7 +8,7 @@ import { LangSwitcher } from './LangSwitcher';
 import { Logo, LogoImage, LogoText } from './Logo';
 import { defaultLogo } from '@constant/base.constant';
 import { iconMap, getNavSections, getIconComponent, type IconKey } from '@constant/navigation.constant';
-import UserMenu from './UserMenu';
+import { UserMenu } from './UserMenu';
 import { MobileNav } from './MobileNav';
 
 interface MenuItem {

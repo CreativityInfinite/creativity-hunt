@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import UserMenu from './UserMenu';
+import { UserMenu } from './UserMenu';
 import { usePathname } from 'next/navigation';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from './ui/sheet';
 import { Button } from './ui/button';

@@ -7,10 +7,10 @@ import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
 import { useSession, signOut } from 'next-auth/react';
 import { getMessages } from '@i18n/index';
 
-export default function UserMenu({ locale }: { locale: string }) {
+export function UserMenu({ locale }: { locale: string }) {
   const { data: session, status } = useSession();
-  const isAuthenticated = status === 'authenticated' && !!session?.user;
 
+  const isAuthenticated = status === 'authenticated' && !!session?.user;
   const displayName = session?.user?.name || session?.user?.email || 'User';
   const avatar = (session?.user as any)?.picture || '/avatars/default.png';
   const messages = getMessages(locale);
@@ -29,12 +29,7 @@ export default function UserMenu({ locale }: { locale: string }) {
             <Button size="sm">{tran('signIn')}</Button>
           </Link>
           <Link href={`/auth/signin`} className="hidden sm:block">
-            <Button variant="ghost" size="sm">
-              {tran('signIn')}
-            </Button>
-          </Link>
-          <Link href={`/auth/signup`} className="hidden sm:block">
-            <Button size="sm">{tran('signUp')}</Button>
+            <Button size="sm">{tran('signIn')}</Button>
           </Link>
         </>
       ) : (
