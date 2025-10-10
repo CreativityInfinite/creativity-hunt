@@ -196,6 +196,37 @@
       ]
     },
     {
+      "trigger": "MCP",
+      "groups": [
+        {
+          "title": "分类",
+          "items": [
+            { "title": "设计", "description": "设计系统、素材与组件" },
+            { "title": "测试", "description": "浏览器自动化与测试" },
+            { "title": "代码分析", "description": "分析代码库与仓库" },
+            { "title": "UI 组件", "description": "UI 组件库与注册表" },
+            { "title": "抓取", "description": "网页抓取与站点映射" },
+            { "title": "开发者工具", "description": "用于检查与调试的开发工具" }
+          ]
+        },
+        {
+          "title": "集成",
+          "items": [
+            { "title": "自动化", "description": "在不同工具间运行工作流" },
+            { "title": "抓取", "description": "大规模采集网页内容" },
+            { "title": "设计", "description": "同步设计资源" }
+          ]
+        },
+        {
+          "title": "指南",
+          "items": [
+            { "title": "MCP 指南", "description": "快速入门与进阶用法" },
+            { "title": "MCP 资源", "description": "参考与最佳实践" }
+          ]
+        }
+      ]
+    },
+    {
       "trigger": "博客",
       "groups": [
         {

@@ -39,10 +39,11 @@ import {
   MessageCircleMore,
   ThumbsUp,
   Gauge,
-  Home
+  Home,
+  Server,
+  Boxes
 } from 'lucide-react';
-
-// 统一的图标映射
+import { getMessages } from '@/src/i18n'; // i18n helper，与原 getNavSections 相同来源
 export const iconMap = {
   home: Home,
   folder: Folder,
@@ -84,36 +85,30 @@ export const iconMap = {
   mic: Mic,
   bot: MessageCircleMore,
   'thumbs-up': ThumbsUp,
-  gauge: Gauge
+  gauge: Gauge,
+  server: Server,
+  boxes: Boxes
 };
-
-// 图标类型定义
 export type IconKey = keyof typeof iconMap;
-
-// 导航项类型定义
 export interface NavigationItem {
   title: string;
   href: string;
   icon: IconKey;
 }
-
 export interface NavigationGroup {
   title: string;
   items: NavigationItem[];
 }
-
 export interface NavigationSection {
   trigger: string;
   href?: string;
-  icon: IconKey;
   groups?: NavigationGroup[];
 }
 
-// 桌面端静态导航配置（用于与 i18n 合并）
-export const desktopStaticNavigation = [
+// 导航配置
+export const staticNavigation = [
   {
     trigger: 'Explore',
-    minW: 'min-w-[640px] md:min-w-[720px]',
     groups: [
       {
         title: 'Categories',
@@ -148,8 +143,38 @@ export const desktopStaticNavigation = [
     ]
   },
   {
+    trigger: 'MCP',
+    groups: [
+      {
+        title: 'Categories',
+        items: [
+          { href: `/mcp/categories/design`, icon: 'images' as IconKey },
+          { href: `/mcp/categories/testing`, icon: 'gauge' as IconKey },
+          { href: `/mcp/categories/code-analysis`, icon: 'bar-chart' as IconKey },
+          { href: `/mcp/categories/ui-components`, icon: 'layout-dashboard' as IconKey },
+          { href: `/mcp/categories/scraping`, icon: 'search' as IconKey },
+          { href: `/mcp/categories/devtools`, icon: 'tool' as IconKey }
+        ]
+      },
+      {
+        title: 'Integrations',
+        items: [
+          { href: `/mcp/integrations/automation`, icon: 'zap' as IconKey },
+          { href: `/mcp/integrations/scraping`, icon: 'camera' as IconKey },
+          { href: `/mcp/integrations/design`, icon: 'pen-line' as IconKey }
+        ]
+      },
+      {
+        title: 'Guides',
+        items: [
+          { href: `/blog/guides?tag=mcp`, icon: 'book-open' as IconKey },
+          { href: `/discussion/resources?tag=mcp`, icon: 'folder' as IconKey }
+        ]
+      }
+    ]
+  },
+  {
     trigger: 'Blog',
-    minW: 'min-w-[640px] md:min-w-[720px]',
     groups: [
       {
         title: 'Articles',
@@ -176,7 +201,6 @@ export const desktopStaticNavigation = [
   },
   {
     trigger: 'News',
-    minW: 'min-w-[640px] md:min-w-[720px]',
     groups: [
       {
         title: 'AI Trends',
@@ -203,7 +227,6 @@ export const desktopStaticNavigation = [
   },
   {
     trigger: 'Discussion',
-    minW: 'min-w-[640px] md:min-w-[720px]',
     groups: [
       {
         title: 'General Discussion',
@@ -230,7 +253,6 @@ export const desktopStaticNavigation = [
   },
   {
     trigger: 'Account',
-    minW: 'min-w-[640px] md:min-w-[720px]',
     groups: [
       {
         title: 'Dashboard',
@@ -255,229 +277,83 @@ export const desktopStaticNavigation = [
       }
     ]
   },
-  {
-    trigger: 'About',
-    minW: 'min-w-[640px] md:min-w-[720px]',
-    href: `/about`
-  }
-];
-
-// 移动端静态导航配置
-export const mobileStaticNavigation: NavigationSection[] = [
-  {
-    trigger: 'Explore',
-    icon: 'search',
-    groups: [
-      {
-        title: 'Categories',
-        items: [
-          { title: 'Chat Tools', href: `/categories/chat-tools`, icon: 'bot' },
-          { title: 'Image Generation', href: `/categories/image-generation`, icon: 'images' },
-          { title: 'Writing', href: `/categories/writing`, icon: 'pen-line' },
-          { title: 'Code Assistant', href: `/categories/code-assistant`, icon: 'code' },
-          { title: 'Audio Voice', href: `/categories/audio-voice`, icon: 'mic' },
-          { title: 'Data Insights', href: `/categories/data-insights`, icon: 'line-chart' },
-          { title: 'Automation', href: `/categories/automation`, icon: 'zap' }
-        ]
-      },
-      {
-        title: 'Trending',
-        items: [
-          { title: 'Trending Now', href: `/trending/now`, icon: 'trending-up' },
-          { title: 'Top Rated', href: `/trending/top-rated`, icon: 'trophy' },
-          { title: 'Rising', href: `/trending/rising`, icon: 'rocket' },
-          { title: 'Most Searched', href: `/trending/most-searched`, icon: 'search' }
-        ]
-      },
-      {
-        title: 'Featured',
-        items: [
-          { title: 'Editors Picks', href: `/featured/editors-picks`, icon: 'bookmark' },
-          { title: 'New Launches', href: `/featured/new-launches`, icon: 'calendar-days' },
-          { title: 'Community Favorites', href: `/featured/community-favorites`, icon: 'thumbs-up' },
-          { title: 'Weekly Highlights', href: `/featured/weekly-highlights`, icon: 'bell' }
-        ]
-      }
-    ]
-  },
-  {
-    trigger: 'Blog',
-    icon: 'book-open',
-    groups: [
-      {
-        title: 'Articles',
-        items: [
-          { title: 'Articles', href: `/blog/articles`, icon: 'file-text' },
-          { title: 'Guides', href: `/blog/guides`, icon: 'book-open' }
-        ]
-      },
-      {
-        title: 'Tutorials',
-        items: [
-          { title: 'Tutorials', href: `/blog/tutorials`, icon: 'book' },
-          { title: 'Case Studies', href: `/blog/case-studies`, icon: 'pie-chart' }
-        ]
-      },
-      {
-        title: 'Updates',
-        items: [
-          { title: 'Updates', href: `/blog/updates`, icon: 'history' },
-          { title: 'Changelog', href: `/blog/changelog`, icon: 'activity' }
-        ]
-      }
-    ]
-  },
-  {
-    trigger: 'News',
-    icon: 'newspaper',
-    groups: [
-      {
-        title: 'AI Trends',
-        items: [
-          { title: 'Trends', href: `/news/trends`, icon: 'bar-chart' },
-          { title: 'Opinion', href: `/news/opinion`, icon: 'newspaper' }
-        ]
-      },
-      {
-        title: 'Releases',
-        items: [
-          { title: 'Releases', href: `/news/releases`, icon: 'zap' },
-          { title: 'Changelog', href: `/news/changelog`, icon: 'calendar' }
-        ]
-      },
-      {
-        title: 'Events',
-        items: [
-          { title: 'Events', href: `/news/events`, icon: 'clock' },
-          { title: 'Webinars', href: `/news/webinars`, icon: 'megaphone' }
-        ]
-      }
-    ]
-  },
-  {
-    trigger: 'Discussion',
-    icon: 'message-circle',
-    groups: [
-      {
-        title: 'General Discussion',
-        items: [
-          { title: 'General', href: `/discussion/general`, icon: 'message-circle' },
-          { title: 'Feedback', href: `/discussion/feedback`, icon: 'message-square' }
-        ]
-      },
-      {
-        title: 'Tool Recommendations',
-        items: [
-          { title: 'Tools', href: `/discussion/tools`, icon: 'tool' },
-          { title: 'Showcase', href: `/discussion/showcase`, icon: 'camera' }
-        ]
-      },
-      {
-        title: 'Tutorials',
-        items: [
-          { title: 'Tutorials', href: `/discussion/tutorials`, icon: 'graduation-cap' },
-          { title: 'Resources', href: `/discussion/resources`, icon: 'folder' }
-        ]
-      }
-    ]
-  },
-  {
-    trigger: 'Account',
-    icon: 'user',
-    groups: [
-      {
-        title: 'Dashboard',
-        items: [
-          { title: 'Dashboard', href: `/account`, icon: 'layout-dashboard' },
-          { title: 'Activity', href: `/account/activity`, icon: 'gauge' }
-        ]
-      },
-      {
-        title: 'Profile',
-        items: [
-          { title: 'Profile', href: `/profile`, icon: 'user' },
-          { title: 'Security', href: `/profile/security`, icon: 'shield' }
-        ]
-      },
-      {
-        title: 'Settings',
-        items: [
-          { title: 'Settings', href: `/settings`, icon: 'settings' },
-          { title: 'Notifications', href: `/settings/notifications`, icon: 'bell-ring' }
-        ]
-      }
-    ]
-  },
-  {
-    trigger: 'About',
-    icon: 'file-text',
-    href: `/about`
-  }
+  { trigger: 'About', href: `/about` }
 ];
 
 // 获取图标组件的辅助函数
-export const getIconComponent = (iconName: IconKey) => {
-  return iconMap[iconName] || iconMap.folder;
+export const getIconComponent = (iconName: IconKey) => iconMap[iconName] || iconMap.folder;
+
+// NavSection 类型（SiteNavigation 使用）
+export interface MenuItem {
+  href: string;
+  title: string;
+  description: string;
+  icon: IconKey;
+}
+export interface MenuGroup {
+  title: string;
+  items: MenuItem[];
+}
+export interface NavSection {
+  trigger: string;
+  href?: string;
+  groups: MenuGroup[];
+}
+
+// 推断标题
+const inferTitleFromHref = (href: string) => {
+  try {
+    const seg = href.split('?')[0].split('/').filter(Boolean).pop() || 'Item';
+    return seg.replace(/-/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase());
+  } catch {
+    return 'Item';
+  }
 };
 
-// 获取桌面端导航图标的辅助函数
-export const getDesktopNavIcon = (sectionIndex: number, groupIndex?: number, itemIndex?: number): IconKey => {
-  const section = desktopStaticNavigation[sectionIndex];
-  if (!section) return 'star';
+// 从 i18n 构建 NavSection（静态优先，i18n覆盖）
+export function getNavSections(locale: string = 'zh-CN'): NavSection[] {
+  const messages = getMessages(locale);
+  const translatedNav = messages?.navSections || [];
+  const staticNav = staticNavigation;
+  const base = '/';
 
-  // 如果是子项
-  if (groupIndex !== undefined && itemIndex !== undefined) {
-    const group = section.groups?.[groupIndex];
-    const item = group?.items?.[itemIndex];
-    if (item?.icon) {
-      return item.icon;
-    }
-  }
+  // 保持顺序严格按照 staticNavigation
+  const navSections: NavSection[] = staticNav.map((s: any, si: number) => {
+    const t = translatedNav[si];
 
-  return 'star';
-};
+    const trigger = t?.trigger || s?.trigger || '';
+    if (!trigger) return { trigger: '', href: base, groups: [] };
 
-// 获取移动端导航图标的辅助函数
-export const getMobileNavIcon = (sectionIndex?: number, groupIndex?: number, itemIndex?: number): IconKey => {
-  if (sectionIndex !== undefined && mobileStaticNavigation[sectionIndex]) {
-    const section = mobileStaticNavigation[sectionIndex];
+    const href = s?.href;
+    const sGroups = s?.groups || [];
+    const tGroups = t?.groups || [];
 
-    // 如果是顶级导航项
-    if (groupIndex === undefined) {
-      return section.icon;
-    }
+    const groups: MenuGroup[] = tGroups.length
+      ? tGroups.map((g: any, gi: number) => {
+          const sg = sGroups[gi];
+          const items = (g.items || []).map((it: any, ii: number) => {
+            const siItem = sg?.items?.[ii];
+            return {
+              href: siItem?.href || base,
+              title: it.title || inferTitleFromHref(siItem?.href || ''),
+              description: it.description || '',
+              icon: (siItem?.icon as IconKey) || ('star' as IconKey)
+            };
+          });
+          return { title: g.title || 'Group', items };
+        })
+      : sGroups.map((sg: any) => {
+          const items = (sg.items || []).map((siItem: any) => ({
+            href: siItem.href || base,
+            title: inferTitleFromHref(siItem.href || ''),
+            description: '',
+            icon: siItem.icon
+          }));
+          return { title: sg.title, items };
+        });
 
-    // 如果是子项
-    if (groupIndex !== undefined && itemIndex !== undefined) {
-      const group = section.groups?.[groupIndex];
-      const item = group?.items?.[itemIndex];
-      if (item?.icon) {
-        return item.icon;
-      }
-    }
-  }
+    return { trigger, href, groups };
+  });
 
-  return 'star';
-};
-
-// 获取桌面端导航链接的辅助函数
-export const getDesktopNavHref = (sectionIndex: number, groupIndex?: number, itemIndex?: number): string => {
-  const section = desktopStaticNavigation[sectionIndex];
-  if (!section) return '/';
-
-  // 如果是直接链接
-  if (section.href) {
-    return section.href;
-  }
-
-  // 如果是子项
-  if (groupIndex !== undefined && itemIndex !== undefined) {
-    const group = section.groups?.[groupIndex];
-    const item = group?.items?.[itemIndex];
-    if (item?.href) {
-      return item.href;
-    }
-  }
-
-  return '/';
-};
+  return navSections;
+}

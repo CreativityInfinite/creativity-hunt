@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { toolsData } from '@data/tools';
 import { SearchBar } from '@component/SearchBar';
-import { Badge } from '@component/ui/badge';
 import { Button } from '@component/ui/button';
 import { ToolCard } from '@component/ToolCard';
 import { SiteNavigation } from '@component/SiteNavigation';

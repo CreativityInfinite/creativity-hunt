@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
+import UserMenu from './UserMenu';
 import { usePathname } from 'next/navigation';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from './ui/sheet';
 import { Button } from './ui/button';
@@ -9,11 +10,10 @@ import { ScrollArea } from './ui/scroll-area';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './ui/collapsible';
 import { Menu, ChevronDown, X } from 'lucide-react';
 import { Logo, LogoImage, LogoText } from './Logo';
-import { defaultLogo, getNavSections } from '@constant/base.constant';
-import { getIconComponent, getMobileNavIcon, desktopStaticNavigation } from '@constant/navigation.constant';
+import { defaultLogo } from '@constant/base.constant';
+import { getIconComponent, getNavSections, type IconKey } from '@constant/navigation.constant';
 import { ThemeToggle } from './ThemeToggle';
 import { LangSwitcher } from './LangSwitcher';
-import UserMenu from './UserMenu';
 import { GradientBackground } from './shared/GradientBackground';
 import { cn } from '@component/lib/utils';
 
@@ -25,39 +25,16 @@ export function MobileNav({ locale }: MobileNavProps) {
   const [open, setOpen] = React.useState(false);
   const [openSections, setOpenSections] = React.useState<string[]>([]);
   const pathname = usePathname();
-  // 与桌面端一致：合并 i18n 与静态导航，补齐 href 等信息
-  const translatedNav = getNavSections(locale);
-  const staticNav = desktopStaticNavigation;
-  const navSections = translatedNav.map((section, si) => {
-    const s = staticNav[si];
-    const groups = (section.groups || []).map((g, gi) => {
-      const sg = s?.groups?.[gi];
-      const items = (g.items || []).map((it, ii) => {
-        const siItem = sg?.items?.[ii];
-        return {
-          href: siItem?.href || it.href || '/',
-          title: it.title
-        };
-      });
-      return { title: g.title, items };
-    });
-    return {
-      trigger: section.trigger,
-      href: s?.href || section.href,
-      groups
-    };
-  });
+
+  // 直接使用 Nav 常量提供的合并结果
+  const navSections = getNavSections(locale);
 
   const toggleSection = (sectionName: string) => {
     setOpenSections((prev) => (prev.includes(sectionName) ? prev.filter((name) => name !== sectionName) : [...prev, sectionName]));
   };
 
-  // 根据导航项获取对应图标
-  const getIconForItem = (title: string, href?: string, sectionIndex?: number, groupIndex?: number, itemIndex?: number): React.ComponentType<{ className?: string }> => {
-    // 使用统一的图标获取函数
-    const iconName = getMobileNavIcon(sectionIndex, groupIndex, itemIndex);
-    return getIconComponent(iconName);
-  };
+  // 移动端直接使用 items 提供的 icon
+  const getItemIcon = (icon: IconKey) => getIconComponent(icon);
 
   const isCurrentPage = (href: string) => {
     return pathname === href || (href !== '/' && pathname.startsWith(href));
@@ -94,7 +71,7 @@ export function MobileNav({ locale }: MobileNavProps) {
             {/* Navigation */}
             <ScrollArea className="flex-1 overflow-auto">
               <div className="space-y-2 p-4 pb-6">
-                {navSections.map((section, sectionIndex) => (
+                {navSections.map((section) => (
                   <div key={section.trigger}>
                     {section.href ? (
                       // 直接链接项
@@ -103,9 +80,6 @@ export function MobileNav({ locale }: MobileNavProps) {
                         onClick={() => setOpen(false)}
                         className={cn('flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg transition-colors', isCurrentPage(section.href) ? 'text-primary' : 'hover:bg-accent/50')}
                       >
-                        {/* {React.createElement(getIconForItem(section.trigger, section.href, sectionIndex), {
-                          className: 'h-4 w-4'
-                        })} */}
                         {section.trigger}
                       </Link>
                     ) : (
@@ -113,22 +87,17 @@ export function MobileNav({ locale }: MobileNavProps) {
                       <Collapsible open={openSections.includes(section.trigger)} onOpenChange={() => toggleSection(section.trigger)}>
                         <CollapsibleTrigger asChild>
                           <Button variant="ghost" className="w-full justify-between px-3 py-2.5 text-sm font-medium hover:bg-accent/50">
-                            <div className="flex items-center gap-3">
-                              {/* {React.createElement(getIconForItem(section.trigger, undefined, sectionIndex), {
-                                className: 'h-4 w-4'
-                              })} */}
-                              {section.trigger}
-                            </div>
+                            <div className="flex items-center gap-3">{section.trigger}</div>
                             <ChevronDown className={cn('h-4 w-4 transition-transform', openSections.includes(section.trigger) && 'rotate-180')} />
                           </Button>
                         </CollapsibleTrigger>
 
                         <CollapsibleContent className="space-y-1">
-                          {section.groups?.map((group, groupIndex) => (
+                          {section.groups?.map((group) => (
                             <div key={group.title} className="ml-6 space-y-1">
                               <h4 className="px-3 py-1 text-xs font-medium text-muted-foreground/80 uppercase tracking-wider">{group.title}</h4>
-                              {group.items?.map((item, itemIndex) => {
-                                const ItemIcon = getIconForItem(item.title, item.href, sectionIndex, groupIndex, itemIndex);
+                              {group.items?.map((item) => {
+                                const ItemIcon = getItemIcon(item.icon as IconKey);
                                 return (
                                   <Link
                                     key={item.title}

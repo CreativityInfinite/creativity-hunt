@@ -196,6 +196,37 @@
       ]
     },
     {
+      "trigger": "MCP",
+      "groups": [
+        {
+          "title": "分類",
+          "items": [
+            { "title": "設計", "description": "設計系統、素材與元件" },
+            { "title": "測試", "description": "瀏覽器自動化與測試" },
+            { "title": "程式碼分析", "description": "分析程式碼庫與版本庫" },
+            { "title": "UI 元件", "description": "UI 元件庫與註冊表" },
+            { "title": "擷取", "description": "網頁擷取與站點地圖" },
+            { "title": "開發者工具", "description": "用於檢查與除錯的開發工具" }
+          ]
+        },
+        {
+          "title": "整合",
+          "items": [
+            { "title": "自動化", "description": "在不同工具間運行工作流程" },
+            { "title": "擷取", "description": "大規模蒐集網頁內容" },
+            { "title": "設計", "description": "同步設計資源" }
+          ]
+        },
+        {
+          "title": "指南",
+          "items": [
+            { "title": "MCP 指南", "description": "快速上手與進階用法" },
+            { "title": "MCP 資源", "description": "參考與最佳實踐" }
+          ]
+        }
+      ]
+    },
+    {
       "trigger": "部落格",
       "groups": [
         {

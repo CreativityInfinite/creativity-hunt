@@ -196,6 +196,37 @@
       ]
     },
     {
+      "trigger": "MCP",
+      "groups": [
+        {
+          "title": "Servers",
+          "items": [
+            { "title": "Design", "description": "Design systems, assets and components" },
+            { "title": "Testing", "description": "Browser automation and testing" },
+            { "title": "Code Analysis", "description": "Analyze codebases and repositories" },
+            { "title": "UI Components", "description": "UI component libraries and registries" },
+            { "title": "Scraping", "description": "Web scraping and site mapping" },
+            { "title": "DevTools", "description": "Developer tools for inspect and debug" }
+          ]
+        },
+        {
+          "title": "Integrations",
+          "items": [
+            { "title": "Automation", "description": "Run workflows across tools" },
+            { "title": "Scraping", "description": "Collect web content at scale" },
+            { "title": "Design", "description": "Sync design resources" }
+          ]
+        },
+        {
+          "title": "Guides",
+          "items": [
+            { "title": "MCP Guides", "description": "Getting started and advanced usage" },
+            { "title": "MCP Resources", "description": "Reference and best practices" }
+          ]
+        }
+      ]
+    },
+    {
       "trigger": "Blog",
       "groups": [
         {

@@ -6,8 +6,8 @@ import { ThemeToggle } from './ThemeToggle';
 import { LangSwitcher } from './LangSwitcher';
 
 import { Logo, LogoImage, LogoText } from './Logo';
-import { defaultLogo, getNavSections } from '@constant/base.constant';
-import { iconMap, getIconComponent, desktopStaticNavigation, type IconKey } from '@constant/navigation.constant';
+import { defaultLogo } from '@constant/base.constant';
+import { iconMap, getNavSections, getIconComponent, type IconKey } from '@constant/navigation.constant';
 import UserMenu from './UserMenu';
 import { MobileNav } from './MobileNav';
 
@@ -23,7 +23,6 @@ interface MenuGroup {
 }
 interface NavSection {
   trigger: string;
-  minW: string;
   href?: string;
   groups?: MenuGroup[];
 }
@@ -31,34 +30,8 @@ interface NavSection {
 export function SiteNavigation({ locale, fixed = false }: { locale: string; fixed?: boolean }) {
   const base = '';
 
-  // 从 i18n 读取导航文案（trigger、分组标题、items 文案）
-  const translatedNav = getNavSections(locale);
-
-  // 合并：使用静态映射补齐 href、icon、minW，i18n 提供 trigger/title/description
-  const staticNav = desktopStaticNavigation;
-  const navSections: NavSection[] = translatedNav.map((section, si) => {
-    const s = staticNav[si];
-    const groups = (section.groups || []).map((g, gi) => {
-      const sg = s?.groups?.[gi];
-      const items = (g.items || []).map((it, ii) => {
-        const siItem = sg?.items?.[ii];
-        return {
-          href: siItem?.href || base,
-          title: it.title,
-          description: it.description,
-          icon: siItem?.icon || 'star'
-        };
-      });
-      return { title: g.title, items };
-    });
-
-    return {
-      trigger: section.trigger,
-      minW: s?.minW || section.minW || 'min-w-[640px] md:min-w-[720px]',
-      href: s?.href || section.href,
-      groups
-    };
-  });
+  // 直接使用 Nav 常量提供的合并结果
+  const navSections: NavSection[] = getNavSections(locale);
 
   return (
     <div className={fixed ? 'fixed top-0 left-0 right-0 z-50 backdrop-blur-md' : 'top-0'}>
@@ -84,7 +57,7 @@ export function SiteNavigation({ locale, fixed = false }: { locale: string; fixe
                   {section.groups && section.groups.length ? (
                     <>
                       <NavigationMenuTrigger className="bg-transparent">{section.trigger}</NavigationMenuTrigger>
-                      <NavigationMenuContent className={`p-6 ${section.minW} bg-[radial-gradient(120%_120%_at_50%_0%,rgba(34,211,238,0.08),transparent_65%)] backdrop-blur shadow-lg`}>
+                      <NavigationMenuContent className={`p-6 min-w-[640px] md:min-w-[720px] bg-[radial-gradient(120%_120%_at_50%_0%,rgba(34,211,238,0.08),transparent_65%)] backdrop-blur shadow-lg`}>
                         <div className="grid gap-4 md:grid-cols-3">
                           {section.groups
                             .filter((group) => group.items && group.items.length)

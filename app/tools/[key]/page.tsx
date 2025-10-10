@@ -10,6 +10,7 @@ import { Badge } from '@component/ui/badge';
 import { Button } from '@component/ui/button';
 import { Card, CardContent, CardDescription, CardTitle } from '@component/ui/card';
 import { Markdown, MarkdownToc } from '@/components/Markdown';
+import { BackToTop } from '@/components/BackToTop';
 import {
   ExternalLink,
   Star,
@@ -203,8 +204,6 @@ export default function ToolDetailPage() {
     { version: '2.0.0', date: '2024/5/19', notes: ['重大版本更新', '全新用户界面', '功能重构'] }
   ];
   const overviewMarkdown: string = (tool as any).overviewMarkdown ?? content;
-
-  // ----- 封装模块展示区域 -----
 
   const RenderModuleDisplay = (type: 'normal' | 'mobile' = 'normal', module: string) => {
     const baseClasses = type === 'normal' ? 'rounded-xl border border-border/50 bg-card/30 backdrop-blur-sm p-4 animate-in fade-in-50 duration-300' : 'animate-in fade-in-50 duration-300';
@@ -906,6 +905,8 @@ export default function ToolDetailPage() {
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <Footer locale={locale} />
       </section>
+
+      <BackToTop />
     </div>
   );
 }

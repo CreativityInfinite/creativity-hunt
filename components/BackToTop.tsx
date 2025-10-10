@@ -9,31 +9,56 @@ export function BackToTop() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const toggleVisibility = () => {
-      // 当滚动超过视口高度时显示按钮
-      if (window.scrollY > window.innerHeight) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+    const getScrollY = () => {
+      if (typeof window === 'undefined') return 0;
+      const a = window.scrollY || 0;
+      const b = (document.scrollingElement && document.scrollingElement.scrollTop) || 0;
+      const c = (document.documentElement && document.documentElement.scrollTop) || 0;
+      const d = (document.body && document.body.scrollTop) || 0;
+      return Math.max(a, b, c, d);
     };
 
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
+    const getViewportH = () => {
+      if (typeof window === 'undefined') return 0;
+      return window.innerHeight || (document.documentElement && document.documentElement.clientHeight) || 0;
+    };
+
+    const toggleVisibility = () => {
+      // 当滚动超过视口高度时显示按钮（兼容不同滚动根）
+      const y = getScrollY();
+      const vh = getViewportH();
+      setIsVisible(y > vh);
+    };
+
+    window.addEventListener('scroll', toggleVisibility, { passive: true });
+    // 初始判断一次，避免首次未监听时不显示
+    toggleVisibility();
+    return () => window.removeEventListener('scroll', toggleVisibility as any);
   }, []);
 
   const scrollToTop = () => {
     // 通知 ScrollTrigger 进入程序化滚动阶段，防止误触发向下自动滚动
     window.dispatchEvent(new CustomEvent('backToTop:start'));
 
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    const scroller: any = (document.scrollingElement as any) || window;
+
+    if (typeof scroller.scrollTo === 'function') {
+      scroller.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    const getScrollY = () => {
+      const a = window.scrollY || 0;
+      const b = (document.scrollingElement && document.scrollingElement.scrollTop) || 0;
+      const c = (document.documentElement && document.documentElement.scrollTop) || 0;
+      const d = (document.body && document.body.scrollTop) || 0;
+      return Math.max(a, b, c, d);
+    };
 
     // 监听滚动直到到达顶部后结束抑制；同时设置超时兜底
     const watcher = () => {
-      if (window.scrollY === 0) {
+      if (getScrollY() === 0) {
         window.dispatchEvent(new CustomEvent('backToTop:end'));
         window.removeEventListener('scroll', watcher);
       }

@@ -21,6 +21,7 @@ import othersData from '@/src/data/tools/others.json';
 import { PRIMARY_CATEGORIES, CATEGORY_ICONS, CATEGORY_COLORS, getCategoryDisplayName, getSubcategoryDisplayName, type PrimaryCategoryKey } from '@/src/constants/category.constant';
 import type { Tool } from '@/types/tool';
 import { Search, SearchX } from 'lucide-react';
+import { BackToTop } from '@/components/BackToTop';
 
 // 汇总所有工具数据
 const ALL_TOOLS_DATA = {
@@ -267,6 +268,8 @@ export default function ExplorePage() {
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <Footer locale={locale} />
       </section>
+
+      <BackToTop />
     </div>
   );
 }
