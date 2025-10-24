@@ -171,7 +171,7 @@
           "items": [
             { "title": "Chat Tools", "description": "Conversational AI and assistants" },
             { "title": "Image Generation", "description": "Create images with AI" },
-            { "title": "Writing", "description": "AI writing and copy" },
+            { "title": "Text Writing", "description": "AI writing and copy" },
             { "title": "Code Assistant", "description": "Coding support and automation" },
             { "title": "Audio & Voice", "description": "Speech and media tools" },
             { "title": "Data Insights", "description": "Analytics and visualization" },

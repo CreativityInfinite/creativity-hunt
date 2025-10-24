@@ -91,10 +91,20 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
           <div className="mt-8 sm:mt-10 lg:mt-12 max-w-xs sm:max-w-4xl lg:max-w-6xl mx-auto px-4 sm:px-0">
             <div className="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
               {hotTags.map((tag, index) => {
+                const categoryLinks = [
+                  '/categories/image-generation',
+                  '/categories/writing',
+                  '/categories/chat-tools',
+                  '/categories/code-assistant',
+                  '/categories/audio-voice',
+                  '/categories/data-insights',
+                  '/categories/automation'
+                ];
                 const icons = [Image, SquarePen, MessageCircleMore, Code, Mic, LineChart, Zap];
                 const Icon = icons[index] || Search;
+                const href = categoryLinks[index] || `/search/${encodeURIComponent(tag)}`;
                 return (
-                  <Link key={tag} href={`/search/${encodeURIComponent(tag)}`}>
+                  <Link key={tag} href={href}>
                     <div
                       className="group cursor-pointer rounded-xl sm:rounded-2xl border border-border/50 bg-card text-card-foreground shadow-sm transition-all duration-300 px-3 sm:px-4 lg:px-5 py-3 sm:py-4 flex items-center gap-2 sm:gap-3 hover:shadow-md hover:border-primary/30 hover:-translate-y-0.5 text-left"
                       style={{ backgroundColor: hotTagColors[index % hotTagColors.length] }}
