@@ -241,7 +241,12 @@ export default function CategoryViewAllPage({ params }: { params: Promise<{ key:
               {/* 快速导航 */}
               <div className="pt-3 sm:pt-4 border-t">
                 <h3 className="text-sm font-semibold mb-3">快速导航</h3>
-                <Button asChild variant="outline" size="sm" className="w-full justify-start text-xs px-3 py-2 h-auto border-muted-foreground/30 text-foreground/80 hover:border-muted-foreground/60 hover:bg-muted/40">
+                <Button
+                  asChild
+                  variant="outline"
+                  size="sm"
+                  className="w-full justify-start text-xs px-3 py-2 h-auto border-muted-foreground/30 text-foreground/80 hover:border-muted-foreground/60 hover:bg-muted/40"
+                >
                   <Link href={`/categories/${key}?lang=${locale}`}>
                     <ArrowRight className="h-3.5 w-3.5" />
                     返回分类
@@ -262,8 +267,7 @@ export default function CategoryViewAllPage({ params }: { params: Promise<{ key:
                 <p className="text-xs text-muted-foreground mt-1">
                   {minRating > 0 && `评分 ≥ ${minRating}.0 · `}
                   {searchQuery && `搜索: "${searchQuery}" · `}
-                  {selectedTags.length > 0 && `标签: ${selectedTags.join(', ')} · `}
-                  共 {list.length} 个工具
+                  {selectedTags.length > 0 && `标签: ${selectedTags.join(', ')} · `}共 {list.length} 个工具
                 </p>
               </div>
             </div>
@@ -277,9 +281,7 @@ export default function CategoryViewAllPage({ params }: { params: Promise<{ key:
                 <EmptyContent>
                   <EmptyHeader>
                     <EmptyTitle>暂无符合条件的工具</EmptyTitle>
-                    <EmptyDescription>
-                      {searchQuery || minRating > 0 || selectedTags.length > 0 ? '试试调整搜索条件或筛选' : '该分类暂无工具'}
-                    </EmptyDescription>
+                    <EmptyDescription>{searchQuery || minRating > 0 || selectedTags.length > 0 ? '试试调整搜索条件或筛选' : '该分类暂无工具'}</EmptyDescription>
                   </EmptyHeader>
                 </EmptyContent>
               </Empty>
