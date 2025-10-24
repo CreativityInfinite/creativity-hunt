@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 const SUPPORTED_LOCALES = ['zh-CN', 'zh-TW', 'en'];
 const DEFAULT_LOCALE = 'zh-CN';
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const url = req.nextUrl.clone();
   const lang = url.searchParams.get('lang');
   const cookieLocale = req.cookies.get('NEXT_LOCALE')?.value;
